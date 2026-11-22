@@ -61,6 +61,20 @@
     fx = base;
   }
   function rate(from, to) { return fx[to] / fx[from]; }
+  /* "MM/DD/YY, hh:mm am/pm PH" in Philippine time (Asia/Manila), whatever the device timezone */
+  function fmtPH(t) {
+    var d = new Date(t);
+    if (isNaN(d.getTime())) return "unknown time";
+    try {
+      var p = {};
+      new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Manila", month: "2-digit", day: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit", hour12: true })
+        .formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+      return p.month + "/" + p.day + "/" + p.year + ", " + p.hour + ":" + p.minute + " " + String(p.dayPeriod).toLowerCase() + " PH";
+    } catch (e) {
+      var m = new Date(d.getTime() + 8 * 3600000), h = m.getUTCHours(), pad = function (n) { return (n < 10 ? "0" : "") + n; };
+      return pad(m.getUTCMonth() + 1) + "/" + pad(m.getUTCDate()) + "/" + pad(m.getUTCFullYear() % 100) + ", " + pad(h % 12 || 12) + ":" + pad(m.getUTCMinutes()) + " " + (h < 12 ? "am" : "pm") + " PH";
+    }
+  }
   function fmtRate(v) { return v >= 100 ? v.toFixed(2) : v >= 1 ? v.toFixed(3) : v.toFixed(4); }
 
   /* =========================================================
@@ -435,7 +449,7 @@
 
     var dot = fxMeta.source === "live" ? "dot live" : "dot";
     var txt = fxMeta.source === "live"
-      ? "Live mid-market rates · updated " + new Date(fxMeta.time).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })
+      ? "Live mid-market rates · Rate as of " + fmtPH(fxMeta.time)
       : "Offline estimate · SGD→PHP from your sheet, SGD→JPY approximate. Connect to the internet for live rates, or set your own below.";
     if (prefs.sheet || (prefs.customJpy && parseNum(prefs.customJpy) > 0)) txt += " · custom rate in use";
     $("#rateStatus").innerHTML = '<span class="' + dot + '"></span><span>' + txt + "</span>";
