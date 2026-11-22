@@ -53,12 +53,12 @@ window.TRIP = {
       "toName": "Manila",
       "arr": "18:10",
       "aircraft": "Airbus A321neo",
-      "note": "Arrival time varies by a few minutes between sources. No activities are planned for Feb 12."
+      "note": "Arrival time varies by a few minutes between sources. Feb 12 is a flexible morning with an optional Donki stop."
     }
   ],
   flightsNote: "Times follow Philippine Airlines' published Manila-Sapporo schedule for the 2025-26 season. Confirm against your booking.",
 
-  // Itinerary, grouped by area. Feb 1 and Feb 12 are arrival and departure days with no activities; Feb 8 is the flexible day.
+  // Itinerary, grouped by area. Feb 1 is arrival only; Feb 8 is the flexible day; Feb 12 is a flexible last morning (Donki) before the flight.
   // kind: arrival | day | flex | departure. Each day has a title, area, a one-line reason for the grouping, and its stops.
   itinerary: [
     {
@@ -141,15 +141,15 @@ window.TRIP = {
       "date": "2027-02-04",
       "dow": "Thu",
       "kind": "day",
-      "title": "Central Sapporo · Snow Festival opens",
-      "area": "Odori · Nijo Market",
-      "why": "Everything is walkable. The Snow Festival opens today and runs to Feb 11.",
+      "title": "Namboku Line day · Snow Festival opens",
+      "area": "Makomanai · Odori",
+      "why": "Hill of the Buddha is at the end of the Namboku Line, which runs back through Odori for the festival's opening day (runs to Feb 11).",
       "stops": [
         {
           "time": "Morning",
-          "activity": "Nijo Market (king crab)",
-          "location": "Chuo-ku, near Odori",
-          "notes": "Fresh seafood stalls. Go early for the king crab."
+          "activity": "Hill of the Buddha",
+          "location": "Makomanai Takino Cemetery, Minami-ku",
+          "notes": "Namboku Line to Makomanai, then Chuo Bus 108 (about 23 min). Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early."
         },
         {
           "time": "Afternoon",
@@ -290,27 +290,39 @@ window.TRIP = {
       "date": "2027-02-11",
       "dow": "Thu",
       "kind": "day",
-      "title": "Namboku Line day · Susukino finale",
-      "area": "Makomanai · Susukino",
-      "why": "The Hill of the Buddha is at the end of the Namboku Line out of Susukino, so finish the trip in Susukino on the festival's last night.",
+      "title": "Hokkaido food day · Susukino finale",
+      "area": "Nijo · Tanukikoji · Susukino",
+      "why": "A day for Hokkaido milk, ice cream and local specialties, all within walking distance, ending at the Snow Festival's last night.",
       "stops": [
         {
           "time": "Morning",
-          "activity": "Hill of the Buddha",
-          "location": "Makomanai Takino Cemetery, Minami-ku",
-          "notes": "Namboku Line to Makomanai, then Chuo Bus 108 (about 23 min). Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar. Feb 11 is a national holiday, so check it is open."
+          "activity": "Nijo Market: king crab and seafood bowl",
+          "location": "Nijo Market, Chuo-ku",
+          "notes": "Seafood breakfast. A kaisendon (raw seafood on rice) is a Sapporo classic."
         },
         {
-          "time": "Late afternoon",
+          "time": "Late morning",
+          "activity": "Hokkaido milk soft-serve and ice cream",
+          "location": "Central Sapporo (Odori to Sapporo Station)",
+          "notes": "Hokkaido makes about half of Japan's raw milk. Shops to pick from: Yukijirushi (Snow Brand) Parlor main store, Kitakaro, and the Sapporo Agricultural College Rakuno Milk Soft."
+        },
+        {
+          "time": "Lunch",
+          "activity": "Soup curry",
+          "location": "Near Susukino Station",
+          "notes": "Soup Curry Garaku is a popular choice and often has a queue. Soup curry is a Sapporo specialty."
+        },
+        {
+          "time": "Afternoon",
           "activity": "Susukino Nikka & Shopping Street",
           "location": "Susukino",
           "notes": "The Nikka sign at Susukino Crossing and the nearby shopping street."
         },
         {
           "time": "Evening",
-          "activity": "Ramen Lane",
+          "activity": "Ramen Lane (miso ramen)",
           "location": "Susukino",
-          "notes": "Dinner at the ramen alley."
+          "notes": "Sapporo is known for rich miso ramen. Genghis Khan lamb is the other local dish to try; the Beer Garden on Feb 9 covers it."
         },
         {
           "time": "Night",
@@ -325,15 +337,21 @@ window.TRIP = {
       "date": "2027-02-12",
       "dow": "Fri",
       "kind": "departure",
-      "title": "Departure",
-      "area": "New Chitose Airport",
-      "why": "",
+      "title": "Departure · flexible last morning",
+      "area": "Tanukikoji · New Chitose Airport",
+      "why": "Left open on purpose. The flight leaves at 13:15, so keep any shopping to the early morning.",
       "stops": [
         {
-          "time": "13:15",
+          "time": "Early morning",
+          "activity": "Flexible · last-minute Donki shopping",
+          "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
+          "notes": "Tax-free shopping is offered. Finish early and leave time for the trip to New Chitose Airport."
+        },
+        {
+          "time": "Departs 13:15",
           "activity": "Departure · PR 405",
           "location": "New Chitose Airport (CTS)",
-          "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). No activities planned. Leave time to reach the airport."
+          "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10)."
         }
       ]
     }

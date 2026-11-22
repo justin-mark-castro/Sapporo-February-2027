@@ -199,7 +199,7 @@
           '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + "</div></li>";
       }).join("");
       var body;
-      if (kind === "arrival" || kind === "departure") {
+      if (kind === "arrival") {
         var s0 = (d.stops || [])[0] || {};
         var meta0 = "";
         if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";
