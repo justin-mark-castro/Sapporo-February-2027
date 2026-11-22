@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -97,12 +97,17 @@
     <header class="section-head">
       <span class="kicker">旅程 · Itinerary</span>
       <h2>12 days in Hokkaido</h2>
-      <p class="lede">Day-by-day plan. Festival dates are marked on the days they overlap.</p>
+      <p class="lede">Grouped by area so each day stays in one part of the city. Feb 1 and Feb 12 are arrival and departure, and Feb 8 is left open.</p>
     </header>
 
+    <h3 class="sub-h">Flights</h3>
+    <div class="flights" id="flights"></div>
+
+    <h3 class="sub-h">Day by day</h3>
     <div class="legend-chips">
       <span class="chip chip-snow">雪まつり Snow Festival · Feb 4–11</span>
       <span class="chip chip-light">小樽 Otaru Snow Light Path · Feb 6–13</span>
+      <span class="chip chip-ice">支笏湖 Lake Shikotsu Ice Festival · Jan 30–Feb 23</span>
       <span class="chip chip-illum">White Illumination · through Mar 14</span>
     </div>
 
@@ -260,11 +265,11 @@
   <div class="footer-inner">
     <p class="footer-jp">良い旅を</p>
     <p>Sapporo 2027 · <span id="footDates"></span></p>
-    <p class="tiny">Data copied from the private trip sheet · snapshot 22 Nov 2026 · FX rates are indicative, not bank rates.</p>
+    <p class="tiny">Data copied from the private trip sheet · snapshot 23 Nov 2026 · FX rates are indicative, not bank rates.</p>
   </div>
 </footer>
 
-<script src="data.js?v=3"></script>
-<script src="app.js?v=5"></script>
+<script src="data.js?v=4"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

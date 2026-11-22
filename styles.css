@@ -153,6 +153,7 @@ a{color:inherit}
 .chip-snow{background:#dbe8f8;color:#1b4a8a;border-color:#c1d6f0}
 .chip-light{background:#fbe4d0;color:#8a4a12;border-color:#f1cfb0}
 .chip-illum{background:#f6e7f0;color:#8a2c61;border-color:#ebcadd}
+.chip-ice{background:#dff3f1;color:#17625c;border-color:#bfe3df}
 
 .timeline{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:14px}
 .timeline::before{
@@ -180,6 +181,39 @@ a{color:inherit}
 .day-body.open{background:transparent;border-style:dashed;box-shadow:none}
 .day-body.open h4{color:var(--muted);font-weight:500;font-size:1rem}
 .day-body.key{border-left:4px solid var(--beni)}
+
+/* itinerary: grouped days, stops, flights */
+.sub-h{font-family:var(--serif);font-size:1.05rem;color:var(--ai);margin:0 0 12px}
+.flights{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin-bottom:34px}
+.flights-foot{grid-column:1/-1;margin:0}
+.flight{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow)}
+.flight-top{display:flex;align-items:center;gap:12px}
+.flight-ico{width:38px;height:38px;border-radius:12px;background:var(--ai);display:grid;place-items:center;flex:none}
+.flight-ico svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.flight-code{font-family:var(--serif);font-size:1.25rem;color:var(--ai);display:block;line-height:1.1}
+.flight-top small{display:block;font-size:.75rem;color:var(--muted)}
+.flight-date{margin-left:auto;font-size:.8rem;font-weight:600;color:var(--beni);text-align:right}
+.flight-route{display:grid;grid-template-columns:1fr minmax(40px,1.2fr) 1fr;align-items:center;gap:10px;margin:16px 0 10px}
+.fl-end b{display:block;font-family:var(--serif);font-size:1.7rem;line-height:1;color:var(--sumi)}
+.fl-end .fl-code{display:block;margin-top:4px;font-weight:700;font-size:.8rem;letter-spacing:.14em;color:var(--ai-2)}
+.fl-end small{display:block;font-size:.75rem;color:var(--muted)}
+.fl-end:last-child{text-align:right}
+.fl-line{height:2px;background:repeating-linear-gradient(to right,var(--line) 0 8px,transparent 8px 14px);position:relative}
+.fl-line i{position:absolute;right:-2px;top:-4px;width:10px;height:10px;border-top:2px solid var(--muted);border-right:2px solid var(--muted);transform:rotate(45deg)}
+.flight-note{margin:0;font-size:.82rem;color:var(--ink-2)}
+
+.day-body .day-area{display:flex;gap:6px;align-items:center;margin:4px 0 0;font-size:.82rem;font-weight:600;color:var(--ai-2)}
+.day-body .day-area svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.day-body .day-why{margin:4px 0 0;font-size:.88rem;color:var(--ink-2)}
+.stops{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:0}
+.stop{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.stop-time{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--beni);padding-top:3px}
+.stop-main>b{font-family:var(--serif);font-size:1rem;color:var(--sumi)}
+.stop-main .meta{display:grid;gap:4px;margin-top:4px}
+.stop-main .meta span{align-items:flex-start}
+.stop-main .meta svg{margin-top:3px;flex:none}
+.day-body.flex{background:#fff8e6;border-color:#ecd9a4;border-style:dashed}
+.day-body.flex h4{color:#7a5a00}
 
 .subgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;margin-top:40px}
 .climate-row{display:grid;grid-template-columns:42px 1fr 78px;gap:10px;align-items:center;margin:11px 0;font-size:.85rem}
@@ -327,6 +361,11 @@ a{color:inherit}
   .day{grid-template-columns:70px 1fr;gap:10px}
   .timeline::before{left:34px}
   .day-date .dd{font-size:1.25rem}
+  .stop{grid-template-columns:1fr;gap:2px}
+  .stop-time{padding-top:0}
+  .day-body{padding:14px 16px}
+  .flight{padding:14px 16px}
+  .fl-end b{font-size:1.45rem}
   .fx-field{grid-template-columns:34px 1fr minmax(100px,1.2fr);gap:8px;padding:10px}
   .fx-field input{font-size:1.25rem}
   .card{padding:18px}

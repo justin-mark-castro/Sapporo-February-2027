@@ -153,26 +153,65 @@
   var icClock = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var icNote = '<svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 11h8M8 15h6"/></svg>';
 
+  var icPlane = '<svg viewBox="0 0 24 24"><path d="M2 16l20-6-3-2-6 1-5-5-2 1 3 6-5 2-2-2-1 1 3 4 5-2 2 2 1-1-1-4z"/></svg>';
+
+  function fmtFlightDate(iso, dow) {
+    var d = parseISO(iso);
+    return dow + ", " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+  function renderFlights() {
+    var el = $("#flights");
+    if (!el || !T.flights) return;
+    el.innerHTML = T.flights.map(function (f) {
+      return '<article class="flight">' +
+        '<div class="flight-top"><span class="flight-ico">' + icPlane + '</span>' +
+        '<div><b class="flight-code">' + esc(f.code) + '</b><small>' + esc(f.airline) + " · " + esc(f.aircraft) + "</small></div>" +
+        '<span class="flight-date">' + esc(fmtFlightDate(f.date, f.dow)) + "</span></div>" +
+        '<div class="flight-route">' +
+        '<div class="fl-end"><b>' + esc(f.dep) + '</b><span class="fl-code">' + esc(f.from) + "</span><small>" + esc(f.fromName) + "</small></div>" +
+        '<div class="fl-line" aria-hidden="true"><i></i></div>' +
+        '<div class="fl-end"><b>' + esc(f.arr) + '</b><span class="fl-code">' + esc(f.to) + "</span><small>" + esc(f.toName) + "</small></div>" +
+        "</div>" +
+        '<p class="flight-note">' + esc(f.note) + "</p></article>";
+    }).join("") + '<p class="muted tiny flights-foot">' + esc(T.flightsNote || "") + "</p>";
+  }
+
   function renderTimeline() {
     var today = todayLocal();
     $("#timeline").innerHTML = T.itinerary.map(function (d) {
       var dt = parseISO(d.date);
-      var open = !d.activity;
-      var key = d.activity === "Arrival" || d.activity === "Departure";
       var isToday = dt.getTime() === today.getTime();
+      var kind = d.kind || "day";
       var badges = FEST.filter(function (f) { return d.date >= f.from && d.date <= f.to; }).map(function (f) {
         var extra = d.date === f.from ? " · opens" : d.date === f.to ? " · last day" : "";
         return '<span class="chip ' + f.cls + '">' + f.label + extra + "</span>";
       }).join("");
-      var meta = "";
-      if (d.time) meta += "<span>" + icClock + esc(d.time) + "</span>";
-      if (d.location) meta += "<span>" + icPin + esc(d.location) + "</span>";
-      if (d.notes) meta += "<span>" + icNote + esc(d.notes) + "</span>";
+      var cls = "day-body" + (kind === "arrival" || kind === "departure" ? " key" : "") + (kind === "flex" ? " flex" : "");
+      var head = '<h4>' + esc(d.title) + "</h4>" +
+        (d.area ? '<p class="day-area">' + icPin + esc(d.area) + "</p>" : "") +
+        (d.why ? '<p class="day-why">' + esc(d.why) + "</p>" : "");
+      var stops = (d.stops || []).map(function (s) {
+        var meta = "";
+        if (s.location) meta += "<span>" + icPin + esc(s.location) + "</span>";
+        if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
+        return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
+          '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + "</div></li>";
+      }).join("");
+      var body;
+      if (kind === "arrival" || kind === "departure") {
+        var s0 = (d.stops || [])[0] || {};
+        var meta0 = "";
+        if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";
+        if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
+        if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
+        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "");
+      } else {
+        body = head + (stops ? '<ul class="stops">' + stops + "</ul>" : "");
+      }
       return '<li class="day' + (isToday ? " today" : "") + '">' +
         '<div class="day-date"><span class="dn">Day ' + d.day + '</span><span class="dd">' + MONTHS[dt.getMonth()] + " " + dt.getDate() + '</span><span class="dw">' + d.dow + "</span></div>" +
-        '<div class="day-body' + (open ? " open" : "") + (key ? " key" : "") + '">' +
-        "<h4>" + (open ? "Open day · plan to be added" : esc(d.activity)) + "</h4>" +
-        (meta ? '<div class="meta">' + meta + "</div>" : "") +
+        '<div class="' + cls + '">' + body +
         (badges ? '<div class="badges">' + badges + "</div>" : "") +
         "</div></li>";
     }).join("");
@@ -522,6 +561,7 @@
   /* ---------- init ---------- */
   applyRates();
   renderStats();
+  renderFlights();
   renderTimeline();
   renderGuide();
   buildMap();
