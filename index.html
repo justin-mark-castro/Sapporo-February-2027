@@ -3,196 +3,269 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1f3864">
-<title>Sapporo 2027</title>
-<style>
-  :root{--navy:#1f3864;--ink:#1b2430;--muted:#667085;--line:#e4e7ec;--bg:#f4f6fa;--card:#fff;--accent:#2e7dd7;--ok:#1a8f5a;--warn:#c77700}
-  *{box-sizing:border-box}
-  body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);padding-bottom:70px}
-  header{background:var(--navy);color:#fff;padding:18px 16px 14px;padding-top:calc(18px + env(safe-area-inset-top))}
-  header h1{margin:0;font-size:22px}
-  header p{margin:2px 0 0;opacity:.8;font-size:13px}
-  main{max-width:760px;margin:0 auto;padding:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .stat .label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .stat .value{font-size:22px;font-weight:650;margin-top:2px}
-  .stat .sub{font-size:12px;color:var(--muted)}
-  .bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin:8px 0 4px}
-  .bar>div{height:100%;background:var(--ok);width:0}
-  h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px}
-  .row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
-  .row:first-of-type{border-top:0}
-  .row .name{font-weight:600}
-  .row .note{font-size:12px;color:var(--muted)}
-  .row .amt{text-align:right;white-space:nowrap}
-  .row .amt small{display:block;color:var(--muted);font-size:12px}
-  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:99px;background:#fff4e0;color:var(--warn);margin-left:6px}
-  .pill.paid{background:#e3f6ec;color:var(--ok)}
-  .day{border-left:3px solid var(--accent);padding-left:12px;margin:0 0 16px}
-  .day h3{margin:0;font-size:16px}
-  .day .date{font-size:12px;color:var(--muted)}
-  .item{padding:8px 0;border-top:1px dashed var(--line)}
-  .item:first-of-type{border-top:0}
-  .item .time{font-weight:600;color:var(--accent);margin-right:6px}
-  .item .meta{font-size:12px;color:var(--muted)}
-  .empty{color:var(--muted);font-style:italic;font-size:13px}
-  nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-  nav button{flex:1;border:0;background:none;padding:14px 0;font:inherit;font-weight:600;color:var(--muted)}
-  nav button.on{color:var(--navy);box-shadow:inset 0 3px 0 var(--accent)}
-  .view{display:none}.view.on{display:block}
-  #status{font-size:12px;color:var(--muted);text-align:center;margin:8px 0}
-  #status.err{color:#b42318}
-  a{color:var(--accent)}
-</style>
+<title>Sapporo 2027 · Hokkaido Trip Planner</title>
+<meta name="description" content="Sapporo, Hokkaido trip planner — itinerary, expenses and a JPY / PHP / SGD calculator. February 1–12, 2027.">
+<meta name="theme-color" content="#16294a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316294a'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23c8372d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <h1 id="title">Sapporo 2027 Trip</h1>
-  <p id="subtitle">February 1–12, 2027</p>
+
+<!-- shared SVG defs: seigaiha (wave) patterns -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="sg-ring" fill="#16294a" stroke="#7d97c2" stroke-opacity=".6" stroke-width="1.1">
+      <circle r="30"/><circle r="22.5"/><circle r="15"/><circle r="7.5"/>
+    </g>
+    <pattern id="seigaiha-dark" width="60" height="30" patternUnits="userSpaceOnUse">
+      <rect width="60" height="30" fill="#16294a"/>
+      <use href="#sg-ring" x="0" y="0"/><use href="#sg-ring" x="60" y="0"/>
+      <use href="#sg-ring" x="30" y="15"/>
+      <use href="#sg-ring" x="0" y="30"/><use href="#sg-ring" x="60" y="30"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top" aria-label="Sapporo 2027 home">
+    <span class="brand-sun" aria-hidden="true"></span>
+    <span class="brand-text"><b>札幌</b> Sapporo 2027</span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#overview">Overview</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#map">Map</a>
+    <a href="#expenses">Expenses</a>
+    <a href="#forex">Forex</a>
+  </nav>
 </header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-label="Sapporo 2027">
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="hero-sun" aria-hidden="true"></div>
+
+  <svg class="hero-mountains" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,260 L0,170 L120,110 L200,150 L330,60 L440,140 L560,90 L700,160 L820,80 L940,150 L1080,100 L1200,160 L1320,120 L1440,170 L1440,260 Z" fill="#1d3866" opacity=".75"/>
+    <path d="M0,260 L0,210 L140,170 L260,205 L400,150 L520,200 L660,160 L800,210 L960,165 L1100,205 L1240,170 L1440,215 L1440,260 Z" fill="#102240"/>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="eyebrow">北海道 · Hokkaido, Japan</p>
+    <h1><span class="jp">札幌</span><span class="en">Sapporo</span></h1>
+    <p class="hero-dates"><span id="heroDates">February 1 – 12, 2027</span> · <span id="heroNights">11 nights</span></p>
+
+    <div class="countdown" role="timer" aria-live="off">
+      <div><b id="cdDays">–</b><small>days to go</small></div>
+      <div><b id="cdHours">–</b><small>weeks</small></div>
+      <div><b id="cdMins">–</b><small>days in Japan</small></div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-red" href="#itinerary">View itinerary</a>
+      <a class="btn btn-ghost" href="#forex">Yen calculator</a>
+    </div>
+  </div>
+
+  <svg class="hero-waves" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <rect width="100%" height="100%" fill="url(#seigaiha-dark)"/>
+  </svg>
+</section>
+
 <main>
-  <section id="overview" class="view on">
-    <div class="grid" style="margin-bottom:12px">
-      <div class="card stat"><div class="label">Days to go</div><div class="value" id="days">–</div><div class="sub" id="daysSub">until Feb 1, 2027</div></div>
-      <div class="card stat"><div class="label">Your share (PHP)</div><div class="value" id="share">–</div><div class="sub" id="shareSub"></div></div>
+
+<!-- ================= OVERVIEW ================= -->
+<section id="overview" class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="kicker">概要 · Overview</span>
+      <h2>Trip at a glance</h2>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="guide-grid" id="guideStats"></div>
+  </div>
+</section>
+
+<!-- ================= ITINERARY ================= -->
+<section id="itinerary" class="section section-washi">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="kicker">旅程 · Itinerary</span>
+      <h2>12 days in Hokkaido</h2>
+      <p class="lede">Day-by-day plan. Festival dates are marked on the days they overlap.</p>
+    </header>
+
+    <div class="legend-chips">
+      <span class="chip chip-snow">雪まつり Snow Festival · Feb 4–11</span>
+      <span class="chip chip-light">小樽 Otaru Snow Light Path · Feb 6–13</span>
+      <span class="chip chip-illum">White Illumination · through Mar 14</span>
     </div>
-    <div class="card">
-      <h2>Budget</h2>
-      <div class="grid">
-        <div class="stat"><div class="label">Total</div><div class="value" id="totPhp">–</div><div class="sub" id="totSgd"></div></div>
-        <div class="stat"><div class="label">Still to pay</div><div class="value" id="dueSgd">–</div><div class="sub" id="duePhp"></div></div>
+
+    <ol class="timeline" id="timeline"></ol>
+
+    <div class="subgrid">
+      <article class="card">
+        <h3>Climate · Nov – Mar</h3>
+        <p class="muted small">Average daily temperatures and snowfall for Sapporo.</p>
+        <div id="climate"></div>
+        <p class="muted tiny" id="climateSrc"></p>
+      </article>
+
+      <article class="card">
+        <h3>Festivals &amp; events near your dates</h3>
+        <ul class="events" id="events"></ul>
+        <p class="muted tiny" id="sources"></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section id="map" class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="kicker">地図 · Map</span>
+      <h2>Sapporo, in a snapshot</h2>
+      <p class="lede">An illustrated guide to the city’s grid, Odori Park and the places on the festival circuit. Tap a pin or a place name.</p>
+    </header>
+
+    <div class="map-layout">
+      <figure class="map-frame">
+        <svg id="sapporoMap" viewBox="0 0 800 580" role="img" aria-label="Illustrated map of central Sapporo"></svg>
+        <figcaption class="tiny muted">Illustrated map · not to scale · positions approximate</figcaption>
+      </figure>
+      <aside class="map-list">
+        <h3>Places</h3>
+        <ul id="placeList"></ul>
+        <div class="place-detail" id="placeDetail" aria-live="polite"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPENSES ================= -->
+<section id="expenses" class="section section-washi">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="kicker">費用 · Expenses</span>
+      <h2>Budget &amp; split</h2>
+      <p class="lede">Copied from the trip sheet. Amounts shown in Philippine pesos and Singapore dollars.</p>
+    </header>
+
+    <div class="expense-top">
+      <div class="seg" role="tablist" aria-label="Display currency" id="curSeg">
+        <button role="tab" data-cur="PHP" aria-selected="true">₱ PHP</button>
+        <button role="tab" data-cur="SGD" aria-selected="false">S$ SGD</button>
+        <button role="tab" data-cur="JPY" aria-selected="false">¥ JPY <em>est.</em></button>
       </div>
-      <div class="bar"><div id="paidBar"></div></div>
-      <div class="sub" id="paidTxt" style="font-size:12px;color:var(--muted)"></div>
+      <p class="muted small" id="curNote"></p>
     </div>
-    <div class="card"><h2>Split</h2><div id="split"></div></div>
-  </section>
 
-  <section id="itinerary" class="view"><div id="itin"></div></section>
+    <div class="expense-grid">
+      <div class="card expense-table-card">
+        <div class="table-scroll">
+          <table class="table" id="expTable">
+            <thead>
+              <tr><th>Item</th><th class="num" id="thAmt">PHP</th><th class="num">Original</th><th>Status</th><th>Notes</th></tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot></tfoot>
+          </table>
+        </div>
+      </div>
 
-  <section id="expenses" class="view">
-    <div class="card"><h2>Expense log</h2><div id="exp"></div></div>
-  </section>
+      <div class="card donut-card">
+        <h3>Where the money goes</h3>
+        <div class="donut-wrap">
+          <svg id="donut" viewBox="0 0 200 200" role="img" aria-label="Expense breakdown"></svg>
+          <div class="donut-center"><small>Total</small><b id="donutTotal"></b></div>
+        </div>
+        <ul class="donut-legend" id="donutLegend"></ul>
+      </div>
+    </div>
 
-  <div id="status">Loading…</div>
+    <div class="split-grid" id="splitGrid"></div>
+  </div>
+</section>
+
+<!-- ================= FOREX ================= -->
+<section id="forex" class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="kicker">為替 · Forex</span>
+      <h2>Yen · Peso · Singapore dollar</h2>
+      <p class="lede">Type in any box and the others update.</p>
+    </header>
+
+    <div class="fx-layout">
+      <div class="card fx-card">
+        <div class="fx-fields">
+          <label class="fx-field">
+            <span class="fx-flag">🇯🇵</span>
+            <span class="fx-code">JPY <small>Japanese yen</small></span>
+            <input id="fxJPY" inputmode="decimal" autocomplete="off" value="10000" aria-label="Japanese yen amount">
+          </label>
+          <label class="fx-field">
+            <span class="fx-flag">🇵🇭</span>
+            <span class="fx-code">PHP <small>Philippine peso</small></span>
+            <input id="fxPHP" inputmode="decimal" autocomplete="off" aria-label="Philippine peso amount">
+          </label>
+          <label class="fx-field">
+            <span class="fx-flag">🇸🇬</span>
+            <span class="fx-code">SGD <small>Singapore dollar</small></span>
+            <input id="fxSGD" inputmode="decimal" autocomplete="off" aria-label="Singapore dollar amount">
+          </label>
+        </div>
+
+        <div class="quick" id="quick">
+          <span class="muted small">Quick yen:</span>
+          <button data-yen="1000">¥1,000</button>
+          <button data-yen="5000">¥5,000</button>
+          <button data-yen="10000">¥10,000</button>
+          <button data-yen="50000">¥50,000</button>
+          <button data-yen="100000">¥100,000</button>
+        </div>
+
+        <div class="rate-status" id="rateStatus"></div>
+      </div>
+
+      <div class="card fx-rates">
+        <h3>Rates</h3>
+        <table class="table rates-table" id="ratesTable">
+          <thead><tr><th></th><th class="num">→ PHP</th><th class="num">→ SGD</th><th class="num">→ JPY</th></tr></thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="override">
+          <label class="check"><input type="checkbox" id="useSheetRate"> Use my sheet’s SGD→PHP rate (<span id="sheetRate"></span>)</label>
+          <label class="check"><input type="checkbox" id="useCustomJpy"> Set my own SGD→JPY rate
+            <input id="customJpy" class="mini" inputmode="decimal" placeholder="e.g. 112.5" disabled>
+          </label>
+        </div>
+
+        <div class="trip-in-yen" id="tripInYen"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
-<nav>
-  <button data-v="overview" class="on">Overview</button>
-  <button data-v="itinerary">Itinerary</button>
-  <button data-v="expenses">Expenses</button>
-</nav>
 
-<script>
-// ---- Config ----
-const TRIP_START = new Date("2027-02-01T00:00:00+09:00");
+<footer class="footer">
+  <svg class="footer-waves" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#seigaiha-dark)"/></svg>
+  <div class="footer-inner">
+    <p class="footer-jp">良い旅を</p>
+    <p>Sapporo 2027 · <span id="footDates"></span></p>
+    <p class="tiny">Data copied from the private trip sheet · snapshot 22 Nov 2026 · FX rates are indicative, not bank rates.</p>
+  </div>
+</footer>
 
-// ---- CSV parser (handles quotes) ----
-function parseCSV(t){
-  const rows=[];let r=[],f="",q=false;
-  for(let i=0;i<t.length;i++){
-    const c=t[i];
-    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
-    else if(c=='"') q=true;
-    else if(c==',') {r.push(f);f=""}
-    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n') i++; r.push(f);f="";rows.push(r);r=[] }
-    else f+=c;
-  }
-  if(f!==""||r.length){r.push(f);rows.push(r)}
-  return rows;
-}
-const num = s => { const n=parseFloat(String(s||"").replace(/[^0-9.\-]/g,"")); return isNaN(n)?0:n };
-const fmt = (n,d=0) => n.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
-const el = id => document.getElementById(id);
-const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const cell = (g,r,c) => (g[r] && g[r][c] || "").trim();
-
-function render(g){
-  el("title").textContent = cell(g,0,0) || "Sapporo 2027 Trip";
-  el("subtitle").textContent = [cell(g,1,0),cell(g,2,0)].filter(Boolean).join(" · ");
-
-  // Days to go (computed live, not from sheet)
-  const d = Math.ceil((TRIP_START - new Date())/86400000);
-  el("days").textContent = d>0 ? d : (d>-12 ? "Now!" : "Done");
-
-  // Summary rows keyed by label in column A
-  const byLabel = {};
-  g.forEach((row,i)=>{ const k=(row[0]||"").trim(); if(k && !(k in byLabel)) byLabel[k]=i });
-  const sRow = k => byLabel[k]!==undefined ? byLabel[k] : -1;
-  const tot = sRow("Total"), paid = sRow("Paid"), due = sRow("To be paid");
-  if(tot>=0){
-    el("totPhp").textContent = "₱"+fmt(num(cell(g,tot,1)));
-    el("totSgd").textContent = "SGD "+fmt(num(cell(g,tot,2)),2);
-  }
-  if(due>=0){
-    el("dueSgd").textContent = "SGD "+fmt(num(cell(g,due,2)));
-    el("duePhp").textContent = "₱"+fmt(num(cell(g,due,1)));
-  }
-  if(paid>=0 && tot>=0){
-    const p=num(cell(g,paid,1)), t=num(cell(g,tot,1));
-    const pct = t? Math.min(100,p/t*100):0;
-    el("paidBar").style.width = pct+"%";
-    el("paidTxt").textContent = `Paid ₱${fmt(p)} of ₱${fmt(t)} (${fmt(pct)}%)`;
-  }
-  // Your share — sheet cells J6 / J9
-  if(tot>=0){
-    el("share").textContent = "₱"+fmt(num(cell(g,tot,9)));
-    el("shareSub").textContent = cell(g,tot+3,9) || "";
-  }
-  // Split rows between "Total" and "Paid"
-  let sp="";
-  for(let i=tot+1;i>0 && i<paid;i++){
-    sp+=`<div class="row"><div class="name">${esc(cell(g,i,0))} <span class="note">${esc(cell(g,i,3))}</span></div>
-      <div class="amt">₱${fmt(num(cell(g,i,1)))}<small>SGD ${fmt(num(cell(g,i,2)),2)}</small></div></div>`;
-  }
-  el("split").innerHTML = sp || '<div class="empty">No split data</div>';
-
-  // Expense log: header row has "Item" in col A
-  const eh = g.findIndex(r=>(r[0]||"").trim()==="Item");
-  let ex="";
-  for(let i=eh+1;i<g.length;i++){
-    const name=cell(g,i,0); if(!name) break;
-    const status=cell(g,i,4), isPaid=/paid|done|yes/i.test(status) && !/unpaid|not/i.test(status);
-    ex+=`<div class="row"><div><div class="name">${esc(name)}${status?`<span class="pill ${isPaid?"paid":""}">${esc(status)}</span>`:`<span class="pill">Unpaid</span>`}</div>
-      <div class="note">${esc(cell(g,i,5))}</div></div>
-      <div class="amt">₱${fmt(num(cell(g,i,1)))}<small>SGD ${fmt(num(cell(g,i,2)),2)}</small></div></div>`;
-  }
-  el("exp").innerHTML = ex || '<div class="empty">No expenses yet</div>';
-
-  // Itinerary: header row has "Day" in column H (index 7)
-  const ih = g.findIndex(r=>(r[7]||"").trim()==="Day");
-  const days=[]; let cur=null;
-  for(let i=ih+1;i<g.length;i++){
-    const r=g[i]; const day=(r[7]||"").trim();
-    if(day){ cur={day,date:(r[8]||"").trim(),items:[]}; days.push(cur) }
-    else if(!cur) continue;
-    const it={time:(r[9]||"").trim(),act:(r[10]||"").trim(),loc:(r[11]||"").trim(),note:(r[12]||"").trim()};
-    if(it.act||it.time||it.loc||it.note) cur.items.push(it);
-  }
-  el("itin").innerHTML = days.map(d=>`<div class="card"><div class="day"><h3>${esc(d.day)}</h3><div class="date">${esc(d.date)}</div>
-    ${d.items.length? d.items.map(it=>`<div class="item"><div><span class="time">${esc(it.time)}</span>${esc(it.act)}</div>
-      <div class="meta">${[it.loc,it.note].filter(Boolean).map(esc).join(" · ")}</div></div>`).join("")
-      : '<div class="empty">Nothing planned yet</div>'}</div></div>`).join("") || '<div class="card empty">No itinerary found</div>';
-}
-
-async function load(){
-  const s=el("status");
-  try{
-    const res=await fetch("data.json",{cache:"no-store"});
-    if(!res.ok) throw new Error("HTTP "+res.status);
-    const data=await res.json();
-    render(data.grid);
-    s.className="";s.textContent="Data last synced "+new Date(data.updated).toLocaleString();
-  }catch(e){
-    s.className="err"; s.textContent="Couldn't load data.json: "+e.message;
-  }
-}
-
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("nav button,.view").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on"); el(b.dataset.v).classList.add("on"); scrollTo(0,0);
-});
-load();
-</script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
