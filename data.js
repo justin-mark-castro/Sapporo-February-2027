@@ -54,6 +54,7 @@ window.TRIP = {
     { id: "shiroi",  name: "Shiroi Koibito Park", jp: "白い恋人パーク", lat: 43.0855, lng: 141.2745, day: 3, cat: "food", t: "Day 3", d: "Chocolate factory park near Miyanosawa Station (Tozai Line)." },
     { id: "buddha",  name: "Hill of the Buddha", jp: "頭大仏", lat: 42.9740, lng: 141.3190, day: 4, cat: "sight", t: "Day 4 · morning", d: "Makomanai Takino Cemetery. Namboku Line to Makomanai, then a bus." },
     { id: "odori",   name: "Odori Park · Snow Festival", jp: "大通公園", lat: 43.0605, lng: 141.3470, day: 4, cat: "fest", t: "Day 4 · afternoon", d: "Main Snow Festival site (Feb 4–11)." },
+    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 4, cat: "sight", t: "Day 4 · late afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
     { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "Private tour day trip: zoo, Ningle Terrace, waterfall, Lonely Tree." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
@@ -209,6 +210,13 @@ window.TRIP = {
             "location": "Odori Park, Nishi 1 to 12-chome",
             "notes": "The large snow sculptures line the park. Opening day.",
             "how": "Subway Odori Station (Namboku, Tozai and Toho lines meet here), or walk from the hotel."
+          },
+          {
+            "time": "Late afternoon",
+            "activity": "Sapporo Clock Tower",
+            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
+            "notes": "Sapporo's wooden clock tower and a city landmark. Check opening hours before you go.",
+            "how": "A short walk from Odori Station or the west end of the TV Tower block."
           },
           {
             "time": "Dusk",
