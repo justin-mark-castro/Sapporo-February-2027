@@ -189,6 +189,13 @@
     }).join("") + '<p class="muted tiny flights-foot">' + esc(T.flightsNote || "") + "</p>";
   }
 
+  var icTrain = '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l2-4M15 21l-2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg>';
+  var icSun = '<svg viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M4.5 9.5l2 2M19.5 9.5l-2 2"/></svg>';
+  function sunLine(date) {
+    var s = T.sun && T.sun[date];
+    if (!s) return "";
+    return '<p class="day-sun" title="Sapporo, local time">' + icSun + "<span>Sunrise " + esc(s.rise) + "</span><span>Sunset " + esc(s.set) + "</span></p>";
+  }
   function renderTimeline() {
     var today = todayLocal();
     $("#timeline").innerHTML = T.itinerary.map(function (d) {
@@ -202,10 +209,11 @@
       var cls = "day-body" + (kind === "arrival" || kind === "departure" ? " key" : "") + (kind === "flex" ? " flex" : "");
       var head = '<h4>' + esc(d.title) + "</h4>" +
         (d.area ? '<p class="day-area">' + icPin + esc(d.area) + "</p>" : "") +
-        (d.why ? '<p class="day-why">' + esc(d.why) + "</p>" : "");
+        (d.why ? '<p class="day-why">' + esc(d.why) + "</p>" : "") + sunLine(d.date);
       var stops = (d.stops || []).map(function (s) {
         var meta = "";
         if (s.location) meta += "<span>" + icPin + esc(s.location) + "</span>";
+        if (s.how) meta += "<span class='how'>" + icTrain + esc(s.how) + "</span>";
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
           '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + "</div></li>";
@@ -216,8 +224,9 @@
         var meta0 = "";
         if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";
         if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
+        if (s0.how) meta0 += "<span class='how'>" + icTrain + esc(s0.how) + "</span>";
         if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
-        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "");
+        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + sunLine(d.date);
       } else {
         body = head + (stops ? '<ul class="stops">' + stops + "</ul>" : "");
       }

@@ -476,3 +476,10 @@ a{color:inherit}
 .bud-foot{grid-column:1/-1;margin:-4px 0 0}
 @media (max-width:760px){.budget-card{grid-template-columns:1fr 1fr}.bud-cell b{font-size:1.15rem}}
 .leaflet-container .leaflet-control-attribution svg{width:12px;height:8px;display:inline-block;vertical-align:baseline;border-radius:0}
+
+/* ---------- getting there, sunrise/sunset ---------- */
+.day-body .meta .how{color:var(--ai);font-weight:500}
+.day-body .meta .how svg{stroke:var(--ai-2)}
+.day-body .day-sun{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:6px 0 0;font-size:.8rem;color:var(--muted)}
+.day-body .day-sun svg{width:15px;height:15px;stroke:#d98a1c;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.day-body .meta svg{flex:none}
