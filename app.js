@@ -190,11 +190,28 @@
   }
 
   var icTrain = '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l2-4M15 21l-2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg>';
-  var icSun = '<svg viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M4.5 9.5l2 2M19.5 9.5l-2 2"/></svg>';
+  var icSunrise = '<svg viewBox="0 0 24 24"><path d="M12 2.5v5M9.5 5L12 2.5 14.5 5M4.6 11.2l1.8 1.8M19.4 11.2L17.6 13M2.5 19h19M6.5 19a5.5 5.5 0 0 1 11 0M7 22h10"/></svg>';
+  var icSunset = '<svg viewBox="0 0 24 24"><path d="M12 2.5v5M9.5 5L12 7.5 14.5 5M4.6 11.2l1.8 1.8M19.4 11.2L17.6 13M2.5 19h19M6.5 19a5.5 5.5 0 0 1 11 0M7 22h10"/></svg>';
   function sunLine(date) {
     var s = T.sun && T.sun[date];
     if (!s) return "";
-    return '<p class="day-sun" title="Sapporo, local time">' + icSun + "<span>Sunrise " + esc(s.rise) + "</span><span>Sunset " + esc(s.set) + "</span></p>";
+    return '<p class="day-sun" title="Sapporo, local time">' +
+      '<span class="sun-rise" aria-label="Sunrise ' + esc(s.rise) + '" title="Sunrise">' + icSunrise + "<small>Sunrise</small><b>" + esc(s.rise) + "</b></span>" +
+      '<span class="sun-set" aria-label="Sunset ' + esc(s.set) + '" title="Sunset">' + icSunset + "<small>Sunset</small><b>" + esc(s.set) + "</b></span></p>";
+  }
+  // Train line colors (same palette as the rail map)
+  var LINE_CHIPS = {
+    "Namboku Line": "#1f9d55", "Tozai Line": "#f08a1c", "Toho Line": "#1e88d6",
+    "Hakodate Main Line": "#7b4fb3", "Chitose Line": "#d6336c", "Gakuen Toshi Line": "#12908e",
+    "Streetcar": "#8a5a2b"
+  };
+  var CODE_COLORS = { N: "#1f9d55", T: "#f08a1c", H: "#1e88d6" };
+  function howHtml(text) {
+    return esc(text).replace(/(JR Rapid Airport|Special Rapid|Rapid Airport|Namboku Line|Tozai Line|Toho Line|Gakuen Toshi Line|Hakodate Main Line|Chitose Line|Streetcar)|\b([NTH]\d\d)\b/g, function (m, name, code) {
+      if (code) return '<span class="lcode" style="--c:' + CODE_COLORS[code.charAt(0)] + '">' + code + "</span>";
+      if (name === "JR Rapid Airport" || name === "Rapid Airport" || name === "Special Rapid") return '<span class="lchip rapid">' + name + "</span>";
+      return '<span class="lchip" style="--c:' + LINE_CHIPS[name] + '">' + name + "</span>";
+    });
   }
   function renderTimeline() {
     var today = todayLocal();
@@ -213,7 +230,7 @@
       var stops = (d.stops || []).map(function (s) {
         var meta = "";
         if (s.location) meta += "<span>" + icPin + esc(s.location) + "</span>";
-        if (s.how) meta += "<span class='how'>" + icTrain + esc(s.how) + "</span>";
+        if (s.how) meta += "<span class='how'>" + icTrain + "<span>" + howHtml(s.how) + "</span></span>";
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
           '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + "</div></li>";
@@ -224,7 +241,7 @@
         var meta0 = "";
         if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";
         if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
-        if (s0.how) meta0 += "<span class='how'>" + icTrain + esc(s0.how) + "</span>";
+        if (s0.how) meta0 += "<span class='how'>" + icTrain + "<span>" + howHtml(s0.how) + "</span></span>";
         if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
         body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + sunLine(d.date);
       } else {

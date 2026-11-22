@@ -480,6 +480,22 @@ a{color:inherit}
 /* ---------- getting there, sunrise/sunset ---------- */
 .day-body .meta .how{color:var(--ai);font-weight:500}
 .day-body .meta .how svg{stroke:var(--ai-2)}
-.day-body .day-sun{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:6px 0 0;font-size:.8rem;color:var(--muted)}
-.day-body .day-sun svg{width:15px;height:15px;stroke:#d98a1c;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.day-body .day-sun{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:8px 0 0}
+.day-body .day-sun span{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;border-radius:99px;font-size:.78rem;line-height:1}
+.day-body .day-sun svg{width:20px;height:20px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.day-body .day-sun small{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;opacity:.8}
+.day-body .day-sun b{font-weight:700}
+.day-body .day-sun .sun-rise{background:#fff1d6;color:#8a5200}.day-body .day-sun .sun-rise svg{stroke:#e08a00}
+.day-body .day-sun .sun-set{background:#fde4df;color:#8c2f1f}.day-body .day-sun .sun-set svg{stroke:#d9472f}
+.lchip{display:inline-flex;align-items:center;gap:5px;padding:1px 8px 1px 6px;margin:0 1px;border-radius:99px;border:1.5px solid var(--c,#555);background:color-mix(in srgb,var(--c,#555) 14%,#fff);color:var(--sumi);font-size:.78rem;font-weight:700;white-space:nowrap;vertical-align:baseline}
+.lchip::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,#555);flex:none}
+.lchip.rapid{--c:#a8408f;border-image:none;background:linear-gradient(90deg,#fbe3ee,#ece3f6)}
+.lchip.rapid::before{background:linear-gradient(90deg,#d6336c,#7b4fb3)}
+.lcode{display:inline-block;padding:0 5px;border-radius:5px;background:var(--c);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.02em;text-shadow:0 0 2px rgba(0,0,0,.35)}
 .day-body .meta svg{flex:none}
+.day-body .meta .how{min-width:0}
+.day-body .meta .how>span{display:block;min-width:0;overflow-wrap:anywhere}
+.day-body .meta span.lchip{display:inline-flex}
+.day-body .meta span.lcode{display:inline-block}
+.stop-main,.day-body{min-width:0}
+@media (max-width:520px){.day-body .day-sun small{display:none}.day-body .day-sun span{gap:4px;padding:4px 10px 4px 6px}}
