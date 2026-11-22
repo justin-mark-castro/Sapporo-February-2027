@@ -10,7 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -102,6 +103,7 @@
 
     <h3 class="sub-h">Flights</h3>
     <div class="flights" id="flights"></div>
+    <div class="hotel-card" id="hotel"></div>
 
     <h3 class="sub-h">Day by day</h3>
     <div class="legend-chips">
@@ -135,21 +137,36 @@
   <div class="wrap">
     <header class="section-head">
       <span class="kicker">地図 · Map</span>
-      <h2>Sapporo, in a snapshot</h2>
-      <p class="lede">An illustrated guide to the city’s grid, Odori Park and the places on the festival circuit. Tap a pin or a place name.</p>
+      <h2>Sapporo, on the map</h2>
+      <p class="lede">Every stop in the itinerary, plus the hotel. Filter by day, tap a pin for details, or tap a name in the list.</p>
     </header>
 
+    <div class="map-chips" id="mapDays" role="group" aria-label="Filter by day"></div>
     <div class="map-layout">
-      <figure class="map-frame">
-        <svg id="sapporoMap" viewBox="0 0 800 580" role="img" aria-label="Illustrated map of central Sapporo"></svg>
-        <figcaption class="tiny muted">Illustrated map · not to scale · positions approximate</figcaption>
-      </figure>
+      <div class="map-frame">
+        <div id="leafMap" role="application" aria-label="Interactive map of Sapporo"></div>
+        <p class="tiny muted map-cap" id="mapCap">Pin positions are approximate. Map data © OpenStreetMap contributors.</p>
+      </div>
       <aside class="map-list">
         <h3>Places</h3>
         <ul id="placeList"></ul>
         <div class="place-detail" id="placeDetail" aria-live="polite"></div>
       </aside>
     </div>
+
+    <header class="section-head rail-head">
+      <span class="kicker">鉄道 · Rail</span>
+      <h2>Train lines</h2>
+      <p class="lede">Sapporo Subway lines in their map colors, and the JR lines for day trips. Tap a line to highlight it.</p>
+    </header>
+    <div class="rail-chips" id="railChips" role="group" aria-label="Highlight a line"></div>
+    <figure class="rail-frame">
+      <svg id="subwayMap" viewBox="0 0 900 540" role="img" aria-label="Sapporo subway line diagram"></svg>
+    </figure>
+    <figure class="rail-frame">
+      <svg id="jrMap" viewBox="0 0 900 420" role="img" aria-label="JR Hokkaido lines from Sapporo Station"></svg>
+    </figure>
+    <p class="tiny muted rail-note">Schematic, not to scale. Tozai Line shows selected stations only. Subway colors follow the green, orange and blue used on the official map; JR line colors are chosen for this page.</p>
   </div>
 </section>
 
@@ -170,6 +187,8 @@
       </div>
       <p class="muted small" id="curNote"></p>
     </div>
+
+    <div class="budget-card" id="budget"></div>
 
     <div class="expense-grid">
       <div class="card expense-table-card">
@@ -269,7 +288,8 @@
   </div>
 </footer>
 
-<script src="data.js?v=4"></script>
-<script src="app.js?v=6"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js?v=6"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

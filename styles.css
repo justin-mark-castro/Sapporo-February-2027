@@ -27,7 +27,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{
   margin:0;font-family:var(--sans);color:var(--sumi);background:var(--washi);
-  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;
 }
 .map-layout>*,.expense-grid>*,.fx-layout>*,.subgrid>*,.split-grid>*,.stats>*,.guide-grid>*{min-width:0}
 img,svg{display:block;max-width:100%}
@@ -419,3 +419,59 @@ a{color:inherit}
   .nav,.hero,.footer,#snow,.quick{display:none}
   .section{padding:20px 0}
 }
+
+/* ---------- hotel, logos ---------- */
+.hotel-card{display:flex;gap:16px;align-items:flex-start;margin-top:16px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--beni);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.hotel-ico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--ai-soft);display:grid;place-items:center;color:var(--ai)}
+.hotel-ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hotel-body small{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}
+.hotel-body b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--ai)}
+.hotel-body .jpn{color:var(--beni);font-size:.8rem;margin-left:6px;font-weight:500}
+.hotel-body p{margin:4px 0 0;font-size:.9rem}
+.hotel-body a{display:inline-block;margin-top:8px;font-size:.9rem;color:var(--beni)}
+.airline-logo{display:block;height:34px;width:auto;max-width:110px;object-fit:contain}
+.airline-logo.sm{height:26px;max-width:72px}
+.flight-logo,.item-logo{display:inline-flex;align-items:center;flex:none}
+
+/* ---------- interactive map ---------- */
+.map-chips,.rail-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.map-chips button,.rail-chips button{border:1px solid var(--line);background:var(--paper);color:var(--ink-2);padding:6px 12px;border-radius:99px;font:inherit;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.map-chips button.on,.rail-chips button.on{background:var(--ai);color:#fff;border-color:var(--ai)}
+.rail-chips i{width:10px;height:10px;border-radius:50%;display:inline-block}
+#leafMap{width:100%;height:520px;border-radius:12px;z-index:1;background:#e8e4d8}
+.map-cap{text-align:center;margin:6px 0 0}
+.map-fallback{padding:24px;text-align:center;color:var(--ink-2)}
+.pin-wrap{background:none;border:0}
+.pin{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font:700 13px var(--sans);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.leaflet-popup-content{font-family:var(--sans);font-size:.88rem;line-height:1.4;margin:12px 14px}
+.leaflet-popup-content .jpn{color:var(--beni);font-size:.78rem}
+.leaflet-popup-content p{margin:6px 0}
+.map-list ul{max-height:340px;overflow:auto}
+.place-detail small{display:block;color:var(--muted);margin:2px 0 6px}
+.place-detail a{color:var(--beni)}
+
+/* ---------- rail maps ---------- */
+.rail-head{margin-top:56px}
+.rail-frame{margin:0 0 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:8px;box-shadow:var(--shadow);overflow-x:auto}
+.rail-frame svg{width:100%;height:auto;min-width:640px;display:block}
+.rail-note{margin-top:4px}
+.rail-frame .rl{transition:opacity .2s}
+.rail-frame .rl.dim{opacity:.12}
+.rail-frame text{font-family:var(--sans);fill:var(--sumi)}
+.rail-frame .st{font-size:11px}
+.rail-frame .st.key{font-weight:700}
+.rail-frame .st .code{font-weight:700;font-size:10px}
+.rail-frame .line-title{font-size:14px;font-weight:700;font-family:var(--serif)}
+.rail-frame .note-lbl{font-size:10.5px;fill:var(--muted)}
+.rail-frame .hub-lbl{font-size:11px}
+@media (max-width:760px){#leafMap{height:380px}.hotel-card{padding:14px}}
+
+/* ---------- budget strip ---------- */
+.budget-card{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:0 0 20px;box-shadow:var(--shadow)}
+.bud-cell small{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.bud-cell b{font-family:var(--serif);font-size:1.4rem;color:var(--ai)}
+.bud-cell.ok b{color:#1f7a45}.bud-cell.over b{color:var(--beni)}
+.bud-bar{grid-column:1/-1;height:10px;border-radius:99px;background:var(--washi-2);overflow:hidden}
+.bud-bar i{display:block;height:100%;background:var(--ai-2);border-radius:99px}.bud-bar i.over{background:var(--beni)}
+.bud-foot{grid-column:1/-1;margin:-4px 0 0}
+@media (max-width:760px){.budget-card{grid-template-columns:1fr 1fr}.bud-cell b{font-size:1.15rem}}

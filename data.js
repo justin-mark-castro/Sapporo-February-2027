@@ -19,11 +19,55 @@ window.TRIP = {
   expenses: [
     { item: "PAL Flight",          php: 110904.17, sgd: 2234.61, original: "110,904.17 PHP", status: "",  note: "",                    icon: "plane" },
     { item: "Travel Tax",          php: 3240.00,   sgd: 65.28,   original: "3,240 PHP",      status: "",  note: "",                    icon: "ticket" },
-    { item: "Hotel Accommodation", php: 155000.00, sgd: 3123.10, original: "155,000 PHP",    status: "",  note: "15,780.8 CNY",        icon: "hotel" },
+    { item: "Hotel Accommodation", php: 155000.00, sgd: 3123.10, original: "155,000 PHP",    status: "",  note: "Hokke Club Sapporo · 15,780.8 CNY", icon: "hotel" },
     { item: "Snowmobile",          php: 25000.00,  sgd: 503.73,  original: "25,000 PHP",     status: "",  note: "Wanderland Sapporo",  icon: "snow" },
     { item: "Private Tour",        php: 39704.16,  sgd: 800.00,  original: "800 SGD",        status: "",  note: "",                    icon: "tour" }
   ],
   paid: { php: 0, sgd: 0 },
+
+  // Total estimated budget for the trip
+  budget: { php: 500000 },
+
+  // Airline logo: drop the official file at assets/pal-logo.png (or .svg) and it appears automatically.
+  airlineLogo: "assets/pal-logo.png",
+
+  // Hotel
+  hotel: {
+    name: "Hokke Club Sapporo",
+    jp: "ホテル法華クラブ札幌",
+    address: "Chuo-ku, Kita 2-jo Nishi 3, Sapporo 060-0002",
+    checkIn: "15:00", checkOut: "10:00",
+    access: "About 5 min on foot from JR Sapporo Station (South Exit) and about 3 min from the Clock Tower. Large public bath on site.",
+    nights: "Feb 1 – Feb 12 (11 nights)",
+    lat: 43.0652, lng: 141.3495
+  },
+
+  // Map places. Coordinates are approximate (pin to the area, not the door).
+  // day: itinerary day number, 0 = base / not tied to a day.
+  places: [
+    { id: "hotel",   name: "Hokke Club Sapporo", jp: "ホテル法華クラブ札幌", lat: 43.0652, lng: 141.3495, day: 0, cat: "hotel", t: "Hotel · check-in 15:00", d: "Your base for all 11 nights, a short walk from JR Sapporo Station." },
+    { id: "jingu",   name: "Hokkaido Jingu", jp: "北海道神宮", lat: 43.0538, lng: 141.3086, day: 2, cat: "sight", t: "Day 2", d: "Shrine in Maruyama Park, west of the center." },
+    { id: "maruyama",name: "Maruyama Park", jp: "円山公園", lat: 43.0545, lng: 141.3180, day: 2, cat: "sight", t: "Day 2", d: "Park next to the shrine. Tozai Line, Maruyama-koen (T06)." },
+    { id: "inari",   name: "Hokkaido Fushimi Inari Shrine", jp: "北海道伏見稲荷神社", lat: 43.0345, lng: 141.3235, day: 2, cat: "sight", t: "Day 2", d: "Red torii path on the slope towards Mt. Moiwa." },
+    { id: "moiwa",   name: "Mt. Moiwa Ropeway", jp: "藻岩山ロープウェイ", lat: 43.0285, lng: 141.3255, day: 2, cat: "sight", t: "Day 2 · evening", d: "Ropeway and lookout for the night view." },
+    { id: "wonder",  name: "Wonderland Sapporo Snowmobile", jp: "ワンダーランド札幌", lat: 43.1050, lng: 141.2700, day: 3, cat: "sight", t: "Day 3", d: "Snowmobile tour, 478 Fukui, Nishi-ku. Booked." },
+    { id: "shiroi",  name: "Shiroi Koibito Park", jp: "白い恋人パーク", lat: 43.0855, lng: 141.2745, day: 3, cat: "food", t: "Day 3", d: "Chocolate factory park near Miyanosawa Station (Tozai Line)." },
+    { id: "buddha",  name: "Hill of the Buddha", jp: "頭大仏", lat: 42.9740, lng: 141.3190, day: 4, cat: "sight", t: "Day 4 · morning", d: "Makomanai Takino Cemetery. Namboku Line to Makomanai, then a bus." },
+    { id: "odori",   name: "Odori Park · Snow Festival", jp: "大通公園", lat: 43.0605, lng: 141.3470, day: 4, cat: "fest", t: "Day 4 · afternoon", d: "Main Snow Festival site (Feb 4–11)." },
+    { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
+    { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "Private tour day trip: zoo, Ningle Terrace, waterfall, Lonely Tree." },
+    { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
+    { id: "shikotsu",name: "Lake Shikotsu Ice Festival", jp: "支笏湖氷濤まつり", lat: 42.7640, lng: 141.3880, day: 7, cat: "fest", t: "Day 7", d: "Day trip via Chitose. Check the festival dates before going." },
+    { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
+    { id: "moere",   name: "Moerenuma Park", jp: "モエレ沼公園", lat: 43.1243, lng: 141.4290, day: 9, cat: "sight", t: "Day 9", d: "Isamu Noguchi's park in the northeast." },
+    { id: "beer",    name: "Sapporo Beer Garden & Museum", jp: "サッポロビール博物館", lat: 43.0720, lng: 141.3670, day: 9, cat: "food", t: "Day 9", d: "Closed Mondays." },
+    { id: "bibai",   name: "Bibai Snowland", jp: "美唄スノーランド", lat: 43.3300, lng: 141.8590, day: 10, cat: "sight", t: "Day 10", d: "JR Hakodate Main Line to Bibai." },
+    { id: "nijo",    name: "Nijo Market", jp: "二条市場", lat: 43.0575, lng: 141.3600, day: 11, cat: "food", t: "Day 11", d: "Seafood, crab and milk soft-serve." },
+    { id: "ramen",   name: "Ramen Lane (Ganso Yokocho)", jp: "元祖さっぽろラーメン横丁", lat: 43.0546, lng: 141.3534, day: 11, cat: "food", t: "Day 11", d: "Alley of ramen shops in Susukino." },
+    { id: "nikka",   name: "Susukino Nikka Sign & Shopping Street", jp: "ススキノ", lat: 43.0556, lng: 141.3538, day: 11, cat: "fest", t: "Day 11 · night", d: "Ice World Susukino runs here in the evening." },
+    { id: "donki",   name: "MEGA Don Quijote Tanukikoji", jp: "ドン・キホーテ狸小路", lat: 43.0570, lng: 141.3510, day: 12, cat: "food", t: "Day 12 · flexible", d: "Last-minute shopping. Open 24 hours." },
+    { id: "cts",     name: "New Chitose Airport", jp: "新千歳空港", lat: 42.7752, lng: 141.6923, day: 0, cat: "air", t: "PR 406 / PR 405", d: "Arrive Feb 1 (12:15), depart Feb 12 (13:15). JR Airport Rapid to Sapporo." }
+  ],
 
   // Flights (Philippine Airlines). Times are local to each airport.
   flights: [

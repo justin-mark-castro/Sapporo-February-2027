@@ -114,7 +114,7 @@
     var halfS = round2(totals.sgd / T.travelers.length);
     var cards = [
       { c: "", l: "Days to go", v: d, s: "until " + MONTHS[startD.getMonth()] + " " + startD.getDate() + ", " + startD.getFullYear() },
-      { c: "ai", l: "Total expense", v: moneyShort(totals.php, "PHP"), s: "about " + moneyShort(totals.sgd, "SGD") },
+      { c: "ai", l: "Total expense", v: moneyShort(totals.php, "PHP"), s: "of " + moneyShort(T.budget.php, "PHP") + " budget · about " + moneyShort(totals.sgd, "SGD") },
       { c: "", l: "Your share · 50%", v: moneyShort(half, "PHP"), s: "about " + moneyShort(halfS, "SGD") },
       { c: "ai", l: "Paid so far", v: Math.round(paidPct) + "%", s: "of " + moneyShort(totals.php, "PHP") + " total",
         bar: paidPct }
@@ -160,12 +160,24 @@
     return dow + ", " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
+  function logoImg(cls) {
+    if (!T.airlineLogo) return "";
+    return '<img class="airline-logo ' + (cls || "") + '" src="' + esc(T.airlineLogo) + '" alt="Philippine Airlines" loading="lazy" onerror="this.style.display=\'none\';if(this.nextElementSibling)this.nextElementSibling.style.display=\'\'">';
+  }
+  function renderHotel() {
+    var el = $("#hotel"), h = T.hotel;
+    if (!el || !h) return;
+    el.innerHTML = '<div class="hotel-ico"><svg viewBox="0 0 24 24"><path d="M3 20V6M3 12h18v8M21 12V9a2 2 0 0 0-2-2h-8v5"/><circle cx="7" cy="9.5" r="1.8"/></svg></div>' +
+      '<div class="hotel-body"><small>Hotel · ' + esc(h.nights) + '</small><b>' + esc(h.name) + ' <span class="jpn">' + esc(h.jp) + '</span></b>' +
+      '<p>' + esc(h.address) + '</p><p>Check-in ' + esc(h.checkIn) + ' · Check-out ' + esc(h.checkOut) + '</p><p class="muted">' + esc(h.access) + '</p>' +
+      '<a href="#map">See on map</a></div>';
+  }
   function renderFlights() {
     var el = $("#flights");
     if (!el || !T.flights) return;
     el.innerHTML = T.flights.map(function (f) {
       return '<article class="flight">' +
-        '<div class="flight-top"><span class="flight-ico">' + icPlane + '</span>' +
+        '<div class="flight-top">' + (T.airlineLogo ? '<span class="flight-logo">' + logoImg("") + '<span class="flight-ico" style="display:none">' + icPlane + '</span></span>' : '<span class="flight-ico">' + icPlane + '</span>') +
         '<div><b class="flight-code">' + esc(f.code) + '</b><small>' + esc(f.airline) + " · " + esc(f.aircraft) + "</small></div>" +
         '<span class="flight-date">' + esc(fmtFlightDate(f.date, f.dow)) + "</span></div>" +
         '<div class="flight-route">' +
@@ -244,137 +256,244 @@
   /* =========================================================
      Sapporo map
      ========================================================= */
-  var PLACES = [
-    { id: "station", n: 1, name: "Sapporo Station", jp: "札幌駅", x: 405, y: 196, cat: "ai", lx: -10, ly: -12, a: "end",
-      d: "Main rail hub. JR trains run from here to Otaru and to New Chitose Airport." },
-    { id: "odori", n: 2, name: "Odori Park", jp: "大通公園", x: 300, y: 273, cat: "fest", lx: 0, ly: -14, a: "middle",
-      d: "The green belt through the middle of the city and the main Snow Festival site (Feb 4–11)." },
-    { id: "tower", n: 3, name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", x: 466, y: 273, cat: "ai", lx: 14, ly: 4, a: "start",
-      d: "Landmark at the eastern end of Odori Park, with an observation deck." },
-    { id: "clock", n: 4, name: "Clock Tower", jp: "時計台", x: 440, y: 238, cat: "ai", lx: 14, ly: 4, a: "start",
-      d: "Historic wooden clock tower, a symbol of old Sapporo." },
-    { id: "tanuki", n: 5, name: "Tanukikoji Arcade", jp: "狸小路", x: 392, y: 306, cat: "food", lx: -14, ly: 4, a: "end",
-      d: "Covered shopping arcade a short walk south of Odori Park." },
-    { id: "susukino", n: 6, name: "Susukino", jp: "ススキノ", x: 438, y: 342, cat: "fest", lx: 14, ly: 16, a: "start",
-      d: "Dining and nightlife district. One of the three Snow Festival sites, known for ice sculptures." },
-    { id: "nijo", n: 7, name: "Nijo Market", jp: "二条市場", x: 490, y: 308, cat: "food", lx: 14, ly: 4, a: "start",
-      d: "Fresh seafood market, handy for a morning meal." },
-    { id: "beer", n: 8, name: "Sapporo Beer Museum", jp: "サッポロビール博物館", x: 556, y: 214, cat: "food", lx: 14, ly: 4, a: "start",
-      d: "Museum in the old brewery buildings, east of the station." },
-    { id: "shrine", n: 9, name: "Hokkaido Shrine", jp: "北海道神宮", x: 112, y: 262, cat: "ai", lx: 0, ly: -14, a: "middle",
-      d: "Shrine set in Maruyama Park, west of the city center." },
-    { id: "moiwa", n: 10, name: "Mt. Moiwa", jp: "藻岩山", x: 150, y: 428, cat: "ai", lx: 16, ly: 4, a: "start",
-      d: "Southwest of the center, with a ropeway up to a night-view lookout." },
-    { id: "tsudome", n: 11, name: "Tsudome", jp: "つどーむ", x: 684, y: 164, cat: "fest", lx: 0, ly: -14, a: "middle",
-      d: "Snow-play site of the Snow Festival, east of the center." }
-  ];
-  var CAT_COLOR = { fest: "#c8372d", ai: "#24457c", food: "#b8923a" };
+  var CAT_COLOR = { hotel: "#c8372d", sight: "#24457c", food: "#b8923a", fest: "#2f8f9d", tour: "#6b4fa0", air: "#555e6b" };
+  var CAT_NAME = { hotel: "Hotel", sight: "Sights", food: "Food & drink", fest: "Festival & night", tour: "Private tour", air: "Airport" };
+
+  function gmapsUrl(p) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(p.name + " Sapporo") ;
+  }
 
   function buildMap() {
-    var s = "";
-    s += '<defs>' +
-      '<pattern id="mgrid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#e6dcc3" stroke-width="1"/></pattern>' +
-      '<pattern id="mtrees" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2.4" fill="#9fc08f"/><circle cx="11" cy="10" r="2.4" fill="#9fc08f"/></pattern>' +
-      '<linearGradient id="mwash" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efdc"/><stop offset="1" stop-color="#efe5cb"/></linearGradient>' +
-      '</defs>';
-    s += '<rect width="800" height="580" fill="url(#mwash)"/><rect width="800" height="580" fill="url(#mgrid)"/>';
+    var places = T.places || [];
+    var listEl = $("#placeList"), detail = $("#placeDetail"), chips = $("#mapDays");
+    var state = { day: "all", sel: null };
+    var hasL = typeof window.L !== "undefined";
+    var map = null, markers = {};
 
-    // hills & green
-    s += '<path d="M40 470 C70 380 130 350 200 372 C250 388 250 452 200 500 C140 548 60 540 40 470Z" fill="#cfe1c3" stroke="#b3cca4" stroke-width="1.5"/>';
-    s += '<path d="M70 450 C95 410 135 400 170 416" fill="none" stroke="#b3cca4" stroke-width="1.5"/>';
-    s += '<path d="M62 300 C60 238 100 214 150 224 C190 232 196 290 160 316 C124 340 70 342 62 300Z" fill="url(#mtrees)" stroke="#b3cca4" stroke-width="1.5"/>';
-    // Moiwa peak mark
-    s += '<path d="M138 438 L152 414 L166 438Z" fill="#8fb27e"/>';
-
-    // Toyohira river
-    s += '<path d="M236 580 C300 500 420 462 520 400 C590 357 560 296 610 232 C650 180 690 110 760 60" fill="none" stroke="#b9d6ee" stroke-width="18" stroke-linecap="round"/>';
-    s += '<path d="M236 580 C300 500 420 462 520 400 C590 357 560 296 610 232 C650 180 690 110 760 60" fill="none" stroke="#d7e9f7" stroke-width="8" stroke-linecap="round"/>';
-    s += '<text x="574" y="396" font-size="11" fill="#5d86ad" font-style="italic" transform="rotate(-48 574 396)">Toyohira River 豊平川</text>';
-
-    // main streets (grid emphasis)
-    s += '<g stroke="#d9cdb0" stroke-width="3" stroke-linecap="round">' +
-      '<path d="M200 205H540"/><path d="M180 330H520"/><path d="M180 306H420" stroke-width="2"/>' +
-      '<path d="M418 130V400"/><path d="M360 150V400" stroke-width="2"/><path d="M492 160V380" stroke-width="2"/></g>';
-    // railway
-    s += '<path d="M250 110 L405 196 L560 260 L700 300" fill="none" stroke="#9aa1b3" stroke-width="3" stroke-dasharray="10 5"/>';
-
-    // Odori Park
-    s += '<rect x="176" y="262" width="300" height="24" rx="6" fill="#c3dcb4" stroke="#a6c697" stroke-width="1.5"/>';
-    s += '<rect x="176" y="262" width="300" height="24" rx="6" fill="url(#mtrees)" opacity=".7"/>';
-    // snow sculpture sparkle on Odori
-    [210, 250, 330, 380, 420].forEach(function (x) {
-      s += '<path d="M' + x + ' 268v12M' + (x - 5) + ' 274h10M' + (x - 3.5) + ' 270.5l7 7M' + (x + 3.5) + ' 270.5l-7 7" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>';
-    });
-
-    // Susukino district glow
-    s += '<rect x="402" y="322" width="96" height="48" rx="14" fill="#f3d3d8" opacity=".75" stroke="#e5aab4" stroke-width="1.5"/>';
-    // Tsudome blob
-    s += '<ellipse cx="684" cy="164" rx="52" ry="34" fill="#dbe8f8" stroke="#bcd3ee" stroke-width="1.5"/>';
-    s += '<path d="M650 168 q10 -16 20 0 t20 0 t20 0" fill="none" stroke="#fff" stroke-width="2.5"/>';
-    // Nakajima-ish park south
-    s += '<ellipse cx="420" cy="440" rx="46" ry="26" fill="#cfe1c3" stroke="#b3cca4" stroke-width="1.5"/><text x="420" y="444" text-anchor="middle" font-size="10" fill="#6a8a58">Nakajima Park</text>';
-
-    // outward arrows
-    function arrow(x, y, rot, label, anchor, tx, ty) {
-      return '<g transform="translate(' + x + ' ' + y + ') rotate(' + rot + ')"><path d="M0 0H34M26 -7L36 0L26 7" fill="none" stroke="#7b7f8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>' +
-        '<text x="' + tx + '" y="' + ty + '" font-size="11.5" font-weight="600" fill="#4a4f5e" text-anchor="' + anchor + '">' + label + '</text>';
+    function popupHtml(p) {
+      return "<b>" + esc(p.name) + "</b><br><span class='jpn'>" + esc(p.jp) + "</span><br>" +
+        "<small>" + esc(p.t) + "</small><p>" + esc(p.d) + "</p>" +
+        "<a href='" + gmapsUrl(p) + "' target='_blank' rel='noopener'>Open in Google Maps</a>";
     }
-    s += arrow(262, 126, 180, "To Otaru 小樽 · ~30–40 min by train", "start", 282, 130);
-    s += arrow(676, 452, 30, "New Chitose Airport 新千歳空港", "end", 700, 506);
-    s += arrow(332, 512, 90, "Chitose · Lake Shikotsu 支笏湖", "start", 352, 560);
+    function visible(p) { return state.day === "all" || p.day === 0 || String(p.day) === state.day; }
 
-    // title stamp
-    s += '<g transform="translate(40 36)"><rect width="64" height="64" rx="6" fill="#c8372d"/><rect x="5" y="5" width="54" height="54" rx="3" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>' +
-      '<text x="32" y="30" text-anchor="middle" font-size="22" font-weight="800" fill="#fff" font-family="Shippori Mincho, serif">札</text>' +
-      '<text x="32" y="53" text-anchor="middle" font-size="22" font-weight="800" fill="#fff" font-family="Shippori Mincho, serif">幌</text></g>';
-    s += '<text x="116" y="62" font-size="22" font-weight="800" fill="#16294a" font-family="Shippori Mincho, serif">SAPPORO</text>' +
-      '<text x="116" y="84" font-size="12" fill="#7b7f8c" letter-spacing="2">HOKKAIDO · 北海道</text>';
+    if (hasL) {
+      map = L.map("leafMap", { scrollWheelZoom: false, tap: true }).setView([T.hotel.lat, T.hotel.lng], 12);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+      places.forEach(function (p) {
+        var col = CAT_COLOR[p.cat] || "#24457c";
+        var label = p.cat === "hotel" ? "★" : (p.day || "");
+        var icon = L.divIcon({ className: "pin-wrap", html: "<span class='pin' style='background:" + col + "'>" + label + "</span>", iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
+        var m = L.marker([p.lat, p.lng], { icon: icon, title: p.name }).bindPopup(popupHtml(p));
+        m.on("click", function () { select(p.id, true); });
+        markers[p.id] = m;
+      });
+    } else {
+      $("#leafMap").innerHTML = "<div class='map-fallback'><b>The map could not load.</b> Check your connection. The place list still works and each place links to Google Maps.</div>";
+    }
 
-    // compass
-    s += '<g transform="translate(742 530)"><circle r="22" fill="#fffdf7" stroke="#e2d9c3"/><path d="M0 -15 L6 4 L0 0 L-6 4Z" fill="#c8372d"/><text y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#16294a">N</text></g>';
-
-    // Hokkaido inset
-    s += '<g transform="translate(626 20)"><rect width="150" height="112" rx="12" fill="#fffdf7" stroke="#e2d9c3"/>' +
-      '<path d="M14 82 L26 72 L36 78 L44 66 L42 54 L56 46 L58 34 L72 26 L82 30 L90 18 L104 24 L118 14 L134 28 L128 40 L140 46 L126 52 L112 50 L106 60 L114 68 L98 72 L88 68 L78 78 L64 80 L56 92 L40 90 L28 98Z" fill="#dbe8f8" stroke="#9bb8dd" stroke-width="1.5" stroke-linejoin="round"/>' +
-      '<circle cx="64" cy="58" r="6" fill="#c8372d" opacity=".3"/><circle cx="64" cy="58" r="3.2" fill="#c8372d"/>' +
-      '<text x="75" y="102" text-anchor="middle" font-size="10" fill="#7b7f8c">Hokkaido · stylized</text></g>';
-
-    // pins
-    PLACES.forEach(function (p) {
-      var col = CAT_COLOR[p.cat];
-      s += '<g class="map-pin" data-id="' + p.id + '" tabindex="0" role="button" aria-label="' + esc(p.name) + '">' +
-        '<circle class="halo" cx="' + p.x + '" cy="' + p.y + '" r="19" fill="' + col + '"/>' +
-        '<circle cx="' + p.x + '" cy="' + p.y + '" r="11.5" fill="' + col + '" stroke="#fff" stroke-width="2.5"/>' +
-        '<text x="' + p.x + '" y="' + (p.y + 4) + '" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">' + p.n + '</text>' +
-        '<text class="lbl" x="' + (p.x + p.lx) + '" y="' + (p.y + p.ly) + '" text-anchor="' + p.a + '">' + esc(p.name) + '</text></g>';
-    });
-
-    // legend
-    s += '<g transform="translate(40 552)" font-size="11" fill="#4a4f5e">' +
-      '<circle cx="6" cy="6" r="6" fill="#c8372d"/><text x="18" y="10">Snow Festival site</text>' +
-      '<circle cx="136" cy="6" r="6" fill="#24457c"/><text x="148" y="10">Sights</text>' +
-      '<circle cx="204" cy="6" r="6" fill="#b8923a"/><text x="216" y="10">Food &amp; drink</text></g>';
-    $("#sapporoMap").innerHTML = s;
-
-    // list
-    $("#placeList").innerHTML = PLACES.map(function (p) {
-      return '<li><button data-id="' + p.id + '"><span class="pin-n ' + (p.cat === "ai" ? "ai" : p.cat === "food" ? "gold" : "") + '">' + p.n + "</span>" +
-        "<span>" + esc(p.name) + '</span></button></li>';
-    }).join("");
-
-    function select(id) {
-      var p = PLACES.filter(function (x) { return x.id === id; })[0];
+    function select(id, fromMap) {
+      var p = places.filter(function (x) { return x.id === id; })[0];
       if (!p) return;
-      $$(".map-pin").forEach(function (g) { g.classList.toggle("on", g.dataset.id === id); });
+      state.sel = id;
       $$("#placeList button").forEach(function (b) { b.classList.toggle("on", b.dataset.id === id); });
-      $("#placeDetail").innerHTML = "<b>" + esc(p.name) + '<span class="jpn">' + esc(p.jp) + "</span></b>" + esc(p.d);
+      detail.innerHTML = "<b>" + esc(p.name) + '<span class="jpn">' + esc(p.jp) + "</span></b><small>" + esc(p.t) + "</small>" + esc(p.d) +
+        ' <a href="' + gmapsUrl(p) + '" target="_blank" rel="noopener">Google Maps</a>';
+      if (map && markers[id] && !fromMap) {
+        map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 14), { duration: 0.6 });
+        markers[id].openPopup();
+        $("#leafMap").scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
     }
-    $$(".map-pin").forEach(function (g) {
-      g.addEventListener("click", function () { select(g.dataset.id); });
-      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(g.dataset.id); } });
+
+    function render() {
+      var vis = places.filter(visible), pts = [];
+      listEl.innerHTML = vis.map(function (p) {
+        return '<li><button data-id="' + p.id + '"><span class="pin-n" style="background:' + (CAT_COLOR[p.cat] || "#24457c") + '">' + (p.cat === "hotel" ? "★" : (p.day || "•")) + "</span><span>" + esc(p.name) + "</span></button></li>";
+      }).join("");
+      $$("#placeList button").forEach(function (b) { b.addEventListener("click", function () { select(b.dataset.id); }); });
+      if (map) {
+        places.forEach(function (p) {
+          var m = markers[p.id];
+          if (visible(p)) { m.addTo(map); pts.push([p.lat, p.lng]); } else { map.removeLayer(m); }
+        });
+        if (pts.length > 1) map.fitBounds(pts, { padding: [30, 30], maxZoom: 14 });
+        // a far-away day (e.g. Asahikawa) fits to a wide view on its own
+      }
+      if (state.sel && !vis.some(function (p) { return p.id === state.sel; })) { state.sel = null; detail.innerHTML = ""; }
+      $$("#placeList button").forEach(function (b) { b.classList.toggle("on", b.dataset.id === state.sel); });
+    }
+
+    var days = [];
+    places.forEach(function (p) { if (p.day && days.indexOf(p.day) < 0) days.push(p.day); });
+    days.sort(function (a, b) { return a - b; });
+    chips.innerHTML = '<button class="on" data-day="all">All</button>' + days.map(function (d) { return '<button data-day="' + d + '">Day ' + d + "</button>"; }).join("");
+    $$("#mapDays button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        state.day = b.dataset.day;
+        $$("#mapDays button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        render();
+      });
     });
-    $$("#placeList button").forEach(function (b) { b.addEventListener("click", function () { select(b.dataset.id); }); });
-    select("odori");
+    render();
+    if (map) {
+      // all-places view is huge (Asahikawa, Bibai); start on Sapporo city instead
+      map.setView([T.hotel.lat, T.hotel.lng], 12);
+      select("hotel", true);
+      markers.hotel.openPopup();
+    }
+  }
+
+  /* =========================================================
+     Rail maps (schematic SVG, no dependencies)
+     ========================================================= */
+  function buildRail() {
+    var NS = "http://www.w3.org/2000/svg";
+    var LINES = {
+      N: { name: "Namboku Line", jp: "南北線", color: "#1f9d55", kind: "sub" },
+      T: { name: "Tozai Line", jp: "東西線", color: "#f08a1c", kind: "sub" },
+      H: { name: "Toho Line", jp: "東豊線", color: "#1e88d6", kind: "sub" },
+      HM: { name: "Hakodate Main Line", jp: "函館本線", color: "#7b4fb3", kind: "jr" },
+      CH: { name: "Chitose Line", jp: "千歳線", color: "#d6336c", kind: "jr" },
+      GT: { name: "Gakuen Toshi Line", jp: "学園都市線", color: "#12908e", kind: "jr" }
+    };
+    function el(tag, attrs, txt) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (txt != null) e.textContent = txt;
+      return e;
+    }
+    // [code, name, x, y, labelSide, key?]
+    function stationsLine(svg, id, pts, opts) {
+      var L = LINES[id], g = el("g", { "data-line": id, class: "rl" });
+      g.appendChild(el("polyline", { points: pts.map(function (p) { return p[2] + "," + p[3]; }).join(" "), fill: "none", stroke: L.color, "stroke-width": 8, "stroke-linecap": "round", "stroke-linejoin": "round", class: "rl-path" }));
+      pts.forEach(function (p) {
+        var key = p[5], hub = p[6];
+        g.appendChild(el("circle", { cx: p[2], cy: p[3], r: hub ? 8 : (key ? 6 : 4.5), fill: hub ? "#fff" : (key ? "#fff" : "#fff"), stroke: hub ? "#16294a" : L.color, "stroke-width": hub ? 3 : 2.5 }));
+        var side = p[4], dx = 0, dy = 0, anchor = "start";
+        if (side === "r") { dx = 12; dy = 4; }
+        else if (side === "l") { dx = -12; dy = 4; anchor = "end"; }
+        else if (side === "t") { dy = -13; anchor = "middle"; }
+        else if (side === "b") { dy = 20; anchor = "middle"; }
+        if (side) {
+          var t = el("text", { x: p[2] + dx, y: p[3] + dy, "text-anchor": anchor, class: "st" + (key ? " key" : "") });
+          if (p[0]) { t.appendChild(el("tspan", { class: "code", fill: L.color }, p[0] + " ")); }
+          t.appendChild(document.createTextNode(p[1]));
+          g.appendChild(t);
+        }
+      });
+      if (opts && opts.title) {
+        var tt = el("text", { x: opts.title[0], y: opts.title[1], class: "line-title", fill: L.color, "text-anchor": opts.title[2] || "start" });
+        tt.textContent = L.name + " " + L.jp;
+        g.appendChild(tt);
+      }
+      svg.appendChild(g);
+    }
+
+    /* ----- subway ----- */
+    var sub = $("#subwayMap");
+    if (sub) {
+      sub.innerHTML = "";
+      var NAM = [
+        ["N01", "Asabu"], ["N02", "Kita-34-jo"], ["N03", "Kita-24-jo"], ["N04", "Kita-18-jo"], ["N05", "Kita-12-jo"],
+        ["N06", "Sapporo"], ["N07", "Odori"], ["N08", "Susukino"], ["N09", "Nakajima-koen"], ["N10", "Horohirabashi"],
+        ["N11", "Nakanoshima"], ["N12", "Hiragishi"], ["N13", "Minami-Hiragishi"], ["N14", "Sumikawa"], ["N15", "Jieitai-mae"], ["N16", "Makomanai"]
+      ];
+      var KEYN = { N06: 1, N07: 1, N08: 1, N16: 1 };
+      var np = NAM.map(function (s, i) {
+        var hub = s[0] === "N06" || s[0] === "N07";
+        return [s[0], s[1], 300, 40 + i * 28, hub ? null : "l", KEYN[s[0]], hub];
+      });
+      stationsLine(sub, "N", np, { title: [300, 18, "middle"] });
+
+      var TOZ = [
+        ["T01", "Miyanosawa", 50, 208, "b", 1], ["T06", "Maruyama-koen", 130, 208, "t", 1],
+        ["T07", "Nishi-18", 190, 208, "b"], ["T08", "Nishi-11", 250, 208, "t"],
+        ["T09", "Odori", 300, 208, null, 0, 1],
+        ["T11", "Kikusui", 420, 208, "t"],
+        ["T13", "Shiroishi", 500, 208, "t"], ["T19", "Shin-Sapporo", 760, 208, "t", 1]
+      ];
+      stationsLine(sub, "T", TOZ, { title: [20, 168] });
+
+      var tohPts = [
+        ["H01", "Sakaemachi", 800, 40, "l", 1], ["H02", "Shindo-Higashi", 770, 68, "r"], ["H03", "Motomachi", 740, 96, "r"],
+        ["H04", "Kanjodori-Higashi", 710, 124, "r", 1], ["H05", "Higashi-Kuyakusho-mae", 680, 152, "r", 1], ["H06", "Kita-13-jo-Higashi", 650, 180, "b"],
+        ["H07", "Sapporo", 300, 180, null, 0, 1]
+      ];
+      stationsLine(sub, "H", tohPts, { title: [800, 18, "end"] });
+      var HS = [
+        ["H09", "Hosui-Susukino", 330, 262, 1], ["H10", "Gakuen-mae", 400, 300, 0], ["H11", "Toyohira-koen", 470, 336, 0],
+        ["H12", "Misono", 540, 372, 0], ["H13", "Tsukisamu-Chuo", 610, 408, 0], ["H14", "Tsukisamu-koen", 680, 444, 0], ["H15", "Fukuzumi", 750, 480, 1]
+      ];
+      var gH2 = el("g", { "data-line": "H", class: "rl" });
+      gH2.appendChild(el("polyline", { points: "300,180 300,208 330,262 400,300 470,336 540,372 610,408 680,444 750,480", fill: "none", stroke: LINES.H.color, "stroke-width": 8, "stroke-linecap": "round", "stroke-linejoin": "round", class: "rl-path" }));
+      HS.forEach(function (p) {
+        gH2.appendChild(el("circle", { cx: p[2], cy: p[3], r: p[4] ? 6 : 4.5, fill: "#fff", stroke: LINES.H.color, "stroke-width": 2.5 }));
+        var t = el("text", { x: p[2] + 12, y: p[3] + 4, class: "st" + (p[4] ? " key" : "") });
+        t.appendChild(el("tspan", { class: "code", fill: LINES.H.color }, p[0] + " "));
+        t.appendChild(document.createTextNode(p[1]));
+        gH2.appendChild(t);
+      });
+      sub.appendChild(gH2);
+
+      // interchange labels
+      [["N06 / H07", "Sapporo", 300, 170], ["N07 / T09 / H08", "Odori", 300, 228]].forEach(function (x) {
+        var t = el("text", { x: 316, y: x[3], class: "st key hub-lbl" });
+        t.appendChild(el("tspan", { class: "code", fill: "#16294a" }, x[0] + " "));
+        t.appendChild(document.createTextNode(x[1]));
+        sub.appendChild(t);
+      });
+      // JR connection and streetcar notes
+      sub.appendChild(el("text", { x: 430, y: 170, class: "note-lbl" }, "Underground link to JR Sapporo"));
+      sub.appendChild(el("text", { x: 430, y: 248, class: "note-lbl" }, "Streetcar runs above Odori and Susukino"));
+      // hotel marker near Sapporo
+      var hg = el("g", {});
+      hg.appendChild(el("rect", { x: 20, y: 498, width: 14, height: 14, rx: 3, fill: "#c8372d" }));
+      hg.appendChild(el("text", { x: 42, y: 510, class: "note-lbl" }, "Hotel: Hokke Club Sapporo, between Sapporo (N06/H07) and Odori"));
+      sub.appendChild(hg);
+      var hint = el("text", { x: 20, y: 530, class: "note-lbl" }, "Bold stations are the ones used on this trip.");
+      sub.appendChild(hint);
+    }
+
+    /* ----- JR ----- */
+    var jr = $("#jrMap");
+    if (jr) {
+      jr.innerHTML = "";
+      stationsLine(jr, "HM", [
+        ["", "Otaru", 70, 210, "t", 1], ["", "Zenibako", 140, 210, "b"], ["", "Teine", 240, 210, "t"], ["", "Sapporo", 450, 210, null, 0, 1],
+        ["", "Ebetsu", 590, 210, "t"], ["", "Iwamizawa", 680, 210, "b"], ["", "Bibai", 790, 210, "t", 1]
+      ], { title: [70, 160] });
+      stationsLine(jr, "CH", [
+        ["", "Sapporo", 450, 210, null, 0, 1], ["", "Shin-Sapporo", 500, 270, "r"], ["", "Kita-Hiroshima", 540, 315, "r"],
+        ["", "Chitose", 590, 355, "r"], ["", "New Chitose Airport", 650, 392, "r", 1]
+      ], { title: [330, 410, "end"] });
+      stationsLine(jr, "GT", [
+        ["", "Sapporo", 450, 210, null, 0, 1], ["", "Royce Town", 520, 140, "r", 1], ["", "Ishikari-Tobetsu", 590, 85, "r"]
+      ], { title: [470, 50] });
+      var hub = el("text", { x: 430, y: 240, "text-anchor": "end", class: "st key" });
+      hub.textContent = "JR Sapporo";
+      jr.appendChild(hub);
+      jr.appendChild(el("text", { x: 70, y: 245, class: "note-lbl" }, "Day 6 · Otaru"));
+      jr.appendChild(el("text", { x: 790, y: 245, "text-anchor": "end", class: "note-lbl" }, "Day 10 · Bibai"));
+      jr.appendChild(el("text", { x: 890, y: 414, "text-anchor": "end", class: "note-lbl" }, "Flights · Day 7 Lake Shikotsu (bus from Chitose)"));
+      jr.appendChild(el("text", { x: 634, y: 135, class: "note-lbl" }, "Day 9 · Royce' Chocolate Town"));
+    }
+
+    /* ----- highlight chips ----- */
+    var chips = $("#railChips");
+    var order = ["N", "T", "H", "HM", "CH", "GT"];
+    chips.innerHTML = '<button class="on" data-l="all">All lines</button>' + order.map(function (k) {
+      return '<button data-l="' + k + '"><i style="background:' + LINES[k].color + '"></i>' + LINES[k].name + "</button>";
+    }).join("");
+    $$("#railChips button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = b.dataset.l;
+        $$("#railChips button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        $$(".rail-frame .rl").forEach(function (g) {
+          g.classList.toggle("dim", k !== "all" && g.getAttribute("data-line") !== k);
+        });
+      });
+    });
   }
 
   /* =========================================================
@@ -408,9 +527,22 @@
       ? "Yen is an estimate using the rate in the Forex section (1 SGD ≈ ¥" + fx.JPY.toFixed(2) + ")."
       : "Figures match the PHP and SGD columns of the trip sheet.";
 
+    // budget strip
+    var bud = T.budget ? T.budget.php : 0;
+    if (bud) {
+      var rate = totals.php / totals.sgd, bObj = { php: bud, sgd: bud / rate }, rObj = { php: bud - totals.php, sgd: (bud - totals.php) / rate };
+      var pct = Math.min(100, totals.php / bud * 100), over = totals.php > bud;
+      $("#budget").innerHTML =
+        '<div class="bud-cell"><small>Total estimated budget</small><b>' + money(conv(bObj, curr), curr) + '</b></div>' +
+        '<div class="bud-cell"><small>Planned expenses</small><b>' + money(convTotal(curr), curr) + '</b></div>' +
+        '<div class="bud-cell ' + (over ? "over" : "ok") + '"><small>' + (over ? "Over budget" : "Left in budget") + '</small><b>' + money(Math.abs(conv(rObj, curr)), curr) + '</b></div>' +
+        '<div class="bud-bar" role="progressbar" aria-valuenow="' + Math.round(pct) + '" aria-valuemin="0" aria-valuemax="100"><i class="' + (over ? "over" : "") + '" style="width:' + pct.toFixed(1) + '%"></i></div>' +
+        '<p class="tiny muted bud-foot">' + pct.toFixed(0) + '% of the budget is planned so far.</p>';
+    }
+
     var rows = T.expenses.map(function (e) {
       var paid = e.status && /paid/i.test(e.status) && !/to be/i.test(e.status);
-      return "<tr><td><div class='item-cell'><span class='item-ico'><svg viewBox='0 0 24 24'>" + (ICONS[e.icon] || ICONS.ticket) + "</svg></span>" + esc(e.item) + "</div></td>" +
+      return "<tr><td><div class='item-cell'>" + (e.icon === "plane" && T.airlineLogo ? "<span class='item-logo'>" + logoImg("sm") + "<span class='item-ico' style='display:none'><svg viewBox='0 0 24 24'>" + ICONS.plane + "</svg></span></span>" : "<span class='item-ico'><svg viewBox='0 0 24 24'>" + (ICONS[e.icon] || ICONS.ticket) + "</svg></span>") + esc(e.item) + "</div></td>" +
         "<td class='num'>" + money(conv(e, curr), curr) + "</td>" +
         "<td class='num td-orig'>" + esc(e.original) + "</td>" +
         "<td><span class='status" + (paid ? " paid" : "") + "'>" + (paid ? "Paid" : "To be paid") + "</span></td>" +
@@ -562,9 +694,11 @@
   applyRates();
   renderStats();
   renderFlights();
+  renderHotel();
   renderTimeline();
   renderGuide();
   buildMap();
+  buildRail();
   renderRates();
   recalc("JPY");
   renderExpenses();

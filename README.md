@@ -12,3 +12,9 @@ All trip data lives in `data.js` (copied from the private Google Sheet, snapshot
 - `paid`: running paid totals
 - `flights`: PR 406 and PR 405 (times from PAL's published schedule, confirm against the booking)
 - `itinerary`: one entry per day with `title`, `area`, `why` and a list of `stops` (`time`, `activity`, `location`, `notes`). `kind` is `arrival`, `day`, `flex` or `departure`
+
+## Map, rail maps, hotel, budget
+- `data.js` holds `hotel`, `places` (map pins, approximate coordinates), `budget` and `airlineLogo`.
+- The Map tab uses Leaflet with OpenStreetMap tiles (loaded from unpkg). If it cannot load, the place list still works.
+- The rail diagrams are hand-drawn SVG in `app.js` (`buildRail`).
+- Add `assets/pal-logo.png` to show the Philippine Airlines logo.
