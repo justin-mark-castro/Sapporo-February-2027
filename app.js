@@ -361,7 +361,7 @@
         "<td class='num'>" + money(conv(e, curr), curr) + "</td>" +
         "<td class='num td-orig'>" + esc(e.original) + "</td>" +
         "<td><span class='status" + (paid ? " paid" : "") + "'>" + (paid ? "Paid" : "To be paid") + "</span></td>" +
-        "<td class='td-note'>" + esc(e.note || "–") + "</td></tr>";
+        "<td class='td-note" + (e.note ? "" : " none") + "'>" + esc(e.note || "–") + "</td></tr>";
     }).join("");
     $("#expTable tbody").innerHTML = rows;
     $("#expTable tfoot").innerHTML = "<tr><td>Total</td><td class='num'>" + money(convTotal(curr), curr) + "</td><td></td><td></td><td></td></tr>";
