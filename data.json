@@ -1,0 +1,29 @@
+{
+  "updated": "2026-11-22T22:41:00+08:00",
+  "grid": [
+    ["Sapporo 2027 Trip","","","","","","","Sapporo, Hokkaido, Japan"],
+    ["February 1-12, 2027","","","SGD to PHP rate","49.6302"],
+    ["11 Nights","","",""],
+    [],
+    ["TOTAL EXPENSE","PHP","SGD","Split %","","","","DAYS TO GO","","YOUR SHARE (PHP)","","PAID SO FAR"],
+    ["Total","333,848.33","6,726.72","","","","","71","","166,924","","0%"],
+    ["Justin","166,924.17","3,363.36","50%"],
+    ["Ino","166,924.17","3,363.36","50%"],
+    ["Paid","0.00","0.00","","","","","until Feb 1, 2027","","about SGD 3,363","","of PHP 333,848 total"],
+    ["To be paid","333,848.33","6,726.72"],
+    ["Expense log","","","","","","","Itinerary"],
+    ["Item","PHP","SGD","Amount + currency","Status","Notes","","Day","Date","Time","Activity","Location / booking","Notes"],
+    ["PAL Flight","110,904.17","2,234.61","110,904.17 PHP","","","","Day 1","Mon, Feb 1","","Arrival"],
+    ["Travel Tax","3,240.00","65.28","3240 PHP","","","","Day 2","Tue, Feb 2"],
+    ["Hotel Accommodation","155,000.00","3,123.10","155000 PHP","","15780.8 CNY","","Day 3","Wed, Feb 3"],
+    ["Snowmobile","25,000.00","503.73","25000 PHP","","Wanderland Sapporo","","Day 4","Thu, Feb 4"],
+    ["Private Tour","39,704.16","800.00","800 SGD","","","","Day 5","Fri, Feb 5"],
+    ["","","","","","","","Day 6","Sat, Feb 6"],
+    ["","","","","","","","Day 7","Sun, Feb 7"],
+    ["","","","","","","","Day 8","Mon, Feb 8"],
+    ["","","","","","","","Day 9","Tue, Feb 9"],
+    ["","","","","","","","Day 10","Wed, Feb 10"],
+    ["","","","","","","","Day 11","Thu, Feb 11"],
+    ["","","","","","","","Day 12","Fri, Feb 12","","Departure"]
+  ]
+}

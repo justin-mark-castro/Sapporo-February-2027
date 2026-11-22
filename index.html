@@ -85,11 +85,7 @@
 
 <script>
 // ---- Config ----
-const SHEET_ID = "19ikYtYtTRn3GaefLW5tPp1gC47YAv1sPpVlinEtDf6M";
-const TAB = "Sapporo 2027";
 const TRIP_START = new Date("2027-02-01T00:00:00+09:00");
-const CACHE_KEY = "sapporo2027-grid";
-const URL_CSV = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(TAB)}`;
 
 // ---- CSV parser (handles quotes) ----
 function parseCSV(t){
@@ -182,18 +178,13 @@ function render(g){
 async function load(){
   const s=el("status");
   try{
-    const res=await fetch(URL_CSV,{cache:"no-store"});
+    const res=await fetch("data.json",{cache:"no-store"});
     if(!res.ok) throw new Error("HTTP "+res.status);
-    const text=await res.text();
-    if(text.trim().startsWith("<")) throw new Error("Sheet is not shared publicly");
-    const grid=parseCSV(text);
-    try{localStorage.setItem(CACHE_KEY,JSON.stringify({t:Date.now(),grid}))}catch(e){}
-    render(grid);
-    s.className="";s.textContent="Updated "+new Date().toLocaleTimeString();
+    const data=await res.json();
+    render(data.grid);
+    s.className="";s.textContent="Data last synced "+new Date(data.updated).toLocaleString();
   }catch(e){
-    let cached=null; try{cached=JSON.parse(localStorage.getItem(CACHE_KEY))}catch(_){}
-    if(cached){ render(cached.grid); s.className="err"; s.textContent=`Offline – showing data from ${new Date(cached.t).toLocaleString()} (${e.message})` }
-    else { s.className="err"; s.textContent="Couldn't load the sheet: "+e.message+". Set sharing to “Anyone with the link – Viewer”." }
+    s.className="err"; s.textContent="Couldn't load data.json: "+e.message;
   }
 }
 
@@ -201,7 +192,7 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("nav button,.view").forEach(x=>x.classList.remove("on"));
   b.classList.add("on"); el(b.dataset.v).classList.add("on"); scrollTo(0,0);
 });
-load(); setInterval(load,5*60*1000);
+load();
 </script>
 </body>
 </html>
