@@ -392,19 +392,6 @@
     $("#donutLegend").innerHTML = T.expenses.map(function (e, i) {
       return "<li><i style='background:" + COLORS[i % COLORS.length] + "'></i><span>" + esc(e.item) + "</span><span class='pct'>" + ((e.php / sum) * 100).toFixed(1) + "%</span></li>";
     }).join("");
-
-    // split cards
-    var paidPct = totals.php ? Math.min(100, (T.paid.php / totals.php) * 100) : 0;
-    var tot = convTotal(curr), paidV = curr === "PHP" ? T.paid.php : curr === "SGD" ? T.paid.sgd : T.paid.sgd * fx.JPY;
-    var html = T.travelers.map(function (n, i) {
-      var pct = T.splitPct[n] || 50, share = tot * pct / 100;
-      return '<div class="split-card"><div class="who"><span class="avatar' + (i ? " b" : "") + '">' + esc(n[0]) + "</span>" + esc(n) + '</div>' +
-        '<p class="amt">' + money(share, curr) + '</p><span class="sub">' + pct + "% share</span></div>";
-    }).join("");
-    html += '<div class="split-card total"><div class="who">Paid so far</div><p class="amt">' + money(paidV, curr) + '</p>' +
-      '<span class="sub">' + Math.round(paidPct) + "% of " + money(tot, curr) + '</span><div class="progress"><i style="width:' + paidPct + '%"></i></div></div>';
-    html += '<div class="split-card"><div class="who">To be paid</div><p class="amt">' + money(tot - paidV, curr) + '</p><span class="sub">remaining balance</span></div>';
-    $("#splitGrid").innerHTML = html;
   }
   $$("#curSeg button").forEach(function (b) {
     b.addEventListener("click", function () { curr = b.dataset.cur; store.set("sap27-cur", curr); renderExpenses(); });

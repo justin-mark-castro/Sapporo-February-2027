@@ -271,19 +271,8 @@ a{color:inherit}
 .donut-legend span:nth-child(2){flex:1}
 .donut-legend .pct{color:var(--muted);font-variant-numeric:tabular-nums}
 
-.split-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
-.split-card{
-  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);
-}
-.split-card .who{display:flex;align-items:center;gap:10px;font-weight:600}
 .avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;background:var(--ai-2)}
 .avatar.b{background:var(--beni)}
-.split-card .amt{font-family:var(--serif);font-size:1.7rem;color:var(--ai);margin:10px 0 0;font-variant-numeric:tabular-nums;line-height:1.1}
-.split-card .sub{font-size:.85rem;color:var(--muted)}
-.split-card.total{background:linear-gradient(135deg,var(--ai),var(--ai-2));color:#fff;border-color:transparent}
-.split-card.total .amt,.split-card.total .sub{color:#fff}
-.split-card.total .sub{opacity:.8}
-.split-card.total .progress{background:rgba(255,255,255,.2)}
 
 /* ---------- forex ---------- */
 .fx-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
