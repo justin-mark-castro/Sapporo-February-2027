@@ -213,6 +213,35 @@
       return '<span class="lchip" style="--c:' + LINE_CHIPS[name] + '">' + name + "</span>";
     });
   }
+  var STOP_TYPES = {
+    flight:   { label: "Flight",        color: "#2563a8", svg: '<path d="M2 16l20-6-3-2-6 1-5-5-2 1 3 6-5 2-2-2-1 1 3 4 5-2 2 2 1-1-1-4z"/>' },
+    train:    { label: "Train / transit", color: "#3b6fd1", svg: '<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l2-4M15 21l-2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/>' },
+    shrine:   { label: "Shrine",        color: "#c8372d", svg: '<path d="M2.5 6c3 1.2 16 1.2 19 0M5 10h14M7 6v14M17 6v14M12 7v3"/>' },
+    temple:   { label: "Temple",        color: "#a8402a", svg: '<path d="M3 10l9-6 9 6M5 10v9h14v-9M10 19v-5h4v5"/>' },
+    nature:   { label: "Park / nature", color: "#2e8b57", svg: '<path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/>' },
+    mountain: { label: "Mountain / view", color: "#4b7f52", svg: '<path d="M3 19l6-10 4 6 2-3 6 7z"/>' },
+    snow:     { label: "Snow & ice",    color: "#1b8fb5", svg: '<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5"/>' },
+    landmark: { label: "Landmark",      color: "#4f46a5", svg: '<path d="M12 2v6M9 8h6l1.5 13h-9zM9.5 13h5"/>' },
+    food:     { label: "Food",          color: "#d9701a", svg: '<path d="M3 11h18c0 5-4 9-9 9s-9-4-9-9zM8 7c0-1 1-1 1-3M12 7c0-1 1-1 1-3M16 7c0-1 1-1 1-3"/>' },
+    sweets:   { label: "Sweets",        color: "#d6336c", svg: '<path d="M7 11a5 5 0 0 1 10 0zM7 11l5 11 5-11"/>' },
+    shopping: { label: "Shopping",      color: "#8e44ad", svg: '<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>' },
+    tour:     { label: "Tour / animals", color: "#12908e", svg: '<path d="M12 14c-3 0-5 2-5 4 0 1.5 1.5 2 3 1.5l2-.5 2 .5c1.5.5 3 0 3-1.5 0-2-2-4-5-4z"/><circle cx="6" cy="10" r="1.6"/><circle cx="10" cy="6.5" r="1.6"/><circle cx="14" cy="6.5" r="1.6"/><circle cx="18" cy="10" r="1.6"/>' },
+    beer:     { label: "Beer / museum", color: "#a8741a", svg: '<path d="M6 7h9v13H6zM15 10h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3M9 11v6M12 11v6M6 7c0-2 3-2 3-1 0-1 3-1 3 0 0-1 3-1 3 1"/>' },
+    flex:     { label: "Free time",     color: "#7b7f8c", svg: '<path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/>' }
+  };
+  function stopIcon(s) {
+    var t = STOP_TYPES[s && s.icon];
+    if (!t) return "";
+    return '<span class="stop-ico" style="--c:' + t.color + '" title="' + t.label + '" role="img" aria-label="' + t.label + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.svg + "</svg></span>";
+  }
+  function typeLegend() {
+    var used = {};
+    T.itinerary.forEach(function (d) { (d.stops || []).forEach(function (s) { if (STOP_TYPES[s.icon]) used[s.icon] = 1; }); });
+    return '<ul class="type-legend" aria-label="Icon colour key">' + Object.keys(STOP_TYPES).filter(function (k) { return used[k]; }).map(function (k) {
+      var t = STOP_TYPES[k];
+      return '<li style="--c:' + t.color + '"><span class="stop-ico sm"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.svg + "</svg></span>" + t.label + "</li>";
+    }).join("") + "</ul>";
+  }
   function stopMapLink(s) {
     if (!s || s.map === false || (!s.location && !s.map)) return "";
     var q = s.map || ((s.activity || "") + " " + (s.location || "")).replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
@@ -222,7 +251,11 @@
   }
   function renderTimeline() {
     var today = todayLocal();
-    $("#timeline").innerHTML = T.itinerary.map(function (d) {
+    var tl = $("#timeline");
+    var lg = document.getElementById("typeLegend");
+    if (!lg) { lg = document.createElement("div"); lg.id = "typeLegend"; tl.parentNode.insertBefore(lg, tl); }
+    lg.innerHTML = typeLegend();
+    tl.innerHTML = T.itinerary.map(function (d) {
       var dt = parseISO(d.date);
       var isToday = dt.getTime() === today.getTime();
       var kind = d.kind || "day";
@@ -240,7 +273,7 @@
         if (s.how) meta += "<span class='how'>" + icTrain + "<span>" + howHtml(s.how) + "</span></span>";
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
-          '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
+          '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
       }).join("");
       var body;
       if (kind === "arrival") {
@@ -250,7 +283,7 @@
         if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
         if (s0.how) meta0 += "<span class='how'>" + icTrain + "<span>" + howHtml(s0.how) + "</span></span>";
         if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
-        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + stopMapLink(s0) + sunLine(d.date);
+        body = '<h4 class="stop-title">' + stopIcon(s0) + "<span>" + esc(s0.activity || d.title) + "</span></h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + stopMapLink(s0) + sunLine(d.date);
       } else {
         body = head + (stops ? '<ul class="stops">' + stops + "</ul>" : "");
       }

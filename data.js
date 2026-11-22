@@ -118,6 +118,7 @@ window.TRIP = {
           {
             "time": "12:15",
             "activity": "Arrival · PR 406",
+            "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
             "notes": "Philippine Airlines PR 406 from Manila (departs 06:30). No activities planned.",
@@ -137,6 +138,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hokkaido Jingu",
+            "icon": "shrine",
             "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",
             "notes": "Hokkaido's main shrine, set inside the park grounds.",
             "how": "Subway Tozai Line to Maruyama-koen (T06), then walk through the park."
@@ -144,6 +146,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Maruyama Park",
+            "icon": "nature",
             "map": "Maruyama Park, Sapporo",
             "location": "Next to Hokkaido Jingu",
             "notes": "Walk the park right after the shrine.",
@@ -152,6 +155,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Fushimi Inari Shrine",
+            "icon": "shrine",
             "location": "Mt. Moiwa slope, Chuo-ku",
             "notes": "27 red torii gates.",
             "how": "No rail. Taxi from Maruyama-koen is easiest (about 15 min), or bus. Check the route the day before."
@@ -159,6 +163,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Mt. Moiwa Ropeway",
+            "icon": "mountain",
             "location": "Fushimi, Chuo-ku",
             "notes": "Go up around sunset for the night view. Check ropeway operating days and the last ride up.",
             "how": "Streetcar to Ropeway-iriguchi (about 20 to 25 min from Susukino or Nishi 4-chome, about ¥230), then the free shuttle bus (5 min, every 15 min; weekday service starts 17:15) or walk uphill about 10 min."
@@ -177,6 +182,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
+            "icon": "snow",
             "map": "Wonderland Sapporo, Fukui, Nishi-ku, Sapporo",
             "location": "478 Fukui, Nishi-ku",
             "notes": "Listed in the expense log (25,000 PHP). Confirm the session time and hotel pickup.",
@@ -185,6 +191,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Shiroi Koibito Park",
+            "icon": "sweets",
             "location": "Miyanosawa, Nishi-ku",
             "notes": "Chocolate factory park. Miyanosawa is the west end of the Tozai Line.",
             "how": "Subway Tozai Line to Miyanosawa (west end), then a short walk."
@@ -203,6 +210,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hill of the Buddha",
+            "icon": "temple",
             "location": "Makomanai Takino Cemetery, Minami-ku",
             "notes": "Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early.",
             "how": "Subway Namboku Line (Sapporo to Makomanai, N16), then Chuo Bus 108 (about 23 min)."
@@ -210,6 +218,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Odori Park · Sapporo Snow Festival (Odori site)",
+            "icon": "snow",
             "location": "Odori Park, Nishi 1 to 12-chome",
             "notes": "The large snow sculptures line the park. Opening day.",
             "how": "Subway Odori Station (Namboku, Tozai and Toho lines meet here), or walk from the hotel."
@@ -217,6 +226,7 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Clock Tower",
+            "icon": "landmark",
             "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
             "notes": "Sapporo's wooden clock tower and a city landmark. Check opening hours before you go.",
             "how": "A short walk from Odori Station or the west end of the TV Tower block."
@@ -224,6 +234,7 @@ window.TRIP = {
           {
             "time": "Dusk",
             "activity": "Sapporo TV Tower",
+            "icon": "landmark",
             "location": "East end of Odori Park (Nishi 1-chome)",
             "notes": "Observation deck with a view over the park as the lights come on.",
             "how": "At the east end of Odori Park, a short walk from Odori Station."
@@ -242,6 +253,7 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
+            "icon": "tour",
             "map": "Asahiyama Zoo, Asahikawa",
             "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
             "notes": "Listed in the expense log (800 SGD). Confirm the tour date, pickup time and exact route with the operator.",
@@ -261,6 +273,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Otaru day trip",
+            "icon": "train",
             "map": "Otaru Canal",
             "location": "JR from Sapporo Station, about 30 to 40 min",
             "notes": "Spend the day in the canal area and town.",
@@ -269,6 +282,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Otaru Snow Light Path",
+            "icon": "snow",
             "map": "Otaru Canal",
             "location": "Otaru Canal and the former Temiya railway line",
             "notes": "Free to enter. Opening night. Check the last trains back to Sapporo.",
@@ -288,6 +302,7 @@ window.TRIP = {
           {
             "time": "Afternoon to evening",
             "activity": "Chitose · Lake Shikotsu Ice Festival",
+            "icon": "snow",
             "location": "Lake Shikotsu Onsen, Chitose",
             "notes": "Arrive late afternoon to see the ice in daylight and lit up. About 40 min by car from Sapporo. Dates can shift with the weather.",
             "how": "JR Chitose Line from Sapporo to Chitose Station, then the reservation-only Blue Liner bus to Lake Shikotsu. Reserve ahead."
@@ -306,6 +321,7 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Open · no bookings",
+            "icon": "flex",
             "location": "",
             "notes": "Use it to reschedule a weather-hit trip (Otaru, Lake Shikotsu, Bibai) or add the Snow Festival's Tsudome site. Avoid the Sapporo Beer Museum today: it is closed on Mondays."
           }
@@ -323,6 +339,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "icon": "sweets",
             "map": "Royce' Cacao & Chocolate Town, Tobetsu",
             "location": "Tobetsu, about 40 min from central Sapporo (7 min walk from Royce Town Station)",
             "notes": "Reserve the factory tour online ahead of time.",
@@ -331,6 +348,7 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Moerenuma Park",
+            "icon": "nature",
             "location": "Higashi-ku",
             "notes": "Check winter opening hours before going.",
             "how": "Subway Toho Line to Kanjodori-Higashi (about 15 to 20 min), then Chuo Bus 東69 or 東79 to Moerenuma-koen Higashi-guchi (about 25 min, about ¥240)."
@@ -338,6 +356,7 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Beer Garden Museum",
+            "icon": "beer",
             "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
             "notes": "Museum is open 11:00 to 18:00 (last entry 17:30) and closed Mondays. Today is a Tuesday.",
             "how": "Toho Line to Higashi-Kuyakusho-mae (2 stops from Sapporo), about 10 min on foot. Or Loop 88 Factory Line bus from Sapporo Station (south side) or Odori, or Bus 188 from the station's North Exit."
@@ -356,6 +375,7 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Bibai Snowland",
+            "icon": "snow",
             "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
             "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours.",
             "how": "JR Hakodate Main Line from Sapporo to Bibai Station, then the shuttle. Check the timetable the day before."
@@ -374,6 +394,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Nijo Market: king crab and seafood bowl",
+            "icon": "food",
             "location": "Nijo Market, Chuo-ku",
             "notes": "Seafood breakfast. A kaisendon (raw seafood on rice) is a Sapporo classic.",
             "how": "A short subway or taxi ride from the hotel, or walk. Nearest subway: Odori or Bus Center-mae."
@@ -381,6 +402,7 @@ window.TRIP = {
           {
             "time": "Late morning",
             "activity": "Hokkaido milk soft-serve and ice cream",
+            "icon": "sweets",
             "map": false,
             "location": "Central Sapporo (Odori to Sapporo Station)",
             "notes": "Hokkaido makes about half of Japan's raw milk. Shops to pick from: Yukijirushi (Snow Brand) Parlor main store, Kitakaro, and the Sapporo Agricultural College Rakuno Milk Soft.",
@@ -389,6 +411,7 @@ window.TRIP = {
           {
             "time": "Lunch",
             "activity": "Soup curry",
+            "icon": "food",
             "map": "Susukino Station, Sapporo",
             "location": "Near Susukino Station",
             "notes": "Soup Curry Garaku is a popular choice and often has a queue. Soup curry is a Sapporo specialty.",
@@ -397,6 +420,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Flexible · last-minute Donki shopping",
+            "icon": "shopping",
             "map": "MEGA Don Quijote Sapporo Tanukikoji",
             "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
             "notes": "Tax-free shopping is offered. Do the souvenir run today so Feb 12 stays free for the trip to the airport.",
@@ -405,6 +429,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Susukino Nikka & Shopping Street",
+            "icon": "shopping",
             "location": "Susukino",
             "notes": "The Nikka sign at Susukino Crossing and the nearby shopping street.",
             "how": "Susukino Station (Namboku Line, N08), right at the crossing."
@@ -412,6 +437,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Ramen Lane (miso ramen)",
+            "icon": "food",
             "map": "Ganso Sapporo Ramen Yokocho",
             "location": "Susukino",
             "notes": "Sapporo is known for rich miso ramen. Genghis Khan lamb is the other local dish to try; the Beer Garden on Feb 9 covers it.",
@@ -420,6 +446,7 @@ window.TRIP = {
           {
             "time": "Night",
             "activity": "Ice World Susukino",
+            "icon": "snow",
             "map": "Susukino Ice World, Sapporo",
             "location": "Ekimae-dori, Minami 4-jo to 6-jo",
             "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 23:00 (22:00 on the final day). 2027 hours come out in mid-December.",
@@ -439,6 +466,7 @@ window.TRIP = {
           {
             "time": "Departs 13:15",
             "activity": "Departure · PR 405",
+            "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
             "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). Leave Sapporo in the morning for the airport; check-out is 10:00.",
