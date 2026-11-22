@@ -213,6 +213,13 @@
       return '<span class="lchip" style="--c:' + LINE_CHIPS[name] + '">' + name + "</span>";
     });
   }
+  function stopMapLink(s) {
+    if (!s || s.map === false || (!s.location && !s.map)) return "";
+    var q = s.map || ((s.activity || "") + " " + (s.location || "")).replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
+    if (!/sapporo|hokkaido/i.test(q)) q += " Hokkaido";
+    var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+    return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "View on map</a>";
+  }
   function renderTimeline() {
     var today = todayLocal();
     $("#timeline").innerHTML = T.itinerary.map(function (d) {
@@ -233,7 +240,7 @@
         if (s.how) meta += "<span class='how'>" + icTrain + "<span>" + howHtml(s.how) + "</span></span>";
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
-          '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + "</div></li>";
+          '<div class="stop-main"><b>' + esc(s.activity) + "</b>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
       }).join("");
       var body;
       if (kind === "arrival") {
@@ -243,7 +250,7 @@
         if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
         if (s0.how) meta0 += "<span class='how'>" + icTrain + "<span>" + howHtml(s0.how) + "</span></span>";
         if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
-        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + sunLine(d.date);
+        body = "<h4>" + esc(s0.activity || d.title) + "</h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + stopMapLink(s0) + sunLine(d.date);
       } else {
         body = head + (stops ? '<ul class="stops">' + stops + "</ul>" : "");
       }

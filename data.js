@@ -118,6 +118,7 @@ window.TRIP = {
           {
             "time": "12:15",
             "activity": "Arrival · PR 406",
+            "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
             "notes": "Philippine Airlines PR 406 from Manila (departs 06:30). No activities planned.",
             "how": "JR Rapid Airport from New Chitose Airport Station (under the terminal) to Sapporo Station, about 37 min, ¥1,150 (reserved seat +¥840, optional). Then about 5 min on foot to the hotel."
@@ -143,6 +144,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Maruyama Park",
+            "map": "Maruyama Park, Sapporo",
             "location": "Next to Hokkaido Jingu",
             "notes": "Walk the park right after the shrine.",
             "how": "Same stop as the shrine, Maruyama-koen (T06)."
@@ -175,6 +177,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
+            "map": "Wonderland Sapporo, Fukui, Nishi-ku, Sapporo",
             "location": "478 Fukui, Nishi-ku",
             "notes": "Listed in the expense log (25,000 PHP). Confirm the session time and hotel pickup.",
             "how": "Check whether the booking includes the free hotel shuttle. On your own: subway Tozai Line to Kotoni, JR Bus (Kotoni 41) to Fukui Entei-mae, then about 2 min on foot."
@@ -239,6 +242,7 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
+            "map": "Asahiyama Zoo, Asahikawa",
             "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
             "notes": "Listed in the expense log (800 SGD). Confirm the tour date, pickup time and exact route with the operator.",
             "how": "Pickup by the tour operator. Confirm the meeting point and time."
@@ -257,6 +261,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Otaru day trip",
+            "map": "Otaru Canal",
             "location": "JR from Sapporo Station, about 30 to 40 min",
             "notes": "Spend the day in the canal area and town.",
             "how": "JR Hakodate Main Line, Rapid Airport from Sapporo Station to Otaru, about 32 min. Otaru Station is a short walk from the canal."
@@ -264,6 +269,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Otaru Snow Light Path",
+            "map": "Otaru Canal",
             "location": "Otaru Canal and the former Temiya railway line",
             "notes": "Free to enter. Opening night. Check the last trains back to Sapporo.",
             "how": "Walk from the canal area. Take the train back to Sapporo; check the last trains."
@@ -317,6 +323,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "map": "Royce' Cacao & Chocolate Town, Tobetsu",
             "location": "Tobetsu, about 40 min from central Sapporo (7 min walk from Royce Town Station)",
             "notes": "Reserve the factory tour online ahead of time.",
             "how": "JR Gakuen Toshi Line from Sapporo Station to Royce' Town Station, about 30 min, then about 7 min on foot (a free shuttle bus also runs)."
@@ -374,6 +381,7 @@ window.TRIP = {
           {
             "time": "Late morning",
             "activity": "Hokkaido milk soft-serve and ice cream",
+            "map": false,
             "location": "Central Sapporo (Odori to Sapporo Station)",
             "notes": "Hokkaido makes about half of Japan's raw milk. Shops to pick from: Yukijirushi (Snow Brand) Parlor main store, Kitakaro, and the Sapporo Agricultural College Rakuno Milk Soft.",
             "how": "On foot between Odori and Sapporo Station, or one stop on the Namboku Line."
@@ -381,6 +389,7 @@ window.TRIP = {
           {
             "time": "Lunch",
             "activity": "Soup curry",
+            "map": "Susukino Station, Sapporo",
             "location": "Near Susukino Station",
             "notes": "Soup Curry Garaku is a popular choice and often has a queue. Soup curry is a Sapporo specialty.",
             "how": "Subway Namboku Line to Susukino (N08)."
@@ -388,6 +397,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Flexible · last-minute Donki shopping",
+            "map": "MEGA Don Quijote Sapporo Tanukikoji",
             "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
             "notes": "Tax-free shopping is offered. Do the souvenir run today so Feb 12 stays free for the trip to the airport.",
             "how": "Walk from Susukino Station (Namboku Line, N08) or the Tanukikoji arcade."
@@ -402,6 +412,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Ramen Lane (miso ramen)",
+            "map": "Ganso Sapporo Ramen Yokocho",
             "location": "Susukino",
             "notes": "Sapporo is known for rich miso ramen. Genghis Khan lamb is the other local dish to try; the Beer Garden on Feb 9 covers it.",
             "how": "Susukino, a short walk from the Nikka sign."
@@ -409,6 +420,7 @@ window.TRIP = {
           {
             "time": "Night",
             "activity": "Ice World Susukino",
+            "map": "Susukino Ice World, Sapporo",
             "location": "Ekimae-dori, Minami 4-jo to 6-jo",
             "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 23:00 (22:00 on the final day). 2027 hours come out in mid-December.",
             "how": "Susukino Station (Namboku Line, N08). Walk home or take the Namboku Line one or two stops north."
@@ -427,6 +439,7 @@ window.TRIP = {
           {
             "time": "Departs 13:15",
             "activity": "Departure · PR 405",
+            "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
             "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). Leave Sapporo in the morning for the airport; check-out is 10:00.",
             "how": "JR Rapid Airport from Sapporo Station to New Chitose Airport, about 37 min, ¥1,150 (Special Rapid about 33 min). Aim for a train around 10:00 so you reach the airport with time to spare."
