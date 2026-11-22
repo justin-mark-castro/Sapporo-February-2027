@@ -242,7 +242,7 @@ a{color:inherit}
   margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px 10px 6px;
   box-shadow:var(--shadow);
 }
-.map-frame svg{width:100%;height:auto;border-radius:12px}
+.map-frame>svg{width:100%;height:auto;border-radius:12px}
 .map-frame figcaption{text-align:center;padding:6px 0 2px}
 .map-list{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .map-list h3{font-family:var(--serif);margin:0 0 10px;color:var(--ai)}
@@ -475,3 +475,4 @@ a{color:inherit}
 .bud-bar i{display:block;height:100%;background:var(--ai-2);border-radius:99px}.bud-bar i.over{background:var(--beni)}
 .bud-foot{grid-column:1/-1;margin:-4px 0 0}
 @media (max-width:760px){.budget-card{grid-template-columns:1fr 1fr}.bud-cell b{font-size:1.15rem}}
+.leaflet-container .leaflet-control-attribution svg{width:12px;height:8px;display:inline-block;vertical-align:baseline;border-radius:0}

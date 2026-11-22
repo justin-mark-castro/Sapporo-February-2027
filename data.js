@@ -65,7 +65,7 @@ window.TRIP = {
     { id: "nijo",    name: "Nijo Market", jp: "二条市場", lat: 43.0575, lng: 141.3600, day: 11, cat: "food", t: "Day 11", d: "Seafood, crab and milk soft-serve." },
     { id: "ramen",   name: "Ramen Lane (Ganso Yokocho)", jp: "元祖さっぽろラーメン横丁", lat: 43.0546, lng: 141.3534, day: 11, cat: "food", t: "Day 11", d: "Alley of ramen shops in Susukino." },
     { id: "nikka",   name: "Susukino Nikka Sign & Shopping Street", jp: "ススキノ", lat: 43.0556, lng: 141.3538, day: 11, cat: "fest", t: "Day 11 · night", d: "Ice World Susukino runs here in the evening." },
-    { id: "donki",   name: "MEGA Don Quijote Tanukikoji", jp: "ドン・キホーテ狸小路", lat: 43.0570, lng: 141.3510, day: 12, cat: "food", t: "Day 12 · flexible", d: "Last-minute shopping. Open 24 hours." },
+    { id: "donki",   name: "MEGA Don Quijote Tanukikoji", jp: "ドン・キホーテ狸小路", lat: 43.0570, lng: 141.3510, day: 11, cat: "food", t: "Day 11 · flexible", d: "Last-minute shopping. Open 24 hours." },
     { id: "cts",     name: "New Chitose Airport", jp: "新千歳空港", lat: 42.7752, lng: 141.6923, day: 0, cat: "air", t: "PR 406 / PR 405", d: "Arrive Feb 1 (12:15), depart Feb 12 (13:15). JR Airport Rapid to Sapporo." }
   ],
 
@@ -97,309 +97,309 @@ window.TRIP = {
       "toName": "Manila",
       "arr": "18:10",
       "aircraft": "Airbus A321neo",
-      "note": "Arrival time varies by a few minutes between sources. Feb 12 is a flexible morning with an optional Donki stop."
+      "note": "Arrival time varies by a few minutes between sources. Feb 11 is a flexible day with last-minute Donki shopping."
     }
   ],
   flightsNote: "Times follow Philippine Airlines' published Manila-Sapporo schedule for the 2025-26 season. Confirm against your booking.",
 
-  // Itinerary, grouped by area. Feb 1 is arrival only; Feb 8 is the flexible day; Feb 12 is a flexible last morning (Donki) before the flight.
+  // Itinerary, grouped by area. Feb 1 is arrival only; Feb 8 and Feb 11 are flexible days (Feb 11 includes last-minute Donki shopping); Feb 12 is departure only.
   // kind: arrival | day | flex | departure. Each day has a title, area, a one-line reason for the grouping, and its stops.
   itinerary: [
-    {
-      "day": 1,
-      "date": "2027-02-01",
-      "dow": "Mon",
-      "kind": "arrival",
-      "title": "Arrival",
-      "area": "New Chitose Airport",
-      "why": "",
-      "stops": [
-        {
-          "time": "12:15",
-          "activity": "Arrival · PR 406",
-          "location": "New Chitose Airport (CTS)",
-          "notes": "Philippine Airlines PR 406 from Manila (departs 06:30). No activities planned."
-        }
-      ]
-    },
-    {
-      "day": 2,
-      "date": "2027-02-02",
-      "dow": "Tue",
-      "kind": "day",
-      "title": "Southwest Sapporo",
-      "area": "Maruyama · Mt. Moiwa",
-      "why": "Four stops on the southwest side, a short ride apart. A quiet day before the festival opens.",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Hokkaido Jingu",
-          "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",
-          "notes": "Hokkaido's main shrine, set inside the park grounds."
-        },
-        {
-          "time": "Morning",
-          "activity": "Maruyama Park",
-          "location": "Next to Hokkaido Jingu",
-          "notes": "Walk the park right after the shrine."
-        },
-        {
-          "time": "Afternoon",
-          "activity": "Hokkaido Fushimi Inari Shrine",
-          "location": "Mt. Moiwa slope, Chuo-ku",
-          "notes": "27 red torii gates. About 15 min by car from Maruyama-koen Station."
-        },
-        {
-          "time": "Evening",
-          "activity": "Mt. Moiwa Ropeway",
-          "location": "Fushimi, Chuo-ku",
-          "notes": "Go up around sunset for the night view. Check ropeway operating days and the last ride up."
-        }
-      ]
-    },
-    {
-      "day": 3,
-      "date": "2027-02-03",
-      "dow": "Wed",
-      "kind": "day",
-      "title": "West Sapporo (Nishi-ku)",
-      "area": "Fukui · Miyanosawa",
-      "why": "Both stops are in Nishi-ku, on the west side of the city.",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Wonderland Sapporo Snowmobile",
-          "location": "478 Fukui, Nishi-ku",
-          "notes": "Listed in the expense log (25,000 PHP). Confirm the session time and hotel pickup."
-        },
-        {
-          "time": "Afternoon",
-          "activity": "Shiroi Koibito Park",
-          "location": "Miyanosawa, Nishi-ku",
-          "notes": "Chocolate factory park. Miyanosawa is the west end of the Tozai Line."
-        }
-      ]
-    },
-    {
-      "day": 4,
-      "date": "2027-02-04",
-      "dow": "Thu",
-      "kind": "day",
-      "title": "Namboku Line day · Snow Festival opens",
-      "area": "Makomanai · Odori",
-      "why": "Hill of the Buddha is at the end of the Namboku Line, which runs back through Odori for the festival's opening day (runs to Feb 11).",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Hill of the Buddha",
-          "location": "Makomanai Takino Cemetery, Minami-ku",
-          "notes": "Namboku Line to Makomanai, then Chuo Bus 108 (about 23 min). Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early."
-        },
-        {
-          "time": "Afternoon",
-          "activity": "Odori Park · Sapporo Snow Festival (Odori site)",
-          "location": "Odori Park, Nishi 1 to 12-chome",
-          "notes": "The large snow sculptures line the park. Opening day."
-        },
-        {
-          "time": "Dusk",
-          "activity": "Sapporo TV Tower",
-          "location": "East end of Odori Park (Nishi 1-chome)",
-          "notes": "Observation deck with a view over the park as the lights come on."
-        }
-      ]
-    },
-    {
-      "day": 5,
-      "date": "2027-02-05",
-      "dow": "Fri",
-      "kind": "day",
-      "title": "Private tour day trip",
-      "area": "Asahikawa · Biei · Furano",
-      "why": "A full day with a driver, leaving the city early.",
-      "stops": [
-        {
-          "time": "All day",
-          "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
-          "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
-          "notes": "Listed in the expense log (800 SGD). Confirm the tour date, pickup time and exact route with the operator."
-        }
-      ]
-    },
-    {
-      "day": 6,
-      "date": "2027-02-06",
-      "dow": "Sat",
-      "kind": "day",
-      "title": "Otaru and the Snow Light Path",
-      "area": "Otaru",
-      "why": "Go in the day and stay for the Snow Light Path, which opens tonight (Feb 6 to 13).",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Otaru day trip",
-          "location": "JR from Sapporo Station, about 30 to 40 min",
-          "notes": "Spend the day in the canal area and town."
-        },
-        {
-          "time": "Evening",
-          "activity": "Otaru Snow Light Path",
-          "location": "Otaru Canal and the former Temiya railway line",
-          "notes": "Free to enter. Opening night. Check the last trains back to Sapporo."
-        }
-      ]
-    },
-    {
-      "day": 7,
-      "date": "2027-02-07",
-      "dow": "Sun",
-      "kind": "day",
-      "title": "Chitose day trip",
-      "area": "Chitose",
-      "why": "The festival runs Jan 30 to Feb 23, so today falls in the middle of it.",
-      "stops": [
-        {
-          "time": "Afternoon to evening",
-          "activity": "Chitose · Lake Shikotsu Ice Festival",
-          "location": "Lake Shikotsu Onsen, Chitose",
-          "notes": "Arrive late afternoon to see the ice in daylight and lit up. About 40 min by car from Sapporo. A reservation-only Blue Liner bus runs from New Chitose Airport and JR Chitose Station. Dates can shift with the weather."
-        }
-      ]
-    },
-    {
-      "day": 8,
-      "date": "2027-02-08",
-      "dow": "Mon",
-      "kind": "flex",
-      "title": "Flexible day",
-      "area": "Anywhere",
-      "why": "Left open as a buffer for snow delays, a rest day, or anything you missed.",
-      "stops": [
-        {
-          "time": "All day",
-          "activity": "Open · no bookings",
-          "location": "",
-          "notes": "Use it to reschedule a weather-hit trip (Otaru, Lake Shikotsu, Bibai) or add the Snow Festival's Tsudome site. Avoid the Sapporo Beer Museum today: it is closed on Mondays."
-        }
-      ]
-    },
-    {
-      "day": 9,
-      "date": "2027-02-09",
-      "dow": "Tue",
-      "kind": "day",
-      "title": "North and East Sapporo",
-      "area": "Tobetsu · Higashi-ku",
-      "why": "Chocolate to the north, then two stops in Higashi-ku.",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
-          "location": "Tobetsu, about 40 min from central Sapporo (7 min walk from Royce Town Station)",
-          "notes": "Reserve the factory tour online ahead of time."
-        },
-        {
-          "time": "Midday",
-          "activity": "Moerenuma Park",
-          "location": "Higashi-ku",
-          "notes": "Check winter opening hours before going."
-        },
-        {
-          "time": "Late afternoon",
-          "activity": "Sapporo Beer Garden Museum",
-          "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
-          "notes": "Museum is open 11:00 to 18:00 (last entry 17:30) and closed Mondays. Today is a Tuesday."
-        }
-      ]
-    },
-    {
-      "day": 10,
-      "date": "2027-02-10",
-      "dow": "Wed",
-      "kind": "day",
-      "title": "Bibai day trip",
-      "area": "Bibai",
-      "why": "A full-day trip northeast of Sapporo.",
-      "stops": [
-        {
-          "time": "All day",
-          "activity": "Bibai Snowland",
-          "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
-          "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours."
-        }
-      ]
-    },
-    {
-      "day": 11,
-      "date": "2027-02-11",
-      "dow": "Thu",
-      "kind": "day",
-      "title": "Hokkaido food day · Susukino finale",
-      "area": "Nijo · Tanukikoji · Susukino",
-      "why": "A day for Hokkaido milk, ice cream and local specialties, all within walking distance, ending at the Snow Festival's last night.",
-      "stops": [
-        {
-          "time": "Morning",
-          "activity": "Nijo Market: king crab and seafood bowl",
-          "location": "Nijo Market, Chuo-ku",
-          "notes": "Seafood breakfast. A kaisendon (raw seafood on rice) is a Sapporo classic."
-        },
-        {
-          "time": "Late morning",
-          "activity": "Hokkaido milk soft-serve and ice cream",
-          "location": "Central Sapporo (Odori to Sapporo Station)",
-          "notes": "Hokkaido makes about half of Japan's raw milk. Shops to pick from: Yukijirushi (Snow Brand) Parlor main store, Kitakaro, and the Sapporo Agricultural College Rakuno Milk Soft."
-        },
-        {
-          "time": "Lunch",
-          "activity": "Soup curry",
-          "location": "Near Susukino Station",
-          "notes": "Soup Curry Garaku is a popular choice and often has a queue. Soup curry is a Sapporo specialty."
-        },
-        {
-          "time": "Afternoon",
-          "activity": "Susukino Nikka & Shopping Street",
-          "location": "Susukino",
-          "notes": "The Nikka sign at Susukino Crossing and the nearby shopping street."
-        },
-        {
-          "time": "Evening",
-          "activity": "Ramen Lane (miso ramen)",
-          "location": "Susukino",
-          "notes": "Sapporo is known for rich miso ramen. Genghis Khan lamb is the other local dish to try; the Beer Garden on Feb 9 covers it."
-        },
-        {
-          "time": "Night",
-          "activity": "Ice World Susukino",
-          "location": "Ekimae-dori, Minami 4-jo to 6-jo",
-          "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 23:00 (22:00 on the final day). 2027 hours come out in mid-December."
-        }
-      ]
-    },
-    {
-      "day": 12,
-      "date": "2027-02-12",
-      "dow": "Fri",
-      "kind": "departure",
-      "title": "Departure · flexible last morning",
-      "area": "Tanukikoji · New Chitose Airport",
-      "why": "Left open on purpose. The flight leaves at 13:15, so keep any shopping to the early morning.",
-      "stops": [
-        {
-          "time": "Early morning",
-          "activity": "Flexible · last-minute Donki shopping",
-          "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
-          "notes": "Tax-free shopping is offered. Finish early and leave time for the trip to New Chitose Airport."
-        },
-        {
-          "time": "Departs 13:15",
-          "activity": "Departure · PR 405",
-          "location": "New Chitose Airport (CTS)",
-          "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10)."
-        }
-      ]
-    }
-  ],
+      {
+        "day": 1,
+        "date": "2027-02-01",
+        "dow": "Mon",
+        "kind": "arrival",
+        "title": "Arrival",
+        "area": "New Chitose Airport",
+        "why": "",
+        "stops": [
+          {
+            "time": "12:15",
+            "activity": "Arrival · PR 406",
+            "location": "New Chitose Airport (CTS)",
+            "notes": "Philippine Airlines PR 406 from Manila (departs 06:30). No activities planned."
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "date": "2027-02-02",
+        "dow": "Tue",
+        "kind": "day",
+        "title": "Southwest Sapporo",
+        "area": "Maruyama · Mt. Moiwa",
+        "why": "Four stops on the southwest side, a short ride apart. A quiet day before the festival opens.",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Hokkaido Jingu",
+            "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",
+            "notes": "Hokkaido's main shrine, set inside the park grounds."
+          },
+          {
+            "time": "Morning",
+            "activity": "Maruyama Park",
+            "location": "Next to Hokkaido Jingu",
+            "notes": "Walk the park right after the shrine."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Hokkaido Fushimi Inari Shrine",
+            "location": "Mt. Moiwa slope, Chuo-ku",
+            "notes": "27 red torii gates. About 15 min by car from Maruyama-koen Station."
+          },
+          {
+            "time": "Evening",
+            "activity": "Mt. Moiwa Ropeway",
+            "location": "Fushimi, Chuo-ku",
+            "notes": "Go up around sunset for the night view. Check ropeway operating days and the last ride up."
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "date": "2027-02-03",
+        "dow": "Wed",
+        "kind": "day",
+        "title": "West Sapporo (Nishi-ku)",
+        "area": "Fukui · Miyanosawa",
+        "why": "Both stops are in Nishi-ku, on the west side of the city.",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Wonderland Sapporo Snowmobile",
+            "location": "478 Fukui, Nishi-ku",
+            "notes": "Listed in the expense log (25,000 PHP). Confirm the session time and hotel pickup."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Shiroi Koibito Park",
+            "location": "Miyanosawa, Nishi-ku",
+            "notes": "Chocolate factory park. Miyanosawa is the west end of the Tozai Line."
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "date": "2027-02-04",
+        "dow": "Thu",
+        "kind": "day",
+        "title": "Namboku Line day · Snow Festival opens",
+        "area": "Makomanai · Odori",
+        "why": "Hill of the Buddha is at the end of the Namboku Line, which runs back through Odori for the festival's opening day (runs to Feb 11).",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Hill of the Buddha",
+            "location": "Makomanai Takino Cemetery, Minami-ku",
+            "notes": "Namboku Line to Makomanai, then Chuo Bus 108 (about 23 min). Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Odori Park · Sapporo Snow Festival (Odori site)",
+            "location": "Odori Park, Nishi 1 to 12-chome",
+            "notes": "The large snow sculptures line the park. Opening day."
+          },
+          {
+            "time": "Dusk",
+            "activity": "Sapporo TV Tower",
+            "location": "East end of Odori Park (Nishi 1-chome)",
+            "notes": "Observation deck with a view over the park as the lights come on."
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "date": "2027-02-05",
+        "dow": "Fri",
+        "kind": "day",
+        "title": "Private tour day trip",
+        "area": "Asahikawa · Biei · Furano",
+        "why": "A full day with a driver, leaving the city early.",
+        "stops": [
+          {
+            "time": "All day",
+            "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
+            "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
+            "notes": "Listed in the expense log (800 SGD). Confirm the tour date, pickup time and exact route with the operator."
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "date": "2027-02-06",
+        "dow": "Sat",
+        "kind": "day",
+        "title": "Otaru and the Snow Light Path",
+        "area": "Otaru",
+        "why": "Go in the day and stay for the Snow Light Path, which opens tonight (Feb 6 to 13).",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Otaru day trip",
+            "location": "JR from Sapporo Station, about 30 to 40 min",
+            "notes": "Spend the day in the canal area and town."
+          },
+          {
+            "time": "Evening",
+            "activity": "Otaru Snow Light Path",
+            "location": "Otaru Canal and the former Temiya railway line",
+            "notes": "Free to enter. Opening night. Check the last trains back to Sapporo."
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "date": "2027-02-07",
+        "dow": "Sun",
+        "kind": "day",
+        "title": "Chitose day trip",
+        "area": "Chitose",
+        "why": "The festival runs Jan 30 to Feb 23, so today falls in the middle of it.",
+        "stops": [
+          {
+            "time": "Afternoon to evening",
+            "activity": "Chitose · Lake Shikotsu Ice Festival",
+            "location": "Lake Shikotsu Onsen, Chitose",
+            "notes": "Arrive late afternoon to see the ice in daylight and lit up. About 40 min by car from Sapporo. A reservation-only Blue Liner bus runs from New Chitose Airport and JR Chitose Station. Dates can shift with the weather."
+          }
+        ]
+      },
+      {
+        "day": 8,
+        "date": "2027-02-08",
+        "dow": "Mon",
+        "kind": "flex",
+        "title": "Flexible day",
+        "area": "Anywhere",
+        "why": "Left open as a buffer for snow delays, a rest day, or anything you missed.",
+        "stops": [
+          {
+            "time": "All day",
+            "activity": "Open · no bookings",
+            "location": "",
+            "notes": "Use it to reschedule a weather-hit trip (Otaru, Lake Shikotsu, Bibai) or add the Snow Festival's Tsudome site. Avoid the Sapporo Beer Museum today: it is closed on Mondays."
+          }
+        ]
+      },
+      {
+        "day": 9,
+        "date": "2027-02-09",
+        "dow": "Tue",
+        "kind": "day",
+        "title": "North and East Sapporo",
+        "area": "Tobetsu · Higashi-ku",
+        "why": "Chocolate to the north, then two stops in Higashi-ku.",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "location": "Tobetsu, about 40 min from central Sapporo (7 min walk from Royce Town Station)",
+            "notes": "Reserve the factory tour online ahead of time."
+          },
+          {
+            "time": "Midday",
+            "activity": "Moerenuma Park",
+            "location": "Higashi-ku",
+            "notes": "Check winter opening hours before going."
+          },
+          {
+            "time": "Late afternoon",
+            "activity": "Sapporo Beer Garden Museum",
+            "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
+            "notes": "Museum is open 11:00 to 18:00 (last entry 17:30) and closed Mondays. Today is a Tuesday."
+          }
+        ]
+      },
+      {
+        "day": 10,
+        "date": "2027-02-10",
+        "dow": "Wed",
+        "kind": "day",
+        "title": "Bibai day trip",
+        "area": "Bibai",
+        "why": "A full-day trip northeast of Sapporo.",
+        "stops": [
+          {
+            "time": "All day",
+            "activity": "Bibai Snowland",
+            "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
+            "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours."
+          }
+        ]
+      },
+      {
+        "day": 11,
+        "date": "2027-02-11",
+        "dow": "Thu",
+        "kind": "flex",
+        "title": "Hokkaido food day · flexible · last-minute Donki",
+        "area": "Nijo · Tanukikoji · Susukino",
+        "why": "A day for Hokkaido milk, ice cream and local specialties, all within walking distance. It stays flexible for last-minute Donki shopping and ends at the Snow Festival's last night.",
+        "stops": [
+          {
+            "time": "Morning",
+            "activity": "Nijo Market: king crab and seafood bowl",
+            "location": "Nijo Market, Chuo-ku",
+            "notes": "Seafood breakfast. A kaisendon (raw seafood on rice) is a Sapporo classic."
+          },
+          {
+            "time": "Late morning",
+            "activity": "Hokkaido milk soft-serve and ice cream",
+            "location": "Central Sapporo (Odori to Sapporo Station)",
+            "notes": "Hokkaido makes about half of Japan's raw milk. Shops to pick from: Yukijirushi (Snow Brand) Parlor main store, Kitakaro, and the Sapporo Agricultural College Rakuno Milk Soft."
+          },
+          {
+            "time": "Lunch",
+            "activity": "Soup curry",
+            "location": "Near Susukino Station",
+            "notes": "Soup Curry Garaku is a popular choice and often has a queue. Soup curry is a Sapporo specialty."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Flexible · last-minute Donki shopping",
+            "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
+            "notes": "Tax-free shopping is offered. Do the souvenir run today so Feb 12 stays free for the trip to the airport."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Susukino Nikka & Shopping Street",
+            "location": "Susukino",
+            "notes": "The Nikka sign at Susukino Crossing and the nearby shopping street."
+          },
+          {
+            "time": "Evening",
+            "activity": "Ramen Lane (miso ramen)",
+            "location": "Susukino",
+            "notes": "Sapporo is known for rich miso ramen. Genghis Khan lamb is the other local dish to try; the Beer Garden on Feb 9 covers it."
+          },
+          {
+            "time": "Night",
+            "activity": "Ice World Susukino",
+            "location": "Ekimae-dori, Minami 4-jo to 6-jo",
+            "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 23:00 (22:00 on the final day). 2027 hours come out in mid-December."
+          }
+        ]
+      },
+      {
+        "day": 12,
+        "date": "2027-02-12",
+        "dow": "Fri",
+        "kind": "departure",
+        "title": "Departure · PR 405",
+        "area": "New Chitose Airport",
+        "why": "Departure day with no activities planned. The flight leaves at 13:15.",
+        "stops": [
+          {
+            "time": "Departs 13:15",
+            "activity": "Departure · PR 405",
+            "location": "New Chitose Airport (CTS)",
+            "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). Leave Sapporo in the morning for the airport; check-out is 10:00."
+          }
+        ]
+      }
+    ],
 
   // "Sapporo Guide" tab
   guide: {
