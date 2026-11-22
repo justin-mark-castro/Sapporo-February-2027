@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f3864">
+<title>Sapporo 2027</title>
+<style>
+  :root{--navy:#1f3864;--ink:#1b2430;--muted:#667085;--line:#e4e7ec;--bg:#f4f6fa;--card:#fff;--accent:#2e7dd7;--ok:#1a8f5a;--warn:#c77700}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);padding-bottom:70px}
+  header{background:var(--navy);color:#fff;padding:18px 16px 14px;padding-top:calc(18px + env(safe-area-inset-top))}
+  header h1{margin:0;font-size:22px}
+  header p{margin:2px 0 0;opacity:.8;font-size:13px}
+  main{max-width:760px;margin:0 auto;padding:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat .label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .value{font-size:22px;font-weight:650;margin-top:2px}
+  .stat .sub{font-size:12px;color:var(--muted)}
+  .bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin:8px 0 4px}
+  .bar>div{height:100%;background:var(--ok);width:0}
+  h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+  .row:first-of-type{border-top:0}
+  .row .name{font-weight:600}
+  .row .note{font-size:12px;color:var(--muted)}
+  .row .amt{text-align:right;white-space:nowrap}
+  .row .amt small{display:block;color:var(--muted);font-size:12px}
+  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:99px;background:#fff4e0;color:var(--warn);margin-left:6px}
+  .pill.paid{background:#e3f6ec;color:var(--ok)}
+  .day{border-left:3px solid var(--accent);padding-left:12px;margin:0 0 16px}
+  .day h3{margin:0;font-size:16px}
+  .day .date{font-size:12px;color:var(--muted)}
+  .item{padding:8px 0;border-top:1px dashed var(--line)}
+  .item:first-of-type{border-top:0}
+  .item .time{font-weight:600;color:var(--accent);margin-right:6px}
+  .item .meta{font-size:12px;color:var(--muted)}
+  .empty{color:var(--muted);font-style:italic;font-size:13px}
+  nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+  nav button{flex:1;border:0;background:none;padding:14px 0;font:inherit;font-weight:600;color:var(--muted)}
+  nav button.on{color:var(--navy);box-shadow:inset 0 3px 0 var(--accent)}
+  .view{display:none}.view.on{display:block}
+  #status{font-size:12px;color:var(--muted);text-align:center;margin:8px 0}
+  #status.err{color:#b42318}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Sapporo 2027 Trip</h1>
+  <p id="subtitle">February 1–12, 2027</p>
+</header>
+<main>
+  <section id="overview" class="view on">
+    <div class="grid" style="margin-bottom:12px">
+      <div class="card stat"><div class="label">Days to go</div><div class="value" id="days">–</div><div class="sub" id="daysSub">until Feb 1, 2027</div></div>
+      <div class="card stat"><div class="label">Your share (PHP)</div><div class="value" id="share">–</div><div class="sub" id="shareSub"></div></div>
+    </div>
+    <div class="card">
+      <h2>Budget</h2>
+      <div class="grid">
+        <div class="stat"><div class="label">Total</div><div class="value" id="totPhp">–</div><div class="sub" id="totSgd"></div></div>
+        <div class="stat"><div class="label">Still to pay</div><div class="value" id="dueSgd">–</div><div class="sub" id="duePhp"></div></div>
+      </div>
+      <div class="bar"><div id="paidBar"></div></div>
+      <div class="sub" id="paidTxt" style="font-size:12px;color:var(--muted)"></div>
+    </div>
+    <div class="card"><h2>Split</h2><div id="split"></div></div>
+  </section>
+
+  <section id="itinerary" class="view"><div id="itin"></div></section>
+
+  <section id="expenses" class="view">
+    <div class="card"><h2>Expense log</h2><div id="exp"></div></div>
+  </section>
+
+  <div id="status">Loading…</div>
+</main>
+<nav>
+  <button data-v="overview" class="on">Overview</button>
+  <button data-v="itinerary">Itinerary</button>
+  <button data-v="expenses">Expenses</button>
+</nav>
+
+<script>
+// ---- Config ----
+const SHEET_ID = "19ikYtYtTRn3GaefLW5tPp1gC47YAv1sPpVlinEtDf6M";
+const TAB = "Sapporo 2027";
+const TRIP_START = new Date("2027-02-01T00:00:00+09:00");
+const CACHE_KEY = "sapporo2027-grid";
+const URL_CSV = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(TAB)}`;
+
+// ---- CSV parser (handles quotes) ----
+function parseCSV(t){
+  const rows=[];let r=[],f="",q=false;
+  for(let i=0;i<t.length;i++){
+    const c=t[i];
+    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
+    else if(c=='"') q=true;
+    else if(c==',') {r.push(f);f=""}
+    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n') i++; r.push(f);f="";rows.push(r);r=[] }
+    else f+=c;
+  }
+  if(f!==""||r.length){r.push(f);rows.push(r)}
+  return rows;
+}
+const num = s => { const n=parseFloat(String(s||"").replace(/[^0-9.\-]/g,"")); return isNaN(n)?0:n };
+const fmt = (n,d=0) => n.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const el = id => document.getElementById(id);
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cell = (g,r,c) => (g[r] && g[r][c] || "").trim();
+
+function render(g){
+  el("title").textContent = cell(g,0,0) || "Sapporo 2027 Trip";
+  el("subtitle").textContent = [cell(g,1,0),cell(g,2,0)].filter(Boolean).join(" · ");
+
+  // Days to go (computed live, not from sheet)
+  const d = Math.ceil((TRIP_START - new Date())/86400000);
+  el("days").textContent = d>0 ? d : (d>-12 ? "Now!" : "Done");
+
+  // Summary rows keyed by label in column A
+  const byLabel = {};
+  g.forEach((row,i)=>{ const k=(row[0]||"").trim(); if(k && !(k in byLabel)) byLabel[k]=i });
+  const sRow = k => byLabel[k]!==undefined ? byLabel[k] : -1;
+  const tot = sRow("Total"), paid = sRow("Paid"), due = sRow("To be paid");
+  if(tot>=0){
+    el("totPhp").textContent = "₱"+fmt(num(cell(g,tot,1)));
+    el("totSgd").textContent = "SGD "+fmt(num(cell(g,tot,2)),2);
+  }
+  if(due>=0){
+    el("dueSgd").textContent = "SGD "+fmt(num(cell(g,due,2)));
+    el("duePhp").textContent = "₱"+fmt(num(cell(g,due,1)));
+  }
+  if(paid>=0 && tot>=0){
+    const p=num(cell(g,paid,1)), t=num(cell(g,tot,1));
+    const pct = t? Math.min(100,p/t*100):0;
+    el("paidBar").style.width = pct+"%";
+    el("paidTxt").textContent = `Paid ₱${fmt(p)} of ₱${fmt(t)} (${fmt(pct)}%)`;
+  }
+  // Your share — sheet cells J6 / J9
+  if(tot>=0){
+    el("share").textContent = "₱"+fmt(num(cell(g,tot,9)));
+    el("shareSub").textContent = cell(g,tot+3,9) || "";
+  }
+  // Split rows between "Total" and "Paid"
+  let sp="";
+  for(let i=tot+1;i>0 && i<paid;i++){
+    sp+=`<div class="row"><div class="name">${esc(cell(g,i,0))} <span class="note">${esc(cell(g,i,3))}</span></div>
+      <div class="amt">₱${fmt(num(cell(g,i,1)))}<small>SGD ${fmt(num(cell(g,i,2)),2)}</small></div></div>`;
+  }
+  el("split").innerHTML = sp || '<div class="empty">No split data</div>';
+
+  // Expense log: header row has "Item" in col A
+  const eh = g.findIndex(r=>(r[0]||"").trim()==="Item");
+  let ex="";
+  for(let i=eh+1;i<g.length;i++){
+    const name=cell(g,i,0); if(!name) break;
+    const status=cell(g,i,4), isPaid=/paid|done|yes/i.test(status) && !/unpaid|not/i.test(status);
+    ex+=`<div class="row"><div><div class="name">${esc(name)}${status?`<span class="pill ${isPaid?"paid":""}">${esc(status)}</span>`:`<span class="pill">Unpaid</span>`}</div>
+      <div class="note">${esc(cell(g,i,5))}</div></div>
+      <div class="amt">₱${fmt(num(cell(g,i,1)))}<small>SGD ${fmt(num(cell(g,i,2)),2)}</small></div></div>`;
+  }
+  el("exp").innerHTML = ex || '<div class="empty">No expenses yet</div>';
+
+  // Itinerary: header row has "Day" in column H (index 7)
+  const ih = g.findIndex(r=>(r[7]||"").trim()==="Day");
+  const days=[]; let cur=null;
+  for(let i=ih+1;i<g.length;i++){
+    const r=g[i]; const day=(r[7]||"").trim();
+    if(day){ cur={day,date:(r[8]||"").trim(),items:[]}; days.push(cur) }
+    else if(!cur) continue;
+    const it={time:(r[9]||"").trim(),act:(r[10]||"").trim(),loc:(r[11]||"").trim(),note:(r[12]||"").trim()};
+    if(it.act||it.time||it.loc||it.note) cur.items.push(it);
+  }
+  el("itin").innerHTML = days.map(d=>`<div class="card"><div class="day"><h3>${esc(d.day)}</h3><div class="date">${esc(d.date)}</div>
+    ${d.items.length? d.items.map(it=>`<div class="item"><div><span class="time">${esc(it.time)}</span>${esc(it.act)}</div>
+      <div class="meta">${[it.loc,it.note].filter(Boolean).map(esc).join(" · ")}</div></div>`).join("")
+      : '<div class="empty">Nothing planned yet</div>'}</div></div>`).join("") || '<div class="card empty">No itinerary found</div>';
+}
+
+async function load(){
+  const s=el("status");
+  try{
+    const res=await fetch(URL_CSV,{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const text=await res.text();
+    if(text.trim().startsWith("<")) throw new Error("Sheet is not shared publicly");
+    const grid=parseCSV(text);
+    try{localStorage.setItem(CACHE_KEY,JSON.stringify({t:Date.now(),grid}))}catch(e){}
+    render(grid);
+    s.className="";s.textContent="Updated "+new Date().toLocaleTimeString();
+  }catch(e){
+    let cached=null; try{cached=JSON.parse(localStorage.getItem(CACHE_KEY))}catch(_){}
+    if(cached){ render(cached.grid); s.className="err"; s.textContent=`Offline – showing data from ${new Date(cached.t).toLocaleString()} (${e.message})` }
+    else { s.className="err"; s.textContent="Couldn't load the sheet: "+e.message+". Set sharing to “Anyone with the link – Viewer”." }
+  }
+}
+
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button,.view").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); el(b.dataset.v).classList.add("on"); scrollTo(0,0);
+});
+load(); setInterval(load,5*60*1000);
+</script>
+</body>
+</html>
