@@ -62,6 +62,7 @@ window.TRIP = {
     { id: "shikotsu",name: "Lake Shikotsu Ice Festival", jp: "支笏湖氷濤まつり", lat: 42.7640, lng: 141.3880, day: 7, cat: "fest", t: "Day 7", d: "Day trip via Chitose. Check the festival dates before going." },
     { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
     { id: "moere",   name: "Moerenuma Park", jp: "モエレ沼公園", lat: 43.1243, lng: 141.4290, day: 9, cat: "sight", t: "Day 9", d: "Isamu Noguchi's park in the northeast." },
+    { id: "hidamari", name: "Glass Pyramid HIDAMARI", jp: "ガラスのピラミッド HIDAMARI", lat: 43.1255, lng: 141.4310, day: 9, cat: "sight", t: "Day 9 · midday", d: "The glass pyramid inside Moerenuma Park." },
     { id: "beer",    name: "Sapporo Beer Garden & Museum", jp: "サッポロビール博物館", lat: 43.0720, lng: 141.3670, day: 9, cat: "food", t: "Day 9", d: "Closed Mondays." },
     { id: "bibai",   name: "Bibai Snowland", jp: "美唄スノーランド", lat: 43.3300, lng: 141.8590, day: 10, cat: "sight", t: "Day 10", d: "JR Hakodate Main Line to Bibai." },
     { id: "nijo",    name: "Nijo Market", jp: "二条市場", lat: 43.0575, lng: 141.3600, day: 11, cat: "food", t: "Day 11", d: "Seafood, crab and milk soft-serve." },
@@ -361,6 +362,14 @@ window.TRIP = {
             "location": "Higashi-ku",
             "notes": "Check winter opening hours before going.",
             "how": "Subway Toho Line to Kanjodori-Higashi (about 15 to 20 min), then Chuo Bus 東69 or 東79 to Moerenuma-koen Higashi-guchi (about 25 min, about ¥240)."
+          },
+          {
+            "time": "Midday",
+            "activity": "Glass Pyramid HIDAMARI",
+            "icon": "landmark",
+            "location": "Moerenuma Park, Higashi-ku",
+            "notes": "The park's glass pyramid, with a cafe and restaurant inside. Check winter opening hours before going.",
+            "how": "Inside Moerenuma Park, so no extra travel."
           },
           {
             "time": "Late afternoon",
