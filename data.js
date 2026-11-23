@@ -56,7 +56,7 @@ window.TRIP = {
     { id: "buddha",  name: "Hill of the Buddha", jp: "頭大仏", lat: 42.9740, lng: 141.3190, day: 4, cat: "sight", t: "Day 4 · morning", d: "Makomanai Takino Cemetery. Namboku Line to Makomanai, then a bus." },
     { id: "odori",   name: "Odori Park · Snow Festival", jp: "大通公園", lat: 43.0605, lng: 141.3470, day: 4, cat: "fest", t: "Day 4 · afternoon", d: "Main Snow Festival site (Feb 4–11)." },
     { id: "akarenga", name: "Hokkaido Former Government Office (Red Brick)", jp: "北海道庁旧本庁舎（赤れんが庁舎）", lat: 43.0642, lng: 141.3469, day: 4, cat: "sight", t: "Day 4 · afternoon", d: "The red-brick Akarenga building, west of Odori Park." },
-    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 4, cat: "sight", t: "Day 4 · late afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
+    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 1, cat: "sight", t: "Day 1 · afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
     { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "First stop of the Day 5 private tour. Next: Shirahige Waterfall, Lonely Christmas Tree, Ningle Terrace." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
@@ -115,8 +115,8 @@ window.TRIP = {
         "dow": "Mon",
         "kind": "arrival",
         "title": "Arrival",
-        "area": "New Chitose Airport",
-        "why": "",
+        "area": "New Chitose Airport · Sapporo Station",
+        "why": "Land at 12:15, check in at the hotel, then a short walk to the Clock Tower before it closes at 17:10.",
         "stops": [
           {
             "time": "12:15",
@@ -128,8 +128,22 @@ window.TRIP = {
             "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
-            "notes": "Philippine Airlines PR 406 from Manila (departs 06:30). No activities planned.",
+            "notes": "Philippine Airlines PR 406 from Manila (departs 06:30).",
             "how": "JR Rapid Airport from New Chitose Airport Station (under the terminal) to Sapporo Station, about 37 min, ¥1,150 (reserved seat +¥840, optional). Then about 5 min on foot to the hotel."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Sapporo Clock Tower",
+            "hours": "8:45–17:10 · confirm winter close",
+            "closed": "Open daily (closed Jan 1–3)",
+            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
+            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
+            "photo": "assets/sapporo-clock-tower.jpg",
+            "wiki": "Sapporo Clock Tower",
+            "icon": "landmark",
+            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
+            "notes": "Visit after dropping bags at the hotel, about 3 min on foot. Arrive before the 17:10 closing time.",
+            "how": "About 3 min on foot from Hokke Club Sapporo. Also a short walk from Odori Station."
           }
         ]
       },
@@ -213,6 +227,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
+            "book": {"url": "https://wonderlandsapporo.com/", "label": "Reserve"},
             "hours": "9:00–17:00",
             "closed": "Open daily",
             "desc": "A guided snowmobile ride across a snowfield on the west edge of the city.",
@@ -287,20 +302,6 @@ window.TRIP = {
             "location": "Kita 3-jo Nishi 6-chome, Chuo-ku (west of Odori Park)",
             "notes": "The red-brick \"Akarenga\" building, a Sapporo landmark. Check opening hours before you go.",
             "how": "About a 10 min walk from Odori Station or Sapporo Station."
-          },
-          {
-            "time": "Late afternoon",
-            "activity": "Sapporo Clock Tower",
-            "hours": "8:45–17:10 · confirm winter close",
-            "closed": "Open daily (closed Jan 1–3)",
-            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
-            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
-            "photo": "assets/sapporo-clock-tower.jpg",
-            "wiki": "Sapporo Clock Tower",
-            "icon": "landmark",
-            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
-            "notes": "Sapporo's wooden clock tower and a city landmark. Check opening hours before you go.",
-            "how": "A short walk from Odori Station or the west end of the TV Tower block."
           },
           {
             "time": "Dusk",
@@ -428,6 +429,7 @@ window.TRIP = {
           {
             "time": "Afternoon to evening",
             "activity": "Chitose · Lake Shikotsu Ice Festival",
+            "book": {"url": "https://hyoutou-special.asia/", "label": "Festival site"},
             "desc": "Ice structures built from frozen lake water and lit at night on the shore of a caldera lake.",
             "fact": "Lake Shikotsu is Japan's second-deepest lake, at about 360 m.",
             "photo": "assets/lake-shikotsu-ice-festival.jpg",
@@ -469,6 +471,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "book": {"url": "https://www.royce.com/cct/english/", "label": "Reserve tour"},
             "closed": "Irregular days off · reserve the tour",
             "desc": "A chocolate factory and tour site run by Royce', known for its Hokkaido sweets.",
             "fact": "Royce' was founded in Sapporo in 1983 and is famous for its Nama Chocolate.",

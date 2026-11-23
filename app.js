@@ -149,6 +149,7 @@
     { id: "snow", label: "雪まつり Snow Festival", cls: "chip-snow", from: "2027-02-04", to: "2027-02-11" },
     { id: "light", label: "小樽 Otaru Snow Light Path", cls: "chip-light", from: "2027-02-06", to: "2027-02-13" }
   ];
+  var icTicket = '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-4V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z" transform="translate(0 -1)"/><path d="M14 7v10" stroke-dasharray="2 2"/></svg>';
   var icPin = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
   var icClock = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var icNote = '<svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 11h8M8 15h6"/></svg>';
@@ -250,7 +251,9 @@
     var q = s.map || ((s.activity || "") + " " + (s.location || "")).replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
     if (!/sapporo|hokkaido/i.test(q)) q += " Hokkaido";
     var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
-    return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "Google Maps</a>";
+    var out = '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "Google Maps</a>";
+    if (s.book && /^https:\/\//.test(s.book.url)) out += ' <a class="map-link book-link" href="' + esc(s.book.url) + '" target="_blank" rel="noopener">' + icTicket + esc(s.book.label || "Reserve") + "</a>";
+    return out;
   }
   function stopHours(s, dow) {
     if (!s || (!s.hours && !s.closed)) return "";
@@ -350,7 +353,7 @@
           '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + stopHours(s, d.dow) + stopExtras(s) + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
       }).join("");
       var body;
-      if (kind === "arrival") {
+      if (kind === "arrival" && (d.stops || []).length < 2) {
         var s0 = (d.stops || [])[0] || {};
         var meta0 = "";
         if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";

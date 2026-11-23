@@ -711,3 +711,6 @@ html{font-size:14px}
 .hrs .h-clash{background:#a3261b;color:#fff;border-color:#a3261b}
 .ck-text .hrs{margin:4px 0 0}
 .ck-text .hrs span{font-size:.7rem;padding:2px 7px}
+
+.book-link{margin-left:6px;color:#fff !important;background:var(--ai) !important;border-color:var(--ai) !important}
+.book-link:hover,.book-link:focus-visible{filter:brightness(.92)}
