@@ -232,6 +232,9 @@
   function stopIcon(s) {
     var t = STOP_TYPES[s && s.icon];
     if (!t) return "";
+    if (s.icon === "flight" && T.airlineLogo) {
+      return '<span class="stop-ico logo" title="Philippine Airlines" role="img" aria-label="Philippine Airlines"><img src="' + esc(T.airlineLogo) + '" alt="" loading="lazy"></span>';
+    }
     return '<span class="stop-ico" style="--c:' + t.color + '" title="' + t.label + '" role="img" aria-label="' + t.label + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.svg + "</svg></span>";
   }
   function typeLegend() {
@@ -501,6 +504,7 @@
         else if (side === "l") { dx = -12; dy = 4; anchor = "end"; }
         else if (side === "t") { dy = -13; anchor = "middle"; }
         else if (side === "b") { dy = 20; anchor = "middle"; }
+        else if (side === "bs") { dx = -12; dy = 20; anchor = "start"; }
         if (side) {
           var t = el("text", { x: p[2] + dx, y: p[3] + dy, "text-anchor": anchor, class: "st" + (key ? " key" : "") });
           if (p[0]) { t.appendChild(el("tspan", { class: "code", fill: L.color }, p[0] + " ")); }
@@ -516,93 +520,78 @@
       svg.appendChild(g);
     }
 
-    /* ----- subway ----- */
-    var sub = $("#subwayMap");
-    if (sub) {
-      sub.innerHTML = "";
-      var NAM = [
-        ["N01", "Asabu"], ["N02", "Kita-34-jo"], ["N03", "Kita-24-jo"], ["N04", "Kita-18-jo"], ["N05", "Kita-12-jo"],
-        ["N06", "Sapporo"], ["N07", "Odori"], ["N08", "Susukino"], ["N09", "Nakajima-koen"], ["N10", "Horohirabashi"],
-        ["N11", "Nakanoshima"], ["N12", "Hiragishi"], ["N13", "Minami-Hiragishi"], ["N14", "Sumikawa"], ["N15", "Jieitai-mae"], ["N16", "Makomanai"]
-      ];
-      var KEYN = { N06: 1, N07: 1, N08: 1, N16: 1 };
-      var np = NAM.map(function (s, i) {
-        var hub = s[0] === "N06" || s[0] === "N07";
-        return [s[0], s[1], 300, 40 + i * 28, hub ? null : "l", KEYN[s[0]], hub];
-      });
-      stationsLine(sub, "N", np, { title: [300, 18, "middle"] });
+    /* ----- combined map: subway + JR, each line cut at the last station used on this trip ----- */
+    var map = $("#railMap");
+    if (map) {
+      map.innerHTML = "";
+      var X = 330; // x of the Sapporo / Odori column
 
-      var TOZ = [
-        ["T01", "Miyanosawa", 50, 208, "b", 1], ["T06", "Maruyama-koen", 130, 208, "t", 1],
-        ["T07", "Nishi-18", 190, 208, "b"], ["T08", "Nishi-11", 250, 208, "t"],
-        ["T09", "Odori", 300, 208, null, 0, 1],
-        ["T11", "Kikusui", 420, 208, "t"],
-        ["T13", "Shiroishi", 500, 208, "t"], ["T19", "Shin-Sapporo", 760, 208, "t", 1]
-      ];
-      stationsLine(sub, "T", TOZ, { title: [20, 168] });
-
-      var tohPts = [
-        ["H01", "Sakaemachi", 800, 40, "l", 1], ["H02", "Shindo-Higashi", 770, 68, "r"], ["H03", "Motomachi", 740, 96, "r"],
-        ["H04", "Kanjodori-Higashi", 710, 124, "r", 1], ["H05", "Higashi-Kuyakusho-mae", 680, 152, "r", 1], ["H06", "Kita-13-jo-Higashi", 650, 180, "b"],
-        ["H07", "Sapporo", 300, 180, null, 0, 1]
-      ];
-      stationsLine(sub, "H", tohPts, { title: [800, 18, "end"] });
-      var HS = [
-        ["H09", "Hosui-Susukino", 330, 262, 1], ["H10", "Gakuen-mae", 400, 300, 0], ["H11", "Toyohira-koen", 470, 336, 0],
-        ["H12", "Misono", 540, 372, 0], ["H13", "Tsukisamu-Chuo", 610, 408, 0], ["H14", "Tsukisamu-koen", 680, 444, 0], ["H15", "Fukuzumi", 750, 480, 1]
-      ];
-      var gH2 = el("g", { "data-line": "H", class: "rl" });
-      gH2.appendChild(el("polyline", { points: "300,180 300,208 330,262 400,300 470,336 540,372 610,408 680,444 750,480", fill: "none", stroke: LINES.H.color, "stroke-width": 8, "stroke-linecap": "round", "stroke-linejoin": "round", class: "rl-path" }));
-      HS.forEach(function (p) {
-        gH2.appendChild(el("circle", { cx: p[2], cy: p[3], r: p[4] ? 6 : 4.5, fill: "#fff", stroke: LINES.H.color, "stroke-width": 2.5 }));
-        var t = el("text", { x: p[2] + 12, y: p[3] + 4, class: "st" + (p[4] ? " key" : "") });
-        t.appendChild(el("tspan", { class: "code", fill: LINES.H.color }, p[0] + " "));
-        t.appendChild(document.createTextNode(p[1]));
-        gH2.appendChild(t);
+      // Tozai: Miyanosawa to Odori (stations between are small dots)
+      var TN = [["T01", "Miyanosawa"], ["T02"], ["T03", "Kotoni"], ["T04"], ["T05"], ["T06", "Maruyama-koen"], ["T07"], ["T08"], ["T09", "Odori"]];
+      var tStep = (X - 40) / 8;
+      var tp = TN.map(function (s, i) {
+        var last = i === TN.length - 1;
+        return [s[0], s[1] || "", Math.round(40 + i * tStep), 215, last ? null : (i === 0 ? "bs" : (s[1] ? "t" : null)), s[1] ? 1 : 0, last];
       });
-      sub.appendChild(gH2);
+      stationsLine(map, "T", tp, { title: [20, 185] });
+
+      // Toho: Odori and Sapporo, then east to Kanjodori-Higashi
+      stationsLine(map, "H", [
+        ["H08", "Odori", X, 215, null, 0, 1], ["H07", "Sapporo", X, 170, null, 0, 1],
+        ["H06", "Kita-13-jo-Higashi", 500, 170, "t"], ["H05", "Higashi-Kuyakusho-mae", 610, 170, "b", 1], ["H04", "Kanjodori-Higashi", 720, 170, "t", 1]
+      ], { title: [700, 228] });
+
+      // Namboku: Sapporo south to Makomanai
+      var NS = [["N06", "Sapporo"], ["N07", "Odori"], ["N08", "Susukino"], ["N09", "Nakajima-koen"], ["N10", "Horohirabashi"], ["N11", "Nakanoshima"],
+        ["N12", "Hiragishi"], ["N13", "Minami-Hiragishi"], ["N14", "Sumikawa"], ["N15", "Jieitai-mae"], ["N16", "Makomanai"]];
+      var KEYN = { N08: 1, N16: 1 };
+      var np = NS.map(function (s, i) {
+        var y = i === 0 ? 170 : i === 1 ? 215 : i === 2 ? 262 : i === 10 ? 440 : 262 + 22 * (i - 2);
+        var hub = i < 2;
+        return [s[0], s[1], X, y, hub ? null : "l", KEYN[s[0]], hub];
+      });
+      stationsLine(map, "N", np, { title: [346, 444] });
+
+      // JR lines, all meeting at JR Sapporo
+      var JY = 110;
+      stationsLine(map, "HM", [
+        ["", "Otaru", 60, JY, "t", 1], ["", "Zenibako", 150, JY, "b"], ["", "Teine", 240, JY, "t"], ["", "Sapporo", X, JY, null, 0, 1],
+        ["", "Ebetsu", 480, JY, "t"], ["", "Iwamizawa", 620, JY, "b"], ["", "Bibai", 770, JY, "t", 1]
+      ], { title: [40, 66] });
+      stationsLine(map, "GT", [
+        ["", "Sapporo", X, JY, null, 0, 1], ["", "Royce' Town", 430, 55, "r", 1]
+      ], { title: [430, 32] });
+      stationsLine(map, "CH", [
+        ["", "Sapporo", X, JY, null, 0, 1], ["", "Shin-Sapporo", 420, 225, "r"], ["", "Kita-Hiroshima", 470, 300, "r"],
+        ["", "Chitose", 530, 365, "r"], ["", "New Chitose Airport", 600, 425, "r", 1]
+      ], { title: [620, 396] });
+
+      // underground link between JR Sapporo and the subway station
+      map.appendChild(el("line", { x1: X, y1: JY + 9, x2: X, y2: 161, stroke: "#94a3b8", "stroke-width": 3, "stroke-dasharray": "4 4" }));
+      map.appendChild(el("text", { x: X - 12, y: 150, "text-anchor": "end", class: "note-lbl" }, "Underground link"));
+      var jrl = el("text", { x: X - 12, y: 128, "text-anchor": "end", class: "st key" }); jrl.textContent = "JR Sapporo"; map.appendChild(jrl);
 
       // interchange labels
-      [["N06 / H07", "Sapporo", 300, 170], ["N07 / T09 / H08", "Odori", 300, 228]].forEach(function (x) {
-        var t = el("text", { x: 316, y: x[3], class: "st key hub-lbl" });
+      [["N06 / H07", "Sapporo", 174], ["N07 / T09 / H08", "Odori", 240]].forEach(function (x) {
+        var t = el("text", { x: X - 12, y: x[2], "text-anchor": "end", class: "st key hub-lbl" });
         t.appendChild(el("tspan", { class: "code", fill: "#16294a" }, x[0] + " "));
         t.appendChild(document.createTextNode(x[1]));
-        sub.appendChild(t);
+        map.appendChild(t);
       });
-      // JR connection and streetcar notes
-      sub.appendChild(el("text", { x: 430, y: 170, class: "note-lbl" }, "Underground link to JR Sapporo"));
-      sub.appendChild(el("text", { x: 430, y: 248, class: "note-lbl" }, "Streetcar runs above Odori and Susukino"));
-      // hotel marker near Sapporo
-      var hg = el("g", {});
-      hg.appendChild(el("rect", { x: 20, y: 498, width: 14, height: 14, rx: 3, fill: "#c8372d" }));
-      hg.appendChild(el("text", { x: 42, y: 510, class: "note-lbl" }, "Hotel: Hokke Club Sapporo, between Sapporo (N06/H07) and Odori"));
-      sub.appendChild(hg);
-      var hint = el("text", { x: 20, y: 530, class: "note-lbl" }, "Bold stations are the ones used on this trip.");
-      sub.appendChild(hint);
-    }
 
-    /* ----- JR ----- */
-    var jr = $("#jrMap");
-    if (jr) {
-      jr.innerHTML = "";
-      stationsLine(jr, "HM", [
-        ["", "Otaru", 70, 210, "t", 1], ["", "Zenibako", 140, 210, "b"], ["", "Teine", 240, 210, "t"], ["", "Sapporo", 450, 210, null, 0, 1],
-        ["", "Ebetsu", 590, 210, "t"], ["", "Iwamizawa", 680, 210, "b"], ["", "Bibai", 790, 210, "t", 1]
-      ], { title: [70, 160] });
-      stationsLine(jr, "CH", [
-        ["", "Sapporo", 450, 210, null, 0, 1], ["", "Shin-Sapporo", 500, 270, "r"], ["", "Kita-Hiroshima", 540, 315, "r"],
-        ["", "Chitose", 590, 355, "r"], ["", "New Chitose Airport", 650, 392, "r", 1]
-      ], { title: [330, 410, "end"] });
-      stationsLine(jr, "GT", [
-        ["", "Sapporo", 450, 210, null, 0, 1], ["", "Royce Town", 520, 140, "r", 1], ["", "Ishikari-Tobetsu", 590, 85, "r"]
-      ], { title: [470, 50] });
-      var hub = el("text", { x: 430, y: 240, "text-anchor": "end", class: "st key" });
-      hub.textContent = "JR Sapporo";
-      jr.appendChild(hub);
-      jr.appendChild(el("text", { x: 70, y: 245, class: "note-lbl" }, "Day 6 · Otaru"));
-      jr.appendChild(el("text", { x: 790, y: 245, "text-anchor": "end", class: "note-lbl" }, "Day 10 · Bibai"));
-      jr.appendChild(el("text", { x: 890, y: 414, "text-anchor": "end", class: "note-lbl" }, "Flights · Day 7 Lake Shikotsu (bus from Chitose)"));
-      jr.appendChild(el("text", { x: 634, y: 135, class: "note-lbl" }, "Day 9 · Royce' Chocolate Town"));
+      // day notes
+      map.appendChild(el("text", { x: 60, y: 134, "text-anchor": "middle", class: "note-lbl" }, "Day 6 · Otaru"));
+      map.appendChild(el("text", { x: 770, y: 134, "text-anchor": "middle", class: "note-lbl" }, "Day 10 · Bibai"));
+      map.appendChild(el("text", { x: 442, y: 76, class: "note-lbl" }, "Day 9 · Royce' Chocolate Town"));
+      map.appendChild(el("text", { x: 890, y: 452, "text-anchor": "end", class: "note-lbl" }, "Flights · Day 7 Lake Shikotsu (bus from Chitose)"));
+      map.appendChild(el("text", { x: 20, y: 462, class: "note-lbl" }, "Day 2 Maruyama-koen · Day 3 Miyanosawa · Day 8 Moerenuma, Higashi-Kuyakusho-mae"));
+
+      // hotel marker and legend
+      var hg = el("g", {});
+      hg.appendChild(el("rect", { x: 20, y: 474, width: 14, height: 14, rx: 3, fill: "#c8372d" }));
+      hg.appendChild(el("text", { x: 42, y: 486, class: "note-lbl" }, "Hotel: Hokke Club Sapporo, between Sapporo (N06/H07) and Odori"));
+      map.appendChild(hg);
+      map.appendChild(el("text", { x: 20, y: 508, class: "note-lbl" }, "Bold stations are the ones used on this trip. Each line stops at the last station used."));
     }
 
     /* ----- highlight chips ----- */

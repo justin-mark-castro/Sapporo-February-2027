@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="styles.css?v=24">
 </head>
 <body>
 
@@ -187,16 +187,13 @@
     <header class="section-head rail-head">
       <span class="kicker">鉄道 · Rail</span>
       <h2>Train lines</h2>
-      <p class="lede">Sapporo Subway lines in their map colors, and the JR lines for day trips. Tap a line to highlight it.</p>
+      <p class="lede">Sapporo Subway and JR lines on one map, each cut at the last station you will use. Tap a line to highlight it.</p>
     </header>
     <div class="rail-chips" id="railChips" role="group" aria-label="Highlight a line"></div>
     <figure class="rail-frame">
-      <svg id="subwayMap" viewBox="0 0 900 540" role="img" aria-label="Sapporo subway line diagram"></svg>
+      <svg id="railMap" viewBox="0 0 900 520" role="img" aria-label="Sapporo subway and JR lines, cut at the stations used on this trip"></svg>
     </figure>
-    <figure class="rail-frame">
-      <svg id="jrMap" viewBox="0 0 900 420" role="img" aria-label="JR Hokkaido lines from Sapporo Station"></svg>
-    </figure>
-    <p class="tiny muted rail-note">Schematic, not to scale. Tozai Line shows selected stations only. Subway colors follow the green, orange and blue used on the official map; JR line colors are chosen for this page.</p>
+    <p class="tiny muted rail-note">Schematic, not to scale. Small unlabeled dots on the Tozai Line are stations you pass through. Subway colors follow the green, orange and blue used on the official map; JR line colors are chosen for this page.</p>
   </div>
 </section>
 
@@ -320,7 +317,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="data.js?v=10"></script>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script src="extras.js?v=3"></script>
 <script src="polish.js?v=2"></script>
 <script src="music.js?v=2"></script>
