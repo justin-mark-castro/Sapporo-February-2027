@@ -337,6 +337,7 @@ window.TRIP = {
             "activity": "Otaru day trip",
             "desc": "A historic port town with a stone-warehouse canal, glass shops and fresh sushi.",
             "fact": "The Otaru Canal was completed in 1923 and lined with warehouses, now cafes and shops.",
+            "photo": "assets/otaru.jpg",
             "wiki": "Otaru Canal|Otaru",
             "icon": "train",
             "map": "Otaru Canal",
