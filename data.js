@@ -86,7 +86,7 @@ window.TRIP = {
       "toName": "Sapporo New Chitose",
       "arr": "12:15",
       "aircraft": "Airbus A321neo",
-      "note": "Lands the same day. No activities are planned for Feb 1. Leave Cubao Araneta Center by Grab at 2:30 AM and be at NAIA Terminal 1 by 3:30 AM."
+      "note": "Leave Cubao Araneta Center by Grab at 2:30 AM and be at NAIA Terminal 1 by 3:30 AM, 3 hours before departure. After landing, take the JR Rapid Airport train to Sapporo Station (about 37 min)."
     },
     {
       "code": "PR 405",
@@ -100,10 +100,10 @@ window.TRIP = {
       "toName": "Manila",
       "arr": "18:10",
       "aircraft": "Airbus A321neo",
-      "note": "Arrival time varies by a few minutes between sources. Feb 11 is a flexible day with last-minute Donki shopping. Leave the hotel at 8:45 AM by JR Airport Train and be at the airport by 10:15 AM."
+      "note": "Leave Hotel Hokke Club - Sapporo Station at 8:45 AM on the JR Airport train (about 40 min) and be at New Chitose Airport by 10:15 AM, 3 hours before departure. Arrives in Manila at about 18:10."
     }
   ],
-  flightsNote: "Times follow Philippine Airlines' published Manila-Sapporo schedule for the 2025-26 season. Confirm against your booking.",
+  flightsNote: "Flight times follow Philippine Airlines' published Manila-Sapporo schedule. Confirm them against your booking.",
 
   // Itinerary, grouped by area. Feb 1 is arrival only; Feb 8 and Feb 11 are flexible days (Feb 11 includes last-minute Donki shopping); Feb 12 is departure only.
   // kind: arrival | day | flex | departure. Each day has a title, area, a one-line reason for the grouping, and its stops.
