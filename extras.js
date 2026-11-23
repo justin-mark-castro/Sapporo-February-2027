@@ -163,7 +163,7 @@
     { id: "c:milk", label: CATS.milk.label }, { id: "c:cafe", label: CATS.cafe.label }, { id: "c:curry", label: CATS.curry.label },
     { id: "c:ramen", label: CATS.ramen.label }, { id: "c:genghis", label: CATS.genghis.label }, { id: "c:seafood", label: CATS.seafood.label }, { id: "c:chain", label: CATS.chain.label }, { id: "c:matcha", label: CATS.matcha.label }, { id: "c:local", label: CATS.local.label }
   ];
-  var active = "all";
+  var active = "all", LIMIT = 8, showAll = false;
 
   function mapUrl(q) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
   function renderEat() {
@@ -177,7 +177,9 @@
       var kind = active.charAt(0), key = active.slice(2);
       return kind === "c" ? p.c === key : p.t.indexOf(key) > -1;
     });
-    cnt.textContent = list.length + " of " + PLACES.length + " places";
+    var total = list.length;
+    if (!showAll && list.length > LIMIT) list = list.slice(0, LIMIT);
+    cnt.textContent = (list.length < total ? "Showing " + list.length + " of " + total : total + " of " + PLACES.length) + " places";
     grid.innerHTML = list.map(function (p) {
       var c = CATS[p.c];
       var tags = p.t.map(function (t) { return '<span class="eat-tag eat-' + t + '">' + esc(TAGS[t]) + "</span>"; }).join("");
@@ -187,11 +189,17 @@
         '<div class="eat-foot"><div class="eat-tags"><span class="eat-cat">' + esc(c.label) + "</span>" + tags + "</div>" +
         '<a class="eat-map" href="' + esc(mapUrl(p.q)) + '" target="_blank" rel="noopener">' + ico('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + "Google Maps</a></div></article>";
     }).join("");
+    var more = document.getElementById("eatMore");
+    if (!more) { more = document.createElement("button"); more.id = "eatMore"; more.type = "button"; more.className = "eat-more"; grid.parentNode.insertBefore(more, grid.nextSibling); }
+    more.hidden = total <= LIMIT;
+    more.textContent = showAll ? "Show fewer" : "Show all " + total + " places";
+    more.onclick = function () { showAll = !showAll; renderEat(); if (!showAll) document.getElementById("eat").scrollIntoView(); };
   }
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest(".eat-chip");
     if (!b) return;
     active = b.getAttribute("data-f");
+    showAll = false;
     renderEat();
   });
   renderPrep();
