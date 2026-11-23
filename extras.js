@@ -19,7 +19,7 @@
       body: "The Philippines' free digital arrival and departure declaration. Register at etravel.gov.ph or in the eGovPH app, and show the QR code at check-in.",
       points: [
         "Feb 1 (departing Manila): register within 72 hours before your flight and no later than 3 hours before it. Your 6:30 AM flight means doing it by Jan 31 is safest.",
-        "Feb 12 (arriving Manila, about 18:10): register within the 72 hours before you land, so from about Feb 9.",
+        "Feb 12 (arriving Manila, about 6:10 PM): register within the 72 hours before you land, so from about Feb 9.",
         "It applies to Filipino travellers leaving the country. If you travel on another passport, check the site."
       ],
       note: "It is free. Only use etravel.gov.ph or the official eGovPH app, and never pay anyone for it.",

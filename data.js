@@ -36,7 +36,7 @@ window.TRIP = {
     name: "Hokke Club Sapporo",
     jp: "ホテル法華クラブ札幌",
     address: "Chuo-ku, Kita 2-jo Nishi 3, Sapporo 060-0002",
-    checkIn: "15:00", checkOut: "10:00",
+    checkIn: "3:00 PM", checkOut: "10:00 AM",
     access: "About 5 min on foot from JR Sapporo Station (South Exit) and about 3 min from the Clock Tower. Large public bath on site.",
     nights: "Feb 1 – Feb 12 (11 nights)",
     photo: "assets/hokke-club-hotel.jpg",
@@ -46,7 +46,7 @@ window.TRIP = {
   // Map places. Coordinates are approximate (pin to the area, not the door).
   // day: itinerary day number, 0 = base / not tied to a day.
   places: [
-    { id: "hotel",   name: "Hokke Club Sapporo", jp: "ホテル法華クラブ札幌", lat: 43.0652, lng: 141.3495, day: 0, cat: "hotel", t: "Hotel · check-in 15:00", d: "Your base for all 11 nights, a short walk from JR Sapporo Station." },
+    { id: "hotel",   name: "Hokke Club Sapporo", jp: "ホテル法華クラブ札幌", lat: 43.0652, lng: 141.3495, day: 0, cat: "hotel", t: "Hotel · check-in 3:00 PM", d: "Your base for all 11 nights, a short walk from JR Sapporo Station." },
     { id: "jingu",   name: "Hokkaido Jingu", jp: "北海道神宮", lat: 43.0538, lng: 141.3086, day: 2, cat: "sight", t: "Day 2", d: "Shrine in Maruyama Park, west of the center." },
     { id: "maruyama",name: "Maruyama Park", jp: "円山公園", lat: 43.0545, lng: 141.3180, day: 2, cat: "sight", t: "Day 2", d: "Park next to the shrine. Tozai Line, Maruyama-koen (T06)." },
     { id: "inari",   name: "Hokkaido Fushimi Inari Shrine", jp: "北海道伏見稲荷神社", lat: 43.0345, lng: 141.3235, day: 2, cat: "sight", t: "Day 2", d: "Red torii path on the slope towards Mt. Moiwa." },
@@ -56,7 +56,7 @@ window.TRIP = {
     { id: "buddha",  name: "Hill of the Buddha", jp: "頭大仏", lat: 42.9740, lng: 141.3190, day: 4, cat: "sight", t: "Day 4 · morning", d: "Makomanai Takino Cemetery. Namboku Line to Makomanai, then a bus." },
     { id: "odori",   name: "Odori Park · Snow Festival", jp: "大通公園", lat: 43.0605, lng: 141.3470, day: 4, cat: "fest", t: "Day 4 · afternoon", d: "Main Snow Festival site (Feb 4–11)." },
     { id: "akarenga", name: "Hokkaido Former Government Office (Red Brick)", jp: "北海道庁旧本庁舎（赤れんが庁舎）", lat: 43.0642, lng: 141.3469, day: 4, cat: "sight", t: "Day 4 · afternoon", d: "The red-brick Akarenga building, west of Odori Park." },
-    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 1, cat: "sight", t: "Day 1 · afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
+    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 2, cat: "sight", t: "Day 2 · afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
     { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "First stop of the Day 5 private tour. Next: Shirahige Waterfall, Lonely Christmas Tree, Ningle Terrace." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
@@ -70,7 +70,7 @@ window.TRIP = {
     { id: "ramen",   name: "Ramen Lane (Ganso Yokocho)", jp: "元祖さっぽろラーメン横丁", lat: 43.0546, lng: 141.3534, day: 11, cat: "food", t: "Day 11", d: "Alley of ramen shops in Susukino." },
     { id: "nikka",   name: "Susukino Nikka Sign & Shopping Street", jp: "ススキノ", lat: 43.0556, lng: 141.3538, day: 11, cat: "fest", t: "Day 11 · night", d: "Ice World Susukino runs here in the evening." },
     { id: "donki",   name: "MEGA Don Quijote Tanukikoji", jp: "ドン・キホーテ狸小路", lat: 43.0570, lng: 141.3510, day: 11, cat: "food", t: "Day 11 · flexible", d: "Last-minute shopping. Open 24 hours." },
-    { id: "cts",     name: "New Chitose Airport", jp: "新千歳空港", lat: 42.7752, lng: 141.6923, day: 0, cat: "air", t: "PR 406 / PR 405", d: "Arrive Feb 1 (12:15), depart Feb 12 (13:15). JR Airport Rapid to Sapporo." }
+    { id: "cts",     name: "New Chitose Airport", jp: "新千歳空港", lat: 42.7752, lng: 141.6923, day: 0, cat: "air", t: "PR 406 / PR 405", d: "Arrive Feb 1 (12:15 PM), depart Feb 12 (1:15 PM). JR Airport Rapid to Sapporo." }
   ],
 
   // Flights (Philippine Airlines). Times are local to each airport.
@@ -82,10 +82,10 @@ window.TRIP = {
       "dow": "Mon",
       "from": "MNL",
       "fromName": "Manila",
-      "dep": "06:30",
+      "dep": "6:30 AM",
       "to": "CTS",
       "toName": "Sapporo New Chitose",
-      "arr": "12:15",
+      "arr": "12:15 PM",
       "aircraft": "Airbus A321neo",
       "note": "Leave Cubao Araneta Center by Grab at 2:30 AM and be at NAIA Terminal 1 by 3:30 AM, 3 hours before departure. After landing, take the JR Rapid Airport train to Sapporo Station (about 37 min)."
     },
@@ -96,12 +96,12 @@ window.TRIP = {
       "dow": "Fri",
       "from": "CTS",
       "fromName": "Sapporo New Chitose",
-      "dep": "13:15",
+      "dep": "1:15 PM",
       "to": "MNL",
       "toName": "Manila",
-      "arr": "18:10",
+      "arr": "6:10 PM",
       "aircraft": "Airbus A321neo",
-      "note": "Leave Hotel Hokke Club - Sapporo Station at 8:45 AM on the JR Airport train (about 40 min) and be at New Chitose Airport by 10:15 AM, 3 hours before departure. Arrives in Manila at about 18:10."
+      "note": "Leave Hotel Hokke Club - Sapporo Station at 8:45 AM on the JR Airport train (about 40 min) and be at New Chitose Airport by 10:15 AM, 3 hours before departure. Arrives in Manila at about 6:10 PM."
     }
   ],
   flightsNote: "Flight times follow Philippine Airlines' published Manila-Sapporo schedule. Confirm them against your booking.",
@@ -119,31 +119,17 @@ window.TRIP = {
         "why": "",
         "stops": [
           {
-            "time": "12:15",
+            "time": "12:15 PM",
             "activity": "Arrival · PR 406",
             "desc": "Hokkaido's main gateway airport, with rail service straight to Sapporo.",
             "fact": "The terminal has a hot spring (onsen) inside, handy before a long flight.",
             "wiki": "New Chitose Airport",
-            "prep": ["Leave Cubao Araneta Center by Grab at 2:30 AM", "Be at NAIA Terminal 1 by 3:30 AM (3 hours before the 06:30 departure)"],
+            "prep": ["Leave Cubao Araneta Center by Grab at 2:30 AM", "Be at NAIA Terminal 1 by 3:30 AM (3 hours before the 6:30 AM departure)"],
             "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
-            "notes": "Philippine Airlines PR 406 from Manila (departs 06:30).",
+            "notes": "Philippine Airlines PR 406 from Manila (departs 6:30 AM).",
             "how": "JR Rapid Airport from New Chitose Airport Station (under the terminal) to Sapporo Station, about 37 min, ¥1,150 (reserved seat +¥840, optional). Then about 5 min on foot to the hotel."
-          },
-          {
-            "time": "Afternoon",
-            "activity": "Sapporo Clock Tower",
-            "hours": "8:45–17:10 · confirm winter close",
-            "closed": "Open daily (closed Jan 1–3)",
-            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
-            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
-            "photo": "assets/sapporo-clock-tower.jpg",
-            "wiki": "Sapporo Clock Tower",
-            "icon": "landmark",
-            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
-            "notes": "Visit after dropping bags at the hotel, about 3 min on foot. Arrive before the 17:10 closing time.",
-            "how": "About 3 min on foot from Hokke Club Sapporo. Also a short walk from Odori Station."
           }
         ]
       },
@@ -154,12 +140,12 @@ window.TRIP = {
         "kind": "day",
         "title": "Southwest Sapporo",
         "area": "Maruyama · Mt. Moiwa",
-        "why": "Four stops on the southwest side, a short ride apart. A quiet day before the festival opens.",
+        "why": "Five stops on the west and central side, a short ride apart. A quiet day before the festival opens.",
         "stops": [
           {
             "time": "Morning",
             "activity": "Hokkaido Jingu",
-            "hours": "7:00–16:00 (winter)",
+            "hours": "7:00 AM–4:00 PM (winter)",
             "closed": "Open daily",
             "desc": "Hokkaido's most important Shinto shrine, set in forest at the foot of Mt. Maruyama.",
             "fact": "Founded in 1869; it took the name Hokkaido Jingu in 1964, when Emperor Meiji was enshrined there.",
@@ -187,6 +173,20 @@ window.TRIP = {
           },
           {
             "time": "Afternoon",
+            "activity": "Sapporo Clock Tower",
+            "hours": "8:45 AM–5:10 PM · confirm winter close",
+            "closed": "Open daily (closed Jan 1–3)",
+            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
+            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
+            "photo": "assets/sapporo-clock-tower.jpg",
+            "wiki": "Sapporo Clock Tower",
+            "icon": "landmark",
+            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
+            "notes": "Stop here between Maruyama and the afternoon shrine and ropeway. Arrive before the 5:10 PM closing time.",
+            "how": "Tozai Line from Maruyama-koen to Odori Station, then a short walk. About 3 min on foot from Hokke Club Sapporo."
+          },
+          {
+            "time": "Afternoon",
             "activity": "Hokkaido Fushimi Inari Shrine",
             "hours": "Open 24 h",
             "closed": "Open daily",
@@ -202,7 +202,7 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Mt. Moiwa Ropeway",
-            "hours": "11:00–22:00 · last up 21:30",
+            "hours": "11:00 AM–10:00 PM · last up 9:30 PM",
             "closed": "Open daily (weather may halt)",
             "desc": "A ropeway and mini cable car up Mt. Moiwa for a panoramic view over Sapporo.",
             "fact": "Sapporo's night view is ranked among Japan's New Three Great Night Views.",
@@ -211,7 +211,7 @@ window.TRIP = {
             "icon": "mountain",
             "location": "Fushimi, Chuo-ku",
             "notes": "Go up around sunset for the night view. Check ropeway operating days and the last ride up.",
-            "how": "Streetcar to Ropeway-iriguchi (about 20 to 25 min from Susukino or Nishi 4-chome, about ¥230), then the free shuttle bus (5 min, every 15 min; weekday service starts 17:15) or walk uphill about 10 min."
+            "how": "Streetcar to Ropeway-iriguchi (about 20 to 25 min from Susukino or Nishi 4-chome, about ¥230), then the free shuttle bus (5 min, every 15 min; weekday service starts 5:15 PM) or walk uphill about 10 min."
           }
         ]
       },
@@ -228,7 +228,7 @@ window.TRIP = {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
             "book": {"url": "https://wonderlandsapporo.com/", "label": "Reserve"},
-            "hours": "9:00–17:00",
+            "hours": "9:00 AM–5:00 PM",
             "closed": "Open daily",
             "desc": "A guided snowmobile ride across a snowfield on the west edge of the city.",
             "fact": "Sapporo gets close to 5 metres of snow a year, so February is prime riding season.",
@@ -242,7 +242,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Shiroi Koibito Park",
-            "hours": "~10:00–18:00 · confirm",
+            "hours": "~10:00 AM–6:00 PM · confirm",
             "closed": "Open daily",
             "desc": "A chocolate factory theme park with a Tudor-style building, a factory viewing area and sweets.",
             "fact": "The name means 'White Lover'; the cookie first went on sale in 1976.",
@@ -267,14 +267,14 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hill of the Buddha",
-            "hours": "Great Buddha Hall 10:00–15:00",
+            "hours": "Great Buddha Hall 10:00 AM–3:00 PM",
             "desc": "A giant Buddha statue rising out of a lavender-covered mound, designed by architect Tadao Ando.",
             "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
             "photo": "assets/hill-of-the-buddha.jpg",
             "wiki": "Hill of the Buddha",
             "icon": "temple",
             "location": "Makomanai Takino Cemetery, Minami-ku",
-            "notes": "Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early.",
+            "notes": "Great Buddha Hall is open 10:00 AM to 3:00 PM from Nov to Mar, so leave early.",
             "how": "Subway Namboku Line (Sapporo to Makomanai, N16), then Chuo Bus 108 (about 23 min)."
           },
           {
@@ -292,7 +292,7 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Former Government Office (Red Brick Building)",
-            "hours": "8:45–18:00",
+            "hours": "8:45 AM–6:00 PM",
             "closed": "Open daily (closed New Year)",
             "desc": "A red brick government building in American Neo-Baroque style, free to walk through.",
             "fact": "Completed in 1888, it served as the Hokkaido government office for decades.",
@@ -306,7 +306,7 @@ window.TRIP = {
           {
             "time": "Dusk",
             "activity": "Sapporo TV Tower",
-            "hours": "9:00–22:00 · last entry 21:50",
+            "hours": "9:00 AM–10:00 PM · last entry 9:50 PM",
             "closed": "Open daily",
             "desc": "A tower at the east end of Odori Park with an observation deck over the lit-up park.",
             "fact": "Opened in 1957, it stands about 147 m tall.",
@@ -331,7 +331,7 @@ window.TRIP = {
           {
             "time": "Stop 1",
             "activity": "Asahiyama Zoo",
-            "hours": "10:30–15:30 · last entry 15:00",
+            "hours": "10:30 AM–3:30 PM · last entry 3:00 PM",
             "closed": "Open daily",
             "desc": "Japan's northernmost zoo, in Asahikawa. The first stop of the private tour.",
             "fact": "Asahiyama Zoo runs a winter penguin walk, where penguins stroll across the snow.",
@@ -369,7 +369,7 @@ window.TRIP = {
           {
             "time": "Stop 4",
             "activity": "Ningle Terrace",
-            "hours": "12:00–20:45 (winter)",
+            "hours": "12:00 PM–8:45 PM (winter)",
             "closed": "Open daily · some shops have irregular days off",
             "desc": "A small village of log cabins with craft shops and cafes in the forest, next to the New Furano Prince Hotel.",
             "fact": "In winter the walkways and cabins are lit with fairy lights at night.",
@@ -487,7 +487,7 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Moerenuma Park",
-            "hours": "Park 7:00–22:00",
+            "hours": "Park 7:00 AM–10:00 PM",
             "closed": "Open daily (facilities keep own days off)",
             "desc": "A giant sculpted park built on a former waste site, with hills, fountains and a play area.",
             "fact": "Designed by sculptor Isamu Noguchi; it opened in 2005, after his death in 1988.",
@@ -501,7 +501,7 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Glass Pyramid HIDAMARI",
-            "hours": "~9:00–17:00 (winter)",
+            "hours": "~9:00 AM–5:00 PM (winter)",
             "closed": "Check: may close 1st Monday of month",
             "desc": "A glass pyramid at the park's centre with a cafe, shops and a restaurant.",
             "fact": "'Hidamari' means a sunny spot, which suits a glass pyramid on a winter day.",
@@ -514,7 +514,7 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Beer Garden Museum",
-            "hours": "11:00–18:00 · last entry 17:30",
+            "hours": "11:00 AM–6:00 PM · last entry 5:30 PM",
             "closed": "Closed Mondays",
             "closedDow": ["Mon"],
             "desc": "A red brick former brewery with museum displays, a beer hall and a Genghis Khan lamb grill.",
@@ -523,7 +523,7 @@ window.TRIP = {
             "wiki": "Sapporo Beer Museum",
             "icon": "beer",
             "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
-            "notes": "Museum is open 11:00 to 18:00 (last entry 17:30) and closed Mondays. Today is a Tuesday.",
+            "notes": "Museum is open 11:00 AM to 6:00 PM (last entry 5:30 PM) and closed Mondays. Today is a Tuesday.",
             "how": "Toho Line to Higashi-Kuyakusho-mae (2 stops from Sapporo), about 10 min on foot. Or Loop 88 Factory Line bus from Sapporo Station (south side) or Odori, or Bus 188 from the station's North Exit."
           }
         ]
@@ -540,14 +540,14 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Bibai Snowland",
-            "hours": "Season Dec 10–Mar 22 · last shuttle back ~15:30",
+            "hours": "Season Dec 10–Mar 22 · last shuttle back ~3:30 PM",
             "closed": "Open daily in season",
             "desc": "A snow play area with slides, tubing and a winter wonderland feel, northeast of Sapporo.",
             "fact": "Bibai was once a coal-mining city and is now known for its snowland and yakitori.",
             "photo": "assets/bibai-snowland.jpg",
             "icon": "snow",
             "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
-            "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours.",
+            "notes": "Last season ran Dec 6 to Mar 22, 9:00 AM to 4:15 PM (last entry 3:00 PM). Confirm the 2026-27 dates and hours.",
             "how": "JR Hakodate Main Line from Sapporo to Bibai Station, then the shuttle. Check the timetable the day before."
           }
         ]
@@ -564,7 +564,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Nijo Market: king crab and seafood bowl",
-            "hours": "~7:00–18:00 (shops vary)",
+            "hours": "~7:00 AM–6:00 PM (shops vary)",
             "closed": "Open daily · stalls set own days off",
             "desc": "A lively seafood market where you can eat fresh crab, uni and ikura rice bowls.",
             "fact": "Hokkaido king crab, snow crab and hairy crab are all sold here.",
@@ -578,7 +578,7 @@ window.TRIP = {
           {
             "time": "Late morning",
             "activity": "Hokkaido milk soft-serve and ice cream",
-            "hours": "Yukijirushi Parlor 10:00–19:00 · last order 18:30",
+            "hours": "Yukijirushi Parlor 10:00 AM–7:00 PM · last order 6:30 PM",
             "closed": "Open daily",
             "desc": "Soft serve and ice cream made with Hokkaido milk.",
             "fact": "Hokkaido makes about half of Japan's raw milk, which is why the dairy is so rich.",
@@ -592,7 +592,7 @@ window.TRIP = {
           {
             "time": "Lunch",
             "activity": "Soup curry",
-            "hours": "Garaku lunch 11:30–15:30",
+            "hours": "Garaku lunch 11:30 AM–3:30 PM",
             "closed": "Irregular days off · expect a queue",
             "desc": "A spicy, spice-heavy curry served as a soup, loaded with vegetables and chicken.",
             "fact": "Soup curry was born in Sapporo in the 1970s.",
@@ -645,7 +645,7 @@ window.TRIP = {
           {
             "time": "Night",
             "activity": "Ice World Susukino",
-            "hours": "2027 hours TBA (past years until 23:00)",
+            "hours": "2027 hours TBA (past years until 11:00 PM)",
             "desc": "The Snow Festival's Susukino site, with illuminated ice sculptures along the main street.",
             "fact": "Many of the sculptures are carved by hand from huge blocks of ice.",
             "photo": "assets/ice-world-susukino.jpg",
@@ -653,7 +653,7 @@ window.TRIP = {
             "icon": "snow",
             "map": "Susukino Ice World, Sapporo",
             "location": "Ekimae-dori, Minami 4-jo to 6-jo",
-            "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 23:00 (22:00 on the final day). 2027 hours come out in mid-December.",
+            "notes": "Snow Festival's last day. Past years' ice sculptures were lit until 11:00 PM (10:00 PM on the final day). 2027 hours come out in mid-December.",
             "how": "Susukino Station (Namboku Line, N08). Walk home or take the Namboku Line one or two stops north."
           }
         ]
@@ -665,20 +665,20 @@ window.TRIP = {
         "kind": "departure",
         "title": "Departure · PR 405",
         "area": "New Chitose Airport",
-        "why": "Departure day with no activities planned. The flight leaves at 13:15.",
+        "why": "Departure day with no activities planned. The flight leaves at 1:15 PM.",
         "stops": [
           {
-            "time": "Departs 13:15",
+            "time": "Departs 1:15 PM",
             "activity": "Departure · PR 405",
             "desc": "The way home: the airport train goes straight from Sapporo Station to the terminal.",
             "fact": "Special Rapid trains make the trip in about 33 minutes.",
             "wiki": "New Chitose Airport",
-            "prep": ["Leave Hotel Hokke Club - Sapporo Station at 8:45 AM via JR Airport Train (about 40 min)", "Be at New Chitose Airport (CTS) by 10:15 AM (3 hours before the 13:15 departure)"],
+            "prep": ["Leave Hotel Hokke Club - Sapporo Station at 8:45 AM via JR Airport Train (about 40 min)", "Be at New Chitose Airport (CTS) by 10:15 AM (3 hours before the 1:15 PM departure)"],
             "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
-            "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). Leave Sapporo in the morning for the airport; check-out is 10:00.",
-            "how": "JR Rapid Airport from Sapporo Station to New Chitose Airport, about 37 min, ¥1,150 (Special Rapid about 33 min). Aim for a train around 9:15 so you reach the airport before 10:15."
+            "notes": "Philippine Airlines PR 405 to Manila (arrives about 6:10 PM). Leave Sapporo in the morning for the airport; check-out is 10:00 AM.",
+            "how": "JR Rapid Airport from Sapporo Station to New Chitose Airport, about 37 min, ¥1,150 (Special Rapid about 33 min). Aim for a train around 9:15 AM so you reach the airport before 10:15 AM."
           }
         ]
       }
@@ -687,52 +687,52 @@ window.TRIP = {
   // Sunrise and sunset in Sapporo (local time), from the National Astronomical Observatory of Japan.
   sun: {
   "2027-02-01": {
-    "rise": "06:50",
-    "set": "16:46"
+    "rise": "6:50 AM",
+    "set": "4:46 PM"
   },
   "2027-02-02": {
-    "rise": "06:49",
-    "set": "16:48"
+    "rise": "6:49 AM",
+    "set": "4:48 PM"
   },
   "2027-02-03": {
-    "rise": "06:48",
-    "set": "16:49"
+    "rise": "6:48 AM",
+    "set": "4:49 PM"
   },
   "2027-02-04": {
-    "rise": "06:47",
-    "set": "16:50"
+    "rise": "6:47 AM",
+    "set": "4:50 PM"
   },
   "2027-02-05": {
-    "rise": "06:46",
-    "set": "16:52"
+    "rise": "6:46 AM",
+    "set": "4:52 PM"
   },
   "2027-02-06": {
-    "rise": "06:45",
-    "set": "16:53"
+    "rise": "6:45 AM",
+    "set": "4:53 PM"
   },
   "2027-02-07": {
-    "rise": "06:44",
-    "set": "16:54"
+    "rise": "6:44 AM",
+    "set": "4:54 PM"
   },
   "2027-02-08": {
-    "rise": "06:42",
-    "set": "16:56"
+    "rise": "6:42 AM",
+    "set": "4:56 PM"
   },
   "2027-02-09": {
-    "rise": "06:41",
-    "set": "16:57"
+    "rise": "6:41 AM",
+    "set": "4:57 PM"
   },
   "2027-02-10": {
-    "rise": "06:40",
-    "set": "16:58"
+    "rise": "6:40 AM",
+    "set": "4:58 PM"
   },
   "2027-02-11": {
-    "rise": "06:39",
-    "set": "17:00"
+    "rise": "6:39 AM",
+    "set": "5:00 PM"
   },
   "2027-02-12": {
-    "rise": "06:37",
-    "set": "17:01"
+    "rise": "6:37 AM",
+    "set": "5:01 PM"
   }
 },
 
@@ -788,7 +788,7 @@ window.TRIP = {
         "ends": "Feb 11, 2027",
         "onDates": "Yes",
         "where": "Ekimae-dori, Minami 4-jo to 6-jo",
-        "note": "The Snow Festival's Susukino site. Past years lit until 23:00 (22:00 on the last day); 2027 hours due mid-December"
+        "note": "The Snow Festival's Susukino site. Past years lit until 11:00 PM (10:00 PM on the last day); 2027 hours due mid-December"
       },
       {
         "name": "Bibai Snowland",
