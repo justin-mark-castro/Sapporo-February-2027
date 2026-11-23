@@ -3,8 +3,8 @@
   "use strict";
   var VOL = 0.35, FADE_IN = 1.5, FADE_OUT = 2;
   var KEY = "sapporoBgmMuted";
-  var muted = false;
-  try { muted = localStorage.getItem(KEY) === "1"; } catch (e) {}
+  var muted = true; // off by default; the visitor opts in with the button
+  try { muted = localStorage.getItem(KEY) !== "0"; } catch (e) {}
 
   var audio = new Audio("assets/bgm.mp3");
   audio.preload = "auto";

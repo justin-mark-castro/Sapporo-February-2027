@@ -93,7 +93,7 @@
     var wrap = $(".countdown");
     if (d > 0) {
       $("#cdDays").textContent = d;
-      $("#cdHours").textContent = (d / 7).toFixed(1);
+      $("#cdHours").textContent = Math.floor(d / 7);
       $("#cdMins").textContent = totalDays;
     } else if (t <= endD) {
       wrap.innerHTML = '<div><b>Day ' + (dayDiff(startD, t) + 1) + '</b><small>of ' + totalDays + ' · enjoy Sapporo</small></div>';

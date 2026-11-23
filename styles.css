@@ -569,3 +569,98 @@ h4.stop-title{margin:0}
 
 .prep-ico.has-img{background:none;overflow:hidden}
 .prep-ico.has-img img{width:44px;height:44px;object-fit:contain;border-radius:10px;display:block}
+
+/* =========================================================
+   UX AUDIT PASS (Nov 2026): readability, tap targets, mobile
+   ========================================================= */
+:root{--muted:#5b6070}              /* AA contrast on cream backgrounds */
+html{font-size:15px}
+@media (max-width:560px){html{font-size:15px}}   /* was 13.5px: everything shrank on phones */
+
+/* minimum sizes for the smallest labels */
+.tiny{font-size:.8rem}
+.stat label,.bud-cell small,.donut-center small,.countdown small{font-size:.76rem}
+.day-date .dn,.stop-time,.eat-cat,.eat-tag,.table th,.climate-row .val small,.prep-when,.events .on{font-size:.74rem}
+.day-date .dw,.eat-area,.fl-end small,.flight-top small,.fx-code small,.type-legend li,.chip{font-size:.78rem}
+.stop-photo figcaption{font-size:.7rem}
+.stop-fact,.prep-note,.eat-desc,.stop-desc,.map-link,.eat-map{font-size:.88rem}
+.stop-fact{line-height:1.45}
+
+/* stat tiles: keep text above the decorative circle */
+.stat>*{position:relative;z-index:1}
+
+/* bigger, easier tap targets */
+.map-link{min-height:44px;margin-top:0;padding:0 2px}
+.prep-link{padding:12px 0;border-bottom:0;text-decoration:underline;text-underline-offset:3px}
+.eat-map{min-height:40px;padding:0 14px}
+.eat-chip,.map-chips button,.rail-chips button,.quick button{min-height:40px}
+.check{min-height:44px}
+.check input[type=checkbox]{width:22px;height:22px}
+.mini{min-height:40px}
+.seg button{min-height:40px}
+@media (pointer:coarse){
+  .eat-chip,.map-chips button,.rail-chips button,.quick button,.seg button,.eat-map{min-height:44px}
+  .eat-chips,.map-chips,.rail-chips{gap:8px}
+}
+
+/* countdown: friendlier labels */
+.countdown small{letter-spacing:.1em}
+
+/* "Next up" card under the hero */
+.nextup{position:relative;z-index:3;margin:-44px auto 0;max-width:720px;padding:0 20px}
+.nextup-card{display:flex;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--beni);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow);text-decoration:none;color:inherit}
+.nextup-card small{display:block;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--beni)}
+.nextup-card b{display:block;font-family:var(--serif);font-size:1.1rem;color:var(--ai);line-height:1.25}
+.nextup-card span{font-size:.88rem;color:var(--ink-2)}
+.nextup-card .go{margin-left:auto;font-weight:700;color:var(--ai-2);white-space:nowrap}
+.nextup+main .section:first-child{padding-top:56px}
+
+/* collapsible days */
+.timeline-tools{display:flex;gap:8px;margin:0 0 14px}
+.timeline-tools button,.day-toggle{font:inherit;font-weight:600;font-size:.88rem;color:var(--ai);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.day-toggle{margin-top:12px;width:100%;justify-content:space-between;border-radius:12px;background:var(--washi)}
+.day-toggle::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
+.day-toggle[aria-expanded="true"]::after{transform:rotate(-135deg)}
+.day-toggle:focus-visible,.timeline-tools button:focus-visible{outline:2px solid var(--ai-2);outline-offset:2px}
+.day-body.collapsed .stops,.day-body.collapsed .collapsible{display:none}
+@media print{.day-body.collapsed .stops,.day-body.collapsed .collapsible{display:block}.day-toggle,.timeline-tools,.eat-more,.nextup{display:none}}
+
+/* Eat: show more */
+.eat-more{display:flex;margin:18px auto 0;font:inherit;font-weight:700;color:var(--ai);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 24px;min-height:48px;align-items:center;cursor:pointer;box-shadow:var(--shadow)}
+
+/* rail diagrams: swipe hint */
+.swipe-hint{display:none;margin:0 0 6px;font-size:.8rem;color:var(--muted)}
+.rail-frame svg{min-width:720px}
+
+/* ---- phone layout ---- */
+@media (max-width:640px){
+  .nav{padding:4px 6px;padding-top:calc(4px + env(safe-area-inset-top))}
+  .brand{display:none}
+  .nav-links{grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+  .nav-links a{padding:7px 0;font-size:.68rem;min-height:48px}
+  .nav-links a span{font-size:10.5px;letter-spacing:0}
+  .hero{min-height:500px;padding-top:36px}
+  .hero-sun{top:44px}
+  .hero-inner{padding-bottom:92px}
+  .countdown{gap:8px}
+  .countdown div{min-width:0;flex:1;padding:10px 8px}
+  .countdown b{font-size:1.7rem}
+  .swipe-hint{display:block}
+  .nextup{margin-top:-36px;padding:0 14px}
+  .nextup-card{padding:12px 14px}
+  .section{padding:52px 0}
+  .bgm-btn{width:40px;height:40px;opacity:.85;bottom:calc(10px + env(safe-area-inset-bottom))}
+}
+@media (max-width:560px){
+  /* day date becomes a compact sticky pill instead of a 70px side column */
+  .day{grid-template-columns:minmax(0,1fr);gap:8px}
+  .timeline::before{display:none}
+  .day-date{display:flex;gap:8px;align-items:baseline;justify-content:flex-start;width:max-content;padding:6px 14px;border-radius:999px;position:sticky;top:60px;z-index:5}
+  .day-date .dd{font-size:1.1rem}
+  .day-date .dn,.day-date .dw{font-size:.74rem}
+  .day-date .dd::before{content:"· ";color:var(--line)}
+  .day-body{padding:14px 14px}
+  .stop-photo{width:84px}
+}
+.glance small{font-size:.74rem}
+.countdown small{letter-spacing:.04em;font-size:.72rem}
