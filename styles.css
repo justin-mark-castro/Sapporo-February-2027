@@ -54,7 +54,9 @@ a{color:inherit}
   color:rgba(255,255,255,.78);white-space:nowrap;transition:.2s;
 }
 .nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.12);color:#fff}
-.nav-ico{display:none}
+.nav-links a{display:inline-flex;align-items:center;gap:8px}
+.nav-ico{display:block;width:18px;height:18px;flex:none}
+.nav-links a.active .nav-ico{color:#ff8a7a}
 
 /* ---------- hero ---------- */
 .hero{
