@@ -172,6 +172,7 @@ window.TRIP = {
             "activity": "Hokkaido Fushimi Inari Shrine",
             "desc": "A small hillside shrine with a path of red torii gates, modelled on Kyoto's famous Fushimi Inari.",
             "fact": "Walk through 27 torii gates, which look striking against snow.",
+            "photo": "assets/fushimi-inari.jpg",
             "commons": {"q": "Hokkaido Fushimi Inari Shrine Sapporo", "must": ["inari", "sapporo|hokkaido"]},
             "icon": "shrine",
             "location": "Mt. Moiwa slope, Chuo-ku",
