@@ -563,6 +563,8 @@ h4.stop-title{margin:0}
 .eat-card h3{margin:0;font-family:var(--serif);font-size:1rem;line-height:1.25;color:var(--sumi)}
 .eat-area{margin:2px 0 0;font-size:.76rem;color:var(--ai-2);font-weight:600}
 .eat-desc{margin:0;font-size:.86rem;color:var(--ink-2);flex:1}
+.eat-hours{margin:0;display:flex;gap:6px;align-items:flex-start;font-size:.8rem;color:var(--ink-2)}
+.eat-hours svg{width:14px;height:14px;flex:none;margin-top:2px}
 .eat-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 .eat-tags{display:flex;flex-wrap:wrap;gap:5px}
 .eat-cat,.eat-tag{font-size:.66rem;font-weight:700;padding:3px 8px;border-radius:999px;background:#eee8d8;color:#5a5340}

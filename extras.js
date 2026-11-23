@@ -78,6 +78,24 @@
   };
   var TAGS = { milk: "Hokkaido milk", icecream: "Ice cream", specialty: "Hokkaido specialty", otaru: "Otaru day trip" };
 
+  var CLOCK = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>';
+  var HOURS = {
+    "Sapporo Agricultural College Rakuno Milk Soft": "Mall hours, about 10:00 AM – 8:00 PM (confirm)",
+    "Yukijirushi (Snow Brand) Parlor, Main Store": "10:00 AM – 7:00 PM, open daily",
+    "Maruyama Gelato No.24 HACO": "11:00 AM – 5:00 PM, closed Mon",
+    "UMIERE": "11:00 AM – 7:00 PM (confirm)",
+    "Milk Stand Hokkaido Kono Sha": "8:00 AM – 8:00 PM",
+    "Milk & Parfait Yotsuba White Cosy": "11:00 AM – 10:00 PM, follows Paseo holidays",
+    "Noymond Organic Cafe": "Varies by branch, confirm on Maps",
+    "Morihiko (Main Store)": "10:00 AM – 7:00 PM, closed New Year",
+    "Atelier Morihiko": "8:00 AM – 8:00 PM (confirm)",
+    "Saera": "10:00 AM – 6:00 PM, closed Wed",
+    "Kitakaro Sapporo Honkan": "10:00 AM – 6:00 PM (confirm)",
+    "Yukijirushi Parlor (matcha affogato)": "10:00 AM – 7:00 PM, open daily",
+    "Hokkaido Shiki Marche (Stellar Place)": "Mall hours, about 10:00 AM – 8:00 PM (confirm)"
+  };
+  var HOURS_FALLBACK = "Hours vary, check Google Maps";
+
   function P(n, c, a, d, tags, q) { return { n: n, c: c, a: a, d: d, t: tags || [], q: q || n + " Sapporo" }; }
   var PLACES = [
     P("Sapporo Agricultural College Rakuno Milk Soft", "milk", "Sapporo Station · Stellar Place", "Soft serve made with pasture-raised Hokkaido milk, topped with a crisp milk cookie.", ["milk", "icecream"], "Sapporo Agricultural College Rakuno Milk Soft Stellar Place Sapporo"),
@@ -186,6 +204,7 @@
       return '<article class="eat-card" style="--c:' + c.color + '">' +
         '<div class="eat-top"><span class="eat-ico" title="' + esc(c.label) + '">' + ico(c.path) + '</span><div><h3>' + esc(p.n) + '</h3><p class="eat-area">' + esc(p.a) + "</p></div></div>" +
         '<p class="eat-desc">' + esc(p.d) + "</p>" +
+        '<p class="eat-hours">' + ico(CLOCK) + esc(HOURS[p.n] || HOURS_FALLBACK) + "</p>" +
         '<div class="eat-foot"><div class="eat-tags"><span class="eat-cat">' + esc(c.label) + "</span>" + tags + "</div>" +
         '<a class="eat-map" href="' + esc(mapUrl(p.q)) + '" target="_blank" rel="noopener">' + ico('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + "Google Maps</a></div></article>";
     }).join("");
