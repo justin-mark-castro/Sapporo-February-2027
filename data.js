@@ -427,6 +427,7 @@ window.TRIP = {
             "activity": "Moerenuma Park",
             "desc": "A giant sculpted park built on a former waste site, with hills, fountains and a play area.",
             "fact": "Designed by sculptor Isamu Noguchi; it opened in 2005, after his death in 1988.",
+            "photo": "assets/moerenuma-park.jpg",
             "wiki": "Moerenuma Park",
             "icon": "nature",
             "location": "Higashi-ku",
