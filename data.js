@@ -39,6 +39,7 @@ window.TRIP = {
     checkIn: "15:00", checkOut: "10:00",
     access: "About 5 min on foot from JR Sapporo Station (South Exit) and about 3 min from the Clock Tower. Large public bath on site.",
     nights: "Feb 1 – Feb 12 (11 nights)",
+    photo: "assets/hokke-club-hotel.jpg",
     lat: 43.0652, lng: 141.3495
   },
 
