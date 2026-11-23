@@ -251,7 +251,7 @@
   }
   function stopExtras(s) {
     var h = "";
-    if (s.wiki) h += '<figure class="stop-photo" hidden><img data-wiki="' + esc(s.wiki) + '" alt="' + esc(s.activity) + '" loading="lazy"><figcaption></figcaption></figure>';
+    if (s.wiki || s.commons) h += '<figure class="stop-photo" hidden><img ' + (s.wiki ? 'data-wiki="' + esc(s.wiki) + '"' : "") + (s.commons ? ' data-commons="' + esc(JSON.stringify(s.commons)) + '"' : "") + ' alt="' + esc(s.activity) + '" loading="lazy"><figcaption></figcaption></figure>';
     if (s.desc) h += '<p class="stop-desc">' + esc(s.desc) + "</p>";
     if (s.fact) h += '<p class="stop-fact"><b>Fact:</b> ' + esc(s.fact) + "</p>";
     return h;
@@ -271,13 +271,38 @@
       }).catch(function () { return null; });
       return cache[q];
     }
-    document.querySelectorAll("img[data-wiki]").forEach(function (img) {
-      fetchPhoto(img.getAttribute("data-wiki")).then(function (r) {
+    function plain(h) { var d = document.createElement("div"); d.innerHTML = h || ""; return (d.textContent || "").trim(); }
+    function fetchCommons(c) {
+      var key = "c:" + c.q;
+      if (cache[key]) return cache[key];
+      var url = "https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrlimit=15&gsrsearch=" + encodeURIComponent(c.q) + "&prop=imageinfo&iiprop=url|mime|extmetadata&iiurlwidth=640";
+      cache[key] = fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+        var pages = (j.query && j.query.pages) || {};
+        var list = Object.keys(pages).map(function (k) { return pages[k]; }).sort(function (a, b) { return (a.index || 0) - (b.index || 0); });
+        for (var i = 0; i < list.length; i++) {
+          var p = list[i], ii = p.imageinfo && p.imageinfo[0];
+          if (!ii || !/^image\/(jpeg|png)$/.test(ii.mime) || !ii.thumburl) continue;
+          var t = p.title.toLowerCase();
+          var ok = (c.must || []).every(function (m) { return m.split("|").some(function (w) { return t.indexOf(w) > -1; }); });
+          if (!ok) continue;
+          var md = ii.extmetadata || {};
+          return { src: ii.thumburl, page: ii.descriptionurl, title: p.title.replace(/^File:/, ""), artist: plain(md.Artist && md.Artist.value), license: plain(md.LicenseShortName && md.LicenseShortName.value), commons: true };
+        }
+        return null;
+      }).catch(function () { return null; });
+      return cache[key];
+    }
+    document.querySelectorAll("img[data-wiki], img[data-commons]").forEach(function (img) {
+      var w = img.getAttribute("data-wiki"), cm = img.getAttribute("data-commons");
+      var first = w ? fetchPhoto(w) : Promise.resolve(null);
+      first.then(function (r) { return r || (cm ? fetchCommons(JSON.parse(cm)) : null); }).then(function (r) {
         if (!r) return;
         img.onload = function () { img.parentNode.hidden = false; };
         img.src = r.src;
         var cap = img.parentNode.querySelector("figcaption");
-        if (cap) cap.innerHTML = 'Photo: <a href="' + esc(r.page) + '" target="_blank" rel="noopener">Wikipedia · ' + esc(r.title) + "</a>";
+        if (cap) cap.innerHTML = r.commons
+          ? 'Photo: <a href="' + esc(r.page) + '" target="_blank" rel="noopener">' + esc(r.artist || "Wikimedia Commons") + (r.license ? " · " + esc(r.license) : "") + " · Wikimedia Commons</a>"
+          : 'Photo: <a href="' + esc(r.page) + '" target="_blank" rel="noopener">Wikipedia · ' + esc(r.title) + "</a>";
       });
     });
   }
