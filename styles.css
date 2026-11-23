@@ -700,3 +700,14 @@ html{font-size:14px}
 .ck-map{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ai)}
 .ck-map svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
 .legend-chips[hidden],.type-legend[hidden]{display:none}
+
+.hrs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.hrs span{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;line-height:1.2;padding:3px 9px;border-radius:999px;border:1px solid;font-weight:600}
+.hrs svg{width:12px;height:12px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hrs .h-time{background:#f1f5f9;color:#34495e;border-color:#d6dee6}
+.hrs .h-open{background:#eaf6ee;color:#1f6b3a;border-color:#c2e2cd}
+.hrs .h-warn{background:#fff4e0;color:#8a5a00;border-color:#f0d9a8}
+.hrs .h-closed{background:#fdecea;color:#a3261b;border-color:#f1c2bd}
+.hrs .h-clash{background:#a3261b;color:#fff;border-color:#a3261b}
+.ck-text .hrs{margin:4px 0 0}
+.ck-text .hrs span{font-size:.7rem;padding:2px 7px}

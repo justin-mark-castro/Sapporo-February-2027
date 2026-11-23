@@ -145,6 +145,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hokkaido Jingu",
+            "hours": "7:00–16:00 (winter)",
+            "closed": "Open daily",
             "desc": "Hokkaido's most important Shinto shrine, set in forest at the foot of Mt. Maruyama.",
             "fact": "Founded in 1869; it took the name Hokkaido Jingu in 1964, when Emperor Meiji was enshrined there.",
             "photo": "assets/hokkaido-jingu.jpg",
@@ -157,6 +159,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Maruyama Park",
+            "hours": "Open all day",
+            "closed": "Open daily",
             "desc": "A quiet park beside the shrine, lovely under fresh snow.",
             "fact": "Maruyama Zoo sits right next door and is known for its polar bears.",
             "photo": "assets/maruyama-park.jpg",
@@ -170,6 +174,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Fushimi Inari Shrine",
+            "hours": "Open 24 h",
+            "closed": "Open daily",
             "desc": "A small hillside shrine with a path of red torii gates, modelled on Kyoto's famous Fushimi Inari.",
             "fact": "Walk through 27 torii gates, which look striking against snow.",
             "photo": "assets/fushimi-inari.jpg",
@@ -182,6 +188,8 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Mt. Moiwa Ropeway",
+            "hours": "11:00–22:00 · last up 21:30",
+            "closed": "Open daily (weather may halt)",
             "desc": "A ropeway and mini cable car up Mt. Moiwa for a panoramic view over Sapporo.",
             "fact": "Sapporo's night view is ranked among Japan's New Three Great Night Views.",
             "photo": "assets/mt-moiwa.jpg",
@@ -205,6 +213,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
+            "hours": "9:00–17:00",
+            "closed": "Open daily",
             "desc": "A guided snowmobile ride across a snowfield on the west edge of the city.",
             "fact": "Sapporo gets close to 5 metres of snow a year, so February is prime riding season.",
             "photo": "assets/wonderland-sapporo.jpg",
@@ -217,6 +227,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Shiroi Koibito Park",
+            "hours": "~10:00–18:00 · confirm",
+            "closed": "Open daily",
             "desc": "A chocolate factory theme park with a Tudor-style building, a factory viewing area and sweets.",
             "fact": "The name means 'White Lover'; the cookie first went on sale in 1976.",
             "photo": "assets/shiroi-koibito-park.jpg",
@@ -240,6 +252,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hill of the Buddha",
+            "hours": "Great Buddha Hall 10:00–15:00",
             "desc": "A giant Buddha statue rising out of a lavender-covered mound, designed by architect Tadao Ando.",
             "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
             "photo": "assets/hill-of-the-buddha.jpg",
@@ -264,6 +277,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Former Government Office (Red Brick Building)",
+            "hours": "8:45–18:00",
+            "closed": "Open daily (closed New Year)",
             "desc": "A red brick government building in American Neo-Baroque style, free to walk through.",
             "fact": "Completed in 1888, it served as the Hokkaido government office for decades.",
             "photo": "assets/red-brick-government-office.jpg",
@@ -276,6 +291,8 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Clock Tower",
+            "hours": "8:45–17:10 · confirm winter close",
+            "closed": "Open daily (closed Jan 1–3)",
             "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
             "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
             "photo": "assets/sapporo-clock-tower.jpg",
@@ -288,6 +305,8 @@ window.TRIP = {
           {
             "time": "Dusk",
             "activity": "Sapporo TV Tower",
+            "hours": "9:00–22:00 · last entry 21:50",
+            "closed": "Open daily",
             "desc": "A tower at the east end of Odori Park with an observation deck over the lit-up park.",
             "fact": "Opened in 1957, it stands about 147 m tall.",
             "photo": "assets/sapporo-tv-tower.jpg",
@@ -311,6 +330,8 @@ window.TRIP = {
           {
             "time": "Stop 1",
             "activity": "Asahiyama Zoo",
+            "hours": "10:30–15:30 · last entry 15:00",
+            "closed": "Open daily",
             "desc": "Japan's northernmost zoo, in Asahikawa. The first stop of the private tour.",
             "fact": "Asahiyama Zoo runs a winter penguin walk, where penguins stroll across the snow.",
             "photo": "assets/asahiyama-zoo.jpg",
@@ -346,6 +367,8 @@ window.TRIP = {
           {
             "time": "Stop 4",
             "activity": "Ningle Terrace",
+            "hours": "12:00–20:45 (winter)",
+            "closed": "Open daily · some shops have irregular days off",
             "desc": "A small village of log cabins with craft shops and cafes in the forest, next to the New Furano Prince Hotel.",
             "fact": "In winter the walkways and cabins are lit with fairy lights at night.",
             "commons": {"q": "Ningle Terrace Furano", "must": ["ningle"]},
@@ -446,6 +469,7 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "closed": "Irregular days off · reserve the tour",
             "desc": "A chocolate factory and tour site run by Royce', known for its Hokkaido sweets.",
             "fact": "Royce' was founded in Sapporo in 1983 and is famous for its Nama Chocolate.",
             "photo": "assets/royce-factory.jpg",
@@ -459,6 +483,8 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Moerenuma Park",
+            "hours": "Park 7:00–22:00",
+            "closed": "Open daily (facilities keep own days off)",
             "desc": "A giant sculpted park built on a former waste site, with hills, fountains and a play area.",
             "fact": "Designed by sculptor Isamu Noguchi; it opened in 2005, after his death in 1988.",
             "photo": "assets/moerenuma-park.jpg",
@@ -471,6 +497,8 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Glass Pyramid HIDAMARI",
+            "hours": "~9:00–17:00 (winter)",
+            "closed": "Check: may close 1st Monday of month",
             "desc": "A glass pyramid at the park's centre with a cafe, shops and a restaurant.",
             "fact": "'Hidamari' means a sunny spot, which suits a glass pyramid on a winter day.",
             "commons": {"q": "Moerenuma Park glass pyramid", "must": ["pyramid|hidamari"]},
@@ -482,6 +510,9 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Beer Garden Museum",
+            "hours": "11:00–18:00 · last entry 17:30",
+            "closed": "Closed Mondays",
+            "closedDow": ["Mon"],
             "desc": "A red brick former brewery with museum displays, a beer hall and a Genghis Khan lamb grill.",
             "fact": "It is Japan's only beer museum, in a building dating to 1890.",
             "photo": "assets/sapporo-beer-museum.jpg",
@@ -505,6 +536,8 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Bibai Snowland",
+            "hours": "Season Dec 10–Mar 22 · last shuttle back ~15:30",
+            "closed": "Open daily in season",
             "desc": "A snow play area with slides, tubing and a winter wonderland feel, northeast of Sapporo.",
             "fact": "Bibai was once a coal-mining city and is now known for its snowland and yakitori.",
             "photo": "assets/bibai-snowland.jpg",
@@ -527,6 +560,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Nijo Market: king crab and seafood bowl",
+            "hours": "~7:00–18:00 (shops vary)",
+            "closed": "Open daily · stalls set own days off",
             "desc": "A lively seafood market where you can eat fresh crab, uni and ikura rice bowls.",
             "fact": "Hokkaido king crab, snow crab and hairy crab are all sold here.",
             "photo": "assets/nijo-market.jpg",
@@ -539,6 +574,8 @@ window.TRIP = {
           {
             "time": "Late morning",
             "activity": "Hokkaido milk soft-serve and ice cream",
+            "hours": "Yukijirushi Parlor 10:00–19:00 · last order 18:30",
+            "closed": "Open daily",
             "desc": "Soft serve and ice cream made with Hokkaido milk.",
             "fact": "Hokkaido makes about half of Japan's raw milk, which is why the dairy is so rich.",
             "commons": {"q": "Hokkaido soft serve ice cream", "must": ["hokkaido", "soft|ice"]},
@@ -551,6 +588,8 @@ window.TRIP = {
           {
             "time": "Lunch",
             "activity": "Soup curry",
+            "hours": "Garaku lunch 11:30–15:30",
+            "closed": "Irregular days off · expect a queue",
             "desc": "A spicy, spice-heavy curry served as a soup, loaded with vegetables and chicken.",
             "fact": "Soup curry was born in Sapporo in the 1970s.",
             "wiki": "Soup curry",
@@ -563,6 +602,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Flexible · last-minute Donki shopping",
+            "hours": "Open 24 h",
+            "closed": "Open daily",
             "desc": "A giant 24-hour discount store in the Tanukikoji arcade, good for souvenirs and snacks.",
             "fact": "Tanukikoji is a covered arcade of roughly 900 m, one of Sapporo's oldest shopping streets.",
             "commons": {"q": "Don Quijote Sapporo", "must": ["quijote|donki", "sapporo"]},
@@ -600,6 +641,7 @@ window.TRIP = {
           {
             "time": "Night",
             "activity": "Ice World Susukino",
+            "hours": "2027 hours TBA (past years until 23:00)",
             "desc": "The Snow Festival's Susukino site, with illuminated ice sculptures along the main street.",
             "fact": "Many of the sculptures are carved by hand from huge blocks of ice.",
             "photo": "assets/ice-world-susukino.jpg",

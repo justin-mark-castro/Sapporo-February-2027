@@ -252,6 +252,18 @@
     var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
     return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "Google Maps</a>";
   }
+  function stopHours(s, dow) {
+    if (!s || (!s.hours && !s.closed)) return "";
+    var h = "";
+    if (s.hours) h += '<span class="h-time">' + icClock + esc(s.hours) + "</span>";
+    if (s.closed) {
+      var clash = dow && s.closedDow && s.closedDow.indexOf(dow) > -1;
+      var cls = clash ? "h-closed h-clash" : /^open/i.test(s.closed) ? "h-open" : /^(irregular|check)/i.test(s.closed) ? "h-warn" : "h-closed";
+      h += '<span class="' + cls + '">' + esc(s.closed) + (clash ? " · closed on this day!" : "") + "</span>";
+    }
+    return '<div class="hrs" aria-label="Opening hours">' + h + "</div>";
+  }
+  window.stopHoursBadge = stopHours;
   function stopExtras(s) {
     var h = "";
     if (s.photo) h += '<figure class="stop-photo"><img src="' + esc(s.photo) + '" alt="' + esc(s.activity) + '" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></figure>';
@@ -335,7 +347,7 @@
         meta = prepMeta(s) + meta;
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
-          '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + stopExtras(s) + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
+          '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + stopHours(s, d.dow) + stopExtras(s) + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
       }).join("");
       var body;
       if (kind === "arrival") {

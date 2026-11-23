@@ -73,7 +73,7 @@
           var k = key(d, st), on = !!done[k];
           return '<li class="ck' + (on ? " on" : "") + '"><label><input type="checkbox" data-k="' + esc(k) + '"' + (on ? " checked" : "") + '>' +
             '<span class="ck-box" aria-hidden="true"></span><span class="ck-text"><b>' + esc(st.activity) + '</b>' +
-            (st.time || st.location ? '<small>' + esc([st.time, st.location].filter(Boolean).join(" · ")) + '</small>' : "") + '</span></label>' +
+            (st.time || st.location ? '<small>' + esc([st.time, st.location].filter(Boolean).join(" · ")) + '</small>' : "") + (window.stopHoursBadge ? window.stopHoursBadge(st, d.dow) : "") + '</span></label>' +
             '<a class="ck-map" href="' + esc(mapUrl(st)) + '" target="_blank" rel="noopener" aria-label="Google Maps: ' + esc(st.activity) + '">' + pin + '</a></li>';
         }).join("");
         var allDone = sts.length && dn === sts.length;
