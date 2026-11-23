@@ -318,7 +318,8 @@ a{color:inherit}
   padding:12px 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--washi);cursor:text;transition:.2s;
 }
 .fx-field:focus-within{border-color:var(--ai-2);box-shadow:0 0 0 4px rgba(36,69,124,.12);background:#fff}
-.fx-flag{font-size:1.8rem;text-align:center}
+.fx-flag{display:flex;justify-content:center}
+.fx-flag svg{width:36px;height:24px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
 .fx-code{font-weight:700;color:var(--ai)}
 .fx-code small{display:block;font-weight:500;color:var(--muted);font-size:.74rem}
 .fx-field input{

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles.css?v=20">
+<link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body>
 
@@ -206,7 +206,7 @@
     <header class="section-head">
       <span class="kicker">費用 · Expenses</span>
       <h2>Budget</h2>
-      <p class="lede">Copied from the trip sheet. Amounts shown in Philippine pesos and Singapore dollars.</p>
+      <p class="lede">Copied from the trip sheet. Amounts shown in Philippine pesos and Singapore Dollars.</p>
     </header>
 
     <div class="expense-top">
@@ -251,7 +251,7 @@
   <div class="wrap">
     <header class="section-head">
       <span class="kicker">為替 · Forex</span>
-      <h2>Yen · Peso · Singapore dollar</h2>
+      <h2>Yen · Peso · Singapore Dollar</h2>
       <p class="lede">Type in any box and the others update.</p>
     </header>
 
@@ -259,19 +259,19 @@
       <div class="card fx-card">
         <div class="fx-fields">
           <label class="fx-field">
-            <span class="fx-flag">🇯🇵</span>
+            <span class="fx-flag" role="img" aria-hidden="true"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#bc002d"/></svg></span>
             <span class="fx-code">JPY <small>Japanese yen</small></span>
             <input id="fxJPY" inputmode="decimal" autocomplete="off" value="10000" aria-label="Japanese yen amount">
           </label>
           <label class="fx-field">
-            <span class="fx-flag">🇵🇭</span>
+            <span class="fx-flag" role="img" aria-hidden="true"><svg viewBox="0 0 30 20"><rect width="30" height="10" fill="#0038a8"/><rect y="10" width="30" height="10" fill="#ce1126"/><path d="M0 0L17 10L0 20Z" fill="#fff"/><circle cx="5.2" cy="10" r="1.7" fill="#fcd116"/></svg></span>
             <span class="fx-code">PHP <small>Philippine peso</small></span>
             <input id="fxPHP" inputmode="decimal" autocomplete="off" aria-label="Philippine peso amount">
           </label>
           <label class="fx-field">
-            <span class="fx-flag">🇸🇬</span>
-            <span class="fx-code">SGD <small>Singapore dollar</small></span>
-            <input id="fxSGD" inputmode="decimal" autocomplete="off" aria-label="Singapore dollar amount">
+            <span class="fx-flag" role="img" aria-hidden="true"><svg viewBox="0 0 30 20"><rect width="30" height="10" fill="#ef3340"/><rect y="10" width="30" height="10" fill="#fff"/><circle cx="6.5" cy="5" r="3" fill="#fff"/><circle cx="7.7" cy="5" r="2.7" fill="#ef3340"/></svg></span>
+            <span class="fx-code">SGD <small>Singapore Dollar</small></span>
+            <input id="fxSGD" inputmode="decimal" autocomplete="off" aria-label="Singapore Dollar amount">
           </label>
         </div>
 
