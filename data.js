@@ -207,6 +207,7 @@ window.TRIP = {
             "activity": "Wonderland Sapporo Snowmobile",
             "desc": "A guided snowmobile ride across a snowfield on the west edge of the city.",
             "fact": "Sapporo gets close to 5 metres of snow a year, so February is prime riding season.",
+            "photo": "assets/wonderland-sapporo.jpg",
             "icon": "snow",
             "map": "Wonderland Sapporo, Fukui, Nishi-ku, Sapporo",
             "location": "478 Fukui, Nishi-ku",
