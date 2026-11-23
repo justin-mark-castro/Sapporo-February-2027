@@ -505,7 +505,7 @@ window.TRIP = {
             "closed": "Check: may close 1st Monday of month",
             "desc": "A glass pyramid at the park's centre with a cafe, shops and a restaurant.",
             "fact": "'Hidamari' means a sunny spot, which suits a glass pyramid on a winter day.",
-            "commons": {"q": "Moerenuma Park glass pyramid", "must": ["pyramid|hidamari"]},
+            "photo": "assets/hidamari-glass-pyramid.jpg",
             "icon": "landmark",
             "location": "Moerenuma Park, Higashi-ku",
             "notes": "The park's glass pyramid, with a cafe and restaurant inside. Check winter opening hours before going.",
