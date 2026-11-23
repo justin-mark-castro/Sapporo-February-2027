@@ -422,9 +422,8 @@ a{color:inherit}
 
 /* ---------- hotel, logos ---------- */
 .hotel-card{display:flex;gap:16px;align-items:flex-start;margin-top:16px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--beni);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
-.hotel-card{flex-wrap:wrap}
-.hotel-photo{flex:0 0 100%;margin:-16px -18px 0;width:calc(100% + 36px);max-width:none;overflow:hidden;border-radius:calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0}
-.hotel-photo img{display:block;width:100%;height:auto;max-height:340px;object-fit:cover}
+.hotel-photo{flex:none;width:120px;margin:0 0 0 auto;align-self:flex-start}
+.hotel-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
 .hotel-body{flex:1;min-width:0}
 .hotel-ico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--ai-soft);display:grid;place-items:center;color:var(--ai)}
 .hotel-ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -468,7 +467,7 @@ a{color:inherit}
 .rail-frame .line-title{font-size:14px;font-weight:700;font-family:var(--serif)}
 .rail-frame .note-lbl{font-size:10.5px;fill:var(--muted)}
 .rail-frame .hub-lbl{font-size:11px}
-@media (max-width:760px){#leafMap{height:380px}.hotel-card{padding:14px}.hotel-photo{margin:-14px -14px 0;width:calc(100% + 28px)}}
+@media (max-width:760px){#leafMap{height:380px}.hotel-card{padding:14px}.hotel-photo{width:84px}}
 
 /* ---------- budget strip ---------- */
 .budget-card{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:0 0 20px;box-shadow:var(--shadow)}
