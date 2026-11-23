@@ -586,23 +586,23 @@ html{font-size:14px}
 .day-date .dn,.stop-time,.eat-cat,.eat-tag,.table th,.climate-row .val small,.prep-when,.events .on{font-size:.8rem}
 .day-date .dw,.eat-area,.fl-end small,.flight-top small,.fx-code small,.type-legend li,.chip{font-size:.78rem}
 .stop-photo figcaption{font-size:.7rem}
-.stop-fact,.prep-note,.eat-desc,.stop-desc,.map-link,.eat-map{font-size:.88rem}
+.stop-fact,.prep-note,.eat-desc,.stop-desc{font-size:.88rem}
 .stop-fact{line-height:1.45}
 
 /* stat tiles: keep text above the decorative circle */
 .stat>*{position:relative;z-index:1}
 
 /* bigger, easier tap targets */
-.map-link{min-height:44px;margin-top:0;padding:0 2px}
+.map-link{min-height:32px;margin-top:0;padding:0 2px;font-size:.8rem}
 .prep-link{padding:12px 0;border-bottom:0;text-decoration:underline;text-underline-offset:3px}
-.eat-map{min-height:40px;padding:0 14px}
+.eat-map{min-height:30px;padding:0 10px;font-size:.78rem}
 .eat-chip,.map-chips button,.rail-chips button,.quick button{min-height:40px}
 .check{min-height:44px}
 .check input[type=checkbox]{width:22px;height:22px}
 .mini{min-height:40px}
 .seg button{min-height:40px}
 @media (pointer:coarse){
-  .eat-chip,.map-chips button,.rail-chips button,.quick button,.seg button,.eat-map{min-height:44px}
+  .eat-chip,.map-chips button,.rail-chips button,.quick button,.seg button{min-height:44px}
   .eat-chips,.map-chips,.rail-chips{gap:8px}
 }
 
