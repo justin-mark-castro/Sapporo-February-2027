@@ -147,6 +147,7 @@ window.TRIP = {
             "activity": "Hokkaido Jingu",
             "desc": "Hokkaido's most important Shinto shrine, set in forest at the foot of Mt. Maruyama.",
             "fact": "Founded in 1869; it took the name Hokkaido Jingu in 1964, when Emperor Meiji was enshrined there.",
+            "photo": "assets/hokkaido-jingu.jpg",
             "wiki": "Hokkaido Shrine",
             "icon": "shrine",
             "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",

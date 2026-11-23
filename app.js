@@ -251,7 +251,8 @@
   }
   function stopExtras(s) {
     var h = "";
-    if (s.wiki || s.commons) h += '<figure class="stop-photo" hidden><img ' + (s.wiki ? 'data-wiki="' + esc(s.wiki) + '"' : "") + (s.commons ? ' data-commons="' + esc(JSON.stringify(s.commons)) + '"' : "") + ' alt="' + esc(s.activity) + '" loading="lazy"><figcaption></figcaption></figure>';
+    if (s.photo) h += '<figure class="stop-photo"><img src="' + esc(s.photo) + '" alt="' + esc(s.activity) + '" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></figure>';
+    else if (s.wiki || s.commons) h += '<figure class="stop-photo" hidden><img ' + (s.wiki ? 'data-wiki="' + esc(s.wiki) + '"' : "") + (s.commons ? ' data-commons="' + esc(JSON.stringify(s.commons)) + '"' : "") + ' alt="' + esc(s.activity) + '" loading="lazy"><figcaption></figcaption></figure>';
     if (s.desc) h += '<p class="stop-desc">' + esc(s.desc) + "</p>";
     if (s.fact) h += '<p class="stop-fact"><b>Fact:</b> ' + esc(s.fact) + "</p>";
     return h;
