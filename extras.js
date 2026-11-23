@@ -15,7 +15,7 @@
     wifi:     ico('<path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/>')
   };
   var PREP = [
-    { icon: "gov", color: "#24457c", when: "Before you fly out · Feb 1 and Feb 12", title: "eTravel (eGovPH)",
+    { icon: "gov", img: "assets/egov-logo.png", color: "#24457c", when: "Before you fly out · Feb 1 and Feb 12", title: "eTravel (eGovPH)",
       body: "The Philippines' free digital arrival and departure declaration. Register at etravel.gov.ph or in the eGovPH app, and show the QR code at check-in.",
       points: [
         "Feb 1 (departing Manila): register within 72 hours before your flight and no later than 3 hours before it. Your 6:30 AM flight means doing it by Jan 31 is safest.",
@@ -24,7 +24,7 @@
       ],
       note: "It is free. Only use etravel.gov.ph or the official eGovPH app, and never pay anyone for it.",
       link: { href: "https://etravel.gov.ph/", label: "Open eTravel" } },
-    { icon: "qr", color: "#c8372d", when: "Before you land in Japan · Feb 1", title: "Visit Japan Web",
+    { icon: "qr", img: "assets/visit-japan-web-logo.png", color: "#c8372d", when: "Before you land in Japan · Feb 1", title: "Visit Japan Web",
       body: "Japan's official online service for immigration, customs and tax-free shopping. You finish the forms ahead of time and get QR codes to scan at New Chitose Airport.",
       points: [
         "Have your passport, flight number (PR 406), arrival date and the hotel address (Hokke Club Sapporo) ready.",
@@ -56,7 +56,7 @@
     el.innerHTML = PREP.map(function (p) {
       var pts = (p.points || []).length ? '<ul class="prep-points">' + p.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
       return '<article class="prep-card" style="--c:' + p.color + '">' +
-        '<div class="prep-head"><span class="prep-ico">' + PREP_ICONS[p.icon] + '</span><div><span class="prep-when">' + esc(p.when) + "</span><h3>" + esc(p.title) + "</h3></div></div>" +
+        '<div class="prep-head"><span class="prep-ico' + (p.img ? ' has-img' : '') + '">' + (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : PREP_ICONS[p.icon]) + '</span><div><span class="prep-when">' + esc(p.when) + "</span><h3>" + esc(p.title) + "</h3></div></div>" +
         '<p class="prep-body">' + esc(p.body) + "</p>" + pts +
         (p.note ? '<p class="prep-note">' + esc(p.note) + "</p>" : "") +
         (p.link ? '<a class="prep-link" href="' + esc(p.link.href) + '" target="_blank" rel="noopener">' + esc(p.link.label) + " &rarr;</a>" : "") +

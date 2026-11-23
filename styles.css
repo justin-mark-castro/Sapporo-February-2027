@@ -566,3 +566,6 @@ h4.stop-title{margin:0}
 .eat-note{margin-top:16px}
 
 @media (max-width:520px){.stop-photo{width:92px;margin-left:10px}}
+
+.prep-ico.has-img{background:none;overflow:hidden}
+.prep-ico.has-img img{width:44px;height:44px;object-fit:contain;border-radius:10px;display:block}
