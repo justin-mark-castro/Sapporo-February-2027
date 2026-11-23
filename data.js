@@ -254,6 +254,7 @@ window.TRIP = {
             "activity": "Odori Park · Sapporo Snow Festival (Odori site)",
             "desc": "A 1.5 km green belt through the city centre that becomes the main Snow Festival site, lined with giant snow and ice sculptures.",
             "fact": "The Snow Festival began in 1950, when local high school students built six snow statues in the park.",
+            "photo": "assets/sapporo-snow-festival.jpg",
             "wiki": "Sapporo Snow Festival",
             "icon": "snow",
             "location": "Odori Park, Nishi 1 to 12-chome",
