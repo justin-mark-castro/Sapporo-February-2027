@@ -435,6 +435,7 @@ a{color:inherit}
 .hotel-body .jpn{color:var(--beni);font-size:.8rem;margin-left:6px;font-weight:500}
 .hotel-body p{margin:4px 0 0;font-size:.9rem}
 .hotel-body a{display:inline-block;margin-top:8px;font-size:.9rem;color:var(--beni)}
+.hotel-body a.map-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.78rem;font-weight:700;line-height:1;color:var(--ai)}
 .airline-logo{display:block;height:34px;width:auto;max-width:110px;object-fit:contain}
 .airline-logo.sm{height:26px;max-width:72px}
 .flight-logo,.item-logo{display:inline-flex;align-items:center;flex:none}
