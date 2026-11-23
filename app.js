@@ -170,7 +170,7 @@
     el.innerHTML = '<div class="hotel-ico"><svg viewBox="0 0 24 24"><path d="M3 20V6M3 12h18v8M21 12V9a2 2 0 0 0-2-2h-8v5"/><circle cx="7" cy="9.5" r="1.8"/></svg></div>' +
       '<div class="hotel-body"><small>Hotel · ' + esc(h.nights) + '</small><b>' + esc(h.name) + ' <span class="jpn">' + esc(h.jp) + '</span></b>' +
       '<p>' + esc(h.address) + '</p><p>Check-in ' + esc(h.checkIn) + ' · Check-out ' + esc(h.checkOut) + '</p><p class="muted">' + esc(h.access) + '</p>' +
-      '<a href="#map">See on map</a></div>' + (h.photo ? '<figure class="hotel-photo"><img src="' + esc(h.photo) + '" alt="' + esc(h.name) + ' exterior" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></figure>' : '');
+      '<a class="map-link" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.name + " " + h.address) + '" target="_blank" rel="noopener">' + icPin + "Google Maps</a></div>" + (h.photo ? '<figure class="hotel-photo"><img src="' + esc(h.photo) + '" alt="' + esc(h.name) + ' exterior" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></figure>' : '');
   }
   function renderFlights() {
     var el = $("#flights");
