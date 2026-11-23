@@ -56,7 +56,7 @@ window.TRIP = {
     { id: "buddha",  name: "Hill of the Buddha", jp: "頭大仏", lat: 42.9740, lng: 141.3190, day: 4, cat: "sight", t: "Day 4 · morning", d: "Makomanai Takino Cemetery. Namboku Line to Makomanai, then a bus." },
     { id: "odori",   name: "Odori Park · Snow Festival", jp: "大通公園", lat: 43.0605, lng: 141.3470, day: 4, cat: "fest", t: "Day 4 · afternoon", d: "Main Snow Festival site (Feb 4–11)." },
     { id: "akarenga", name: "Hokkaido Former Government Office (Red Brick)", jp: "北海道庁旧本庁舎（赤れんが庁舎）", lat: 43.0642, lng: 141.3469, day: 4, cat: "sight", t: "Day 4 · afternoon", d: "The red-brick Akarenga building, west of Odori Park." },
-    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 2, cat: "sight", t: "Day 2 · afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
+    { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 2, cat: "sight", t: "Day 2 · morning", d: "Wooden clock tower, one block west of the TV Tower." },
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
     { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "First stop of the Day 5 private tour. Next: Shirahige Waterfall, Lonely Christmas Tree, Ningle Terrace." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
@@ -139,9 +139,23 @@ window.TRIP = {
         "dow": "Tue",
         "kind": "day",
         "title": "Southwest Sapporo",
-        "area": "Maruyama · Mt. Moiwa",
+        "area": "Clock Tower · Maruyama · Mt. Moiwa",
         "why": "Five stops on the west and central side, a short ride apart. A quiet day before the festival opens.",
         "stops": [
+          {
+            "time": "Morning",
+            "activity": "Sapporo Clock Tower",
+            "hours": "8:45 AM–5:10 PM · confirm winter close",
+            "closed": "Open daily (closed Jan 1–3)",
+            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
+            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
+            "photo": "assets/sapporo-clock-tower.jpg",
+            "wiki": "Sapporo Clock Tower",
+            "icon": "landmark",
+            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
+            "notes": "Start here, about 3 min on foot from the hotel. It opens at 8:45 AM, so go first thing, then head to Maruyama.",
+            "how": "Walk from Hokke Club Sapporo, or a short walk from Odori Station."
+          },
           {
             "time": "Morning",
             "activity": "Hokkaido Jingu",
@@ -154,7 +168,7 @@ window.TRIP = {
             "icon": "shrine",
             "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",
             "notes": "Hokkaido's main shrine, set inside the park grounds.",
-            "how": "Subway Tozai Line to Maruyama-koen (T06), then walk through the park."
+            "how": "Subway Tozai Line from Odori to Maruyama-koen (T06), then walk through the park."
           },
           {
             "time": "Morning",
@@ -170,20 +184,6 @@ window.TRIP = {
             "location": "Next to Hokkaido Jingu",
             "notes": "Walk the park right after the shrine.",
             "how": "Same stop as the shrine, Maruyama-koen (T06)."
-          },
-          {
-            "time": "Afternoon",
-            "activity": "Sapporo Clock Tower",
-            "hours": "8:45 AM–5:10 PM · confirm winter close",
-            "closed": "Open daily (closed Jan 1–3)",
-            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
-            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
-            "photo": "assets/sapporo-clock-tower.jpg",
-            "wiki": "Sapporo Clock Tower",
-            "icon": "landmark",
-            "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
-            "notes": "Stop here between Maruyama and the afternoon shrine and ropeway. Arrive before the 5:10 PM closing time.",
-            "how": "Tozai Line from Maruyama-koen to Odori Station, then a short walk. About 3 min on foot from Hokke Club Sapporo."
           },
           {
             "time": "Afternoon",
