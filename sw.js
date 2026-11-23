@@ -1,6 +1,6 @@
 /* Sapporo 2027 — offline cache. Stale-while-revalidate for the site and its static libraries;
    live FX / Wikipedia calls are left alone (the app has its own fallbacks). */
-var CACHE = "sapporo-2027-v1";
+var CACHE = "sapporo-2027-v2";
 var CORE = ["./", "index.html", "styles.css", "data.js", "app.js", "extras.js", "polish.js", "music.js"];
 var CROSS = ["unpkg.com", "fonts.googleapis.com", "fonts.gstatic.com", "tile.openstreetmap.org", "upload.wikimedia.org"];
 
@@ -20,6 +20,15 @@ self.addEventListener("fetch", function (e) {
   var cross = CROSS.some(function (h) { return url.hostname === h || url.hostname.endsWith("." + h); });
   if (!same && !cross) return;
   if (url.pathname.endsWith("bgm.mp3")) return; // large, range requests: skip
+  // Site files (HTML/JS/CSS/data): network-first so a deploy shows up on the next load; cache only as offline fallback.
+  var isSite = same && (req.mode === "navigate" || /\.(html|js|css|json)$/.test(url.pathname) || url.pathname.endsWith("/"));
+  if (isSite) {
+    e.respondWith(fetch(req).then(function (res) {
+      if (res && res.ok) { var copy = res.clone(); caches.open(CACHE).then(function (c) { c.put(req, copy); }); }
+      return res;
+    }).catch(function () { return caches.match(req, { ignoreSearch: true }); }));
+    return;
+  }
   e.respondWith(caches.open(CACHE).then(function (c) {
     return c.match(req, { ignoreSearch: false }).then(function (hit) {
       var net = fetch(req).then(function (res) {
