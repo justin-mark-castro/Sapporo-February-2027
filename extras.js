@@ -122,7 +122,7 @@
   };
   var HOURS_FALLBACK = "Hours not confirmed, check Google Maps";
 
-  function P(n, c, a, d, tags, q) { return { n: n, c: c, a: a, d: d, t: tags || [], q: q || n + " Sapporo" }; }
+  function P(n, c, a, d, tags, q, u) { return { n: n, c: c, a: a, d: d, t: tags || [], q: q || n + " Sapporo", u: u || "" }; }
   var PLACES = [
     P("Sapporo Agricultural College Rakuno Milk Soft", "milk", "Sapporo Station · Stellar Place", "Soft serve made with pasture-raised Hokkaido milk, topped with a crisp milk cookie.", ["milk", "icecream"], "Sapporo Agricultural College Rakuno Milk Soft Stellar Place Sapporo"),
     P("Yukijirushi (Snow Brand) Parlor, Main Store", "milk", "Kita 2-jo Nishi 3, near your hotel", "Open since 1961. Known for Snow Royal ice cream, first made in 1968 for the Showa Emperor's Hokkaido visit, plus parfaits made with Hokkaido milk.", ["milk", "icecream"], "Yukijirushi Parlor Sapporo Main Store"),
@@ -144,6 +144,7 @@
     P("Kitakaro Sapporo Honkan", "cafe", "Central Sapporo", "A Hokkaido sweets brand with a shop and cafe in a retro-modern building.", ["specialty"]),
     P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty", "otaru"], "LeTAO Honten Otaru"),
     P("Popura Farm Otaru Outlet", "cafe", "Otaru Denuki Koji, Ironai (Feb 6)", "Must eat: Yubari melon ice cream. The signature \"Santa's Beard\" puts melon soft serve on a half melon. Pricey, but a Hokkaido classic for your Otaru day trip.", ["icecream", "specialty", "otaru"], "Popura Farm Otaru Denuki Koji"),
+    P("Otaru Rainbow Soft Cream", "cafe", "Otaru (Feb 6)", "Must eat: the 8-layer rainbow soft serve, a colourful Otaru ice cream stop. It is big, so share it or go in a pair.", ["icecream", "otaru"], "Otaru Rainbow Soft Cream", "https://maps.app.goo.gl/LXmRqxB3Unfhi8ck8"),
 
     P("Soup Curry GARAKU", "curry", "Susukino (main store) · Sitatte Sapporo", "One of Sapporo's best-known soup curry restaurants, with a queue at busy times. You choose the soup, spice level and toppings.", ["specialty"], "Soup Curry GARAKU Sapporo"),
     P("Soup Curry Suage+", "curry", "Susukino", "Known for crisp, batter-free fried vegetables and an optional squid-ink \"ikakuro\" soup. Tabelog Curry EAST 100 (2026).", ["specialty"], "Soup Curry Suage+ Susukino"),
@@ -233,7 +234,7 @@
         '<p class="eat-desc">' + esc(p.d) + "</p>" +
         '<p class="eat-hours">' + ico(CLOCK) + esc(HOURS[p.n] || HOURS_FALLBACK) + "</p>" +
         '<div class="eat-foot"><div class="eat-tags"><span class="eat-cat">' + esc(c.label) + "</span>" + tags + "</div>" +
-        '<a class="eat-map" href="' + esc(mapUrl(p.q)) + '" target="_blank" rel="noopener">' + ico('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + "Google Maps</a></div></article>";
+        '<a class="eat-map" href="' + esc(p.u || mapUrl(p.q)) + '" target="_blank" rel="noopener">' + ico('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + "Google Maps</a></div></article>";
     }).join("");
     var more = document.getElementById("eatMore");
     if (!more) { more = document.createElement("button"); more.id = "eatMore"; more.type = "button"; more.className = "eat-more"; grid.parentNode.insertBefore(more, grid.nextSibling); }
