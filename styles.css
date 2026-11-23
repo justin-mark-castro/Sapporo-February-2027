@@ -593,7 +593,8 @@ html{font-size:14px}
 .stat>*{position:relative;z-index:1}
 
 /* bigger, easier tap targets */
-.map-link{min-height:32px;margin-top:0;padding:0 2px;font-size:.8rem}
+.map-link,.day-body .map-link{display:inline-flex;gap:5px;align-items:center;margin-top:8px;min-height:30px;padding:0 10px;font-size:.78rem;font-weight:700;line-height:1;color:var(--ai);text-decoration:none;border:1px solid var(--line);border-radius:999px;background:#fff}
+.map-link:hover,.map-link:focus-visible{border-color:var(--ai)}
 .prep-link{padding:12px 0;border-bottom:0;text-decoration:underline;text-underline-offset:3px}
 .eat-map{min-height:30px;padding:0 10px;font-size:.78rem}
 .eat-chip,.map-chips button,.rail-chips button,.quick button{min-height:40px}
