@@ -204,6 +204,7 @@
     P("Matcha Sweets Dokoro Chawawa", "matcha", "Sakaimachi 4-14, Otaru", "Famous for an intense matcha soft serve that combines koicha and usucha. Stop here on your Otaru day.", ["otaru"], "Chawawa matcha Otaru Sakaimachi"),
     P("Labrado-Ressence Cafe", "matcha", "Okusawa, Otaru", "A quiet cafe with matcha basque cheesecake and sakura sweets. It is away from the canal, so allow time to get there.", ["otaru"], "Labrado Ressence Cafe Otaru"),
 
+    P("Wakadori Jidai Naruto Honten", "local", "Inaho 3-16-13, Otaru (Feb 6)", "Otaru's famous half fried young chicken, crisp-skinned and juicy, a local soul food since the 1950s. Popular and can have a long wait at busy times. There is also a branch near Otaru Station for takeout.", ["specialty", "otaru"], "Wakadori Jidai Naruto Honten 3-16-13 Inaho Otaru"),
     P("Torimatsu", "local", "Sapporo", "Hokkaido-style zangi (soy, ginger and garlic fried chicken), served on the bone.", ["specialty"], "Torimatsu zangi Sapporo"),
     P("Nanbantei", "local", "Sapporo", "Zangi with a tangy sauce called zantare, in generous portions.", ["specialty"], "Nanbantei zangi Sapporo"),
     P("Hokkaido Shiki Marche (Stellar Place)", "local", "Sapporo Station", "A food hall of Hokkaido sweets and snacks, with zangi from Take-out Hotei and cookie sandwiches from Sapporo Agricultural College.", ["specialty", "milk"], "Hokkaido Shiki Marche Sapporo Stellar Place")
