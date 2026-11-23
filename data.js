@@ -242,6 +242,7 @@ window.TRIP = {
             "activity": "Hill of the Buddha",
             "desc": "A giant Buddha statue rising out of a lavender-covered mound, designed by architect Tadao Ando.",
             "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
+            "photo": "assets/hill-of-the-buddha.jpg",
             "wiki": "Hill of the Buddha",
             "icon": "temple",
             "location": "Makomanai Takino Cemetery, Minami-ku",
