@@ -415,7 +415,24 @@
   }
 
   function buildMap() {
-    var places = T.places || [];
+    // Map descriptions come from the itinerary stops so both sections read the same.
+    var STOP_FOR = {
+      maruyama: "Maruyama Park", jingu: "Hokkaido Jingu", inari: "Hokkaido Fushimi Inari Shrine", moiwa: "Mt. Moiwa Ropeway",
+      clocktower: "Sapporo Clock Tower", wonder: "Wonderland Sapporo Snowmobile", shiroi: "Shiroi Koibito Park", buddha: "Hill of the Buddha",
+      odori: "Odori Park \u00b7 Sapporo Snow Festival (Odori site)", akarenga: "Hokkaido Former Government Office (Red Brick Building)",
+      tower: "Sapporo TV Tower", asahi: "Asahiyama Zoo", otaru: "Otaru Snow Light Path", shikotsu: "Chitose \u00b7 Lake Shikotsu Ice Festival",
+      royce: "Royce' Cacao & Chocolate Town (Royce Factory)", moere: "Moerenuma Park", hidamari: "Glass Pyramid HIDAMARI",
+      beer: "Sapporo Beer Garden Museum", bibai: "Bibai Snowland", nijo: "Nijo Market: king crab and seafood bowl",
+      ramen: "Ramen Lane (miso ramen)", nikka: "Susukino Nikka & Shopping Street", donki: "Flexible \u00b7 last-minute Donki shopping",
+      cts: "Arrival \u00b7 PR 406"
+    };
+    var stopDesc = {};
+    (T.itinerary || []).forEach(function (d) { (d.stops || []).forEach(function (st) { if (st.activity && st.desc) stopDesc[st.activity] = st.desc; }); });
+    var places = (T.places || []).map(function (p) {
+      var d = stopDesc[STOP_FOR[p.id]];
+      if (!d) return p;
+      var q = {}; for (var k in p) q[k] = p[k]; q.d = d; return q;
+    });
     var listEl = $("#placeList"), detail = $("#placeDetail"), chips = $("#mapDays");
     var state = { day: "all", sel: null };
     var hasL = typeof window.L !== "undefined";
