@@ -504,7 +504,7 @@ a{color:inherit}
 .day-body .meta span.lchip{display:inline}
 .day-body .meta span.lcode{display:inline-block}
 .stop-main,.day-body{min-width:0}
-@media (max-width:520px){.day-body .day-sun small{display:none}.day-body .day-sun span{gap:4px;padding:4px 10px 4px 6px}}
+@media (max-width:520px){.day-body .day-sun span{gap:4px;padding:4px 10px 4px 6px}}
 
 @media (max-width:560px){html{font-size:13.5px}}
 .map-link{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:.78rem;font-weight:600;color:var(--ai);text-decoration:none;border-bottom:1px solid transparent}

@@ -193,9 +193,16 @@
   var icTrain = '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l2-4M15 21l-2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg>';
   var icSunrise = '<svg viewBox="0 0 24 24"><path d="M12 2.5v5M9.5 5L12 2.5 14.5 5M4.6 11.2l1.8 1.8M19.4 11.2L17.6 13M2.5 19h19M6.5 19a5.5 5.5 0 0 1 11 0M7 22h10"/></svg>';
   var icSunset = '<svg viewBox="0 0 24 24"><path d="M12 2.5v5M9.5 5L12 7.5 14.5 5M4.6 11.2l1.8 1.8M19.4 11.2L17.6 13M2.5 19h19M6.5 19a5.5 5.5 0 0 1 11 0M7 22h10"/></svg>';
+  function to12h(t) {
+    var m = /^(\d{1,2}):(\d{2})$/.exec(String(t || ""));
+    if (!m) return t;
+    var h = parseInt(m[1], 10);
+    return (h % 12 || 12) + ":" + m[2] + " " + (h < 12 ? "AM" : "PM");
+  }
   function sunLine(date) {
-    var s = T.sun && T.sun[date];
-    if (!s) return "";
+    var s0 = T.sun && T.sun[date];
+    if (!s0) return "";
+    var s = { rise: to12h(s0.rise), set: to12h(s0.set) };
     return '<p class="day-sun" title="Sapporo, local time">' +
       '<span class="sun-rise" aria-label="Sunrise ' + esc(s.rise) + '" title="Sunrise">' + icSunrise + "<small>Sunrise</small><b>" + esc(s.rise) + "</b></span>" +
       '<span class="sun-set" aria-label="Sunset ' + esc(s.set) + '" title="Sunset">' + icSunset + "<small>Sunset</small><b>" + esc(s.set) + "</b></span></p>";
