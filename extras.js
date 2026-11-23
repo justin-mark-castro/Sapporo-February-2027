@@ -193,7 +193,6 @@
     P("Ichiran Ramen", "chain", "Susukino and Sapporo Station area", "Tonkotsu ramen eaten in a solo booth. You fill in an order sheet to set noodle firmness, richness and spice. Some branches are open late.", [], "Ichiran Ramen Sapporo"),
     P("Saizeriya", "chain", "Central Sapporo", "Very cheap Italian family restaurant with pasta, pizza and doria. A safe, low-cost meal when you are tired of queues.", [], "Saizeriya Sapporo"),
     P("Gusto Cafe", "chain", "Sapporo", "A family restaurant with Japanese and Western set meals, a drink bar and desserts. Good for a relaxed, no-queue meal.", [], "Gusto Sapporo"),
-    P("Gyukatsu Motomura", "chain", "Sapporo", "Breaded beef cutlet served rare, which you finish yourself on a small hot stone. Expect a queue at peak hours.", [], "Gyukatsu Motomura Sapporo"),
     P("Yakiniku Like", "chain", "Susukino and central Sapporo", "Solo-friendly yakiniku with your own small grill and set meals at budget prices.", [], "Yakiniku Like Sapporo"),
 
     P("Matcha Cafe & Sweets RIQ (Rikyu)", "matcha", "Tanukikoji 5-chome, Minami 2-jo Nishi 5", "A matcha sweets specialist built around Uji matcha, with about 33 drinks and parfaits in a Japanese-style space. Handy for a stop while on Tanukikoji.", [], "Matcha Cafe Rikyu Tanukikoji Sapporo"),
