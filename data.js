@@ -473,6 +473,7 @@ window.TRIP = {
             "activity": "Bibai Snowland",
             "desc": "A snow play area with slides, tubing and a winter wonderland feel, northeast of Sapporo.",
             "fact": "Bibai was once a coal-mining city and is now known for its snowland and yakitori.",
+            "photo": "assets/bibai-snowland.jpg",
             "icon": "snow",
             "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
             "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours.",
