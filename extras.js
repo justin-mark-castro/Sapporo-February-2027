@@ -143,6 +143,7 @@
     P("Saera", "cafe", "Odori underground", "A beloved Hokkaido coffee chain, in the tunnels under Odori since 1975.", [], "Saera coffee Odori Sapporo"),
     P("Kitakaro Sapporo Honkan", "cafe", "Central Sapporo", "A Hokkaido sweets brand with a shop and cafe in a retro-modern building.", ["specialty"]),
     P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty", "otaru"], "LeTAO Honten Otaru"),
+    P("Popura Farm Otaru Outlet", "cafe", "Otaru Denuki Koji, Ironai (Feb 6)", "Must eat: Yubari melon ice cream. The signature \"Santa's Beard\" puts melon soft serve on a half melon. Pricey, but a Hokkaido classic for your Otaru day trip.", ["icecream", "specialty", "otaru"], "Popura Farm Otaru Denuki Koji"),
 
     P("Soup Curry GARAKU", "curry", "Susukino (main store) · Sitatte Sapporo", "One of Sapporo's best-known soup curry restaurants, with a queue at busy times. You choose the soup, spice level and toppings.", ["specialty"], "Soup Curry GARAKU Sapporo"),
     P("Soup Curry Suage+", "curry", "Susukino", "Known for crisp, batter-free fried vegetables and an optional squid-ink \"ikakuro\" soup. Tabelog Curry EAST 100 (2026).", ["specialty"], "Soup Curry Suage+ Susukino"),
