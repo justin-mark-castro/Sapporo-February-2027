@@ -184,6 +184,7 @@ window.TRIP = {
             "activity": "Mt. Moiwa Ropeway",
             "desc": "A ropeway and mini cable car up Mt. Moiwa for a panoramic view over Sapporo.",
             "fact": "Sapporo's night view is ranked among Japan's New Three Great Night Views.",
+            "photo": "assets/mt-moiwa.jpg",
             "wiki": "Mount Moiwa",
             "icon": "mountain",
             "location": "Fushimi, Chuo-ku",
