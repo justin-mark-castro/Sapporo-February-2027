@@ -140,6 +140,7 @@
     P("Noymond Organic Cafe", "cafe", "Minami 3-jo Nishi 2, near Susukino", "Organic cafe using Hokkaido ingredients, with French toast made from Tokachi milk and eggs. Credited with starting the shime parfait trend.", ["milk"], "Noymond Organic Cafe Sapporo"),
     P("Morihiko (Main Store)", "cafe", "Near Hokkaido Jingu · Maruyama-koen", "Coffee cafe in a house near the shrine, known for its no-bake cheesecake with a fresh milk taste. Tabelog Cafe EAST 100 (2025). Handy for Feb 2.", ["milk"], "Morihiko Maruyama Sapporo"),
     P("Atelier Morihiko", "cafe", "Chuo Kuyakusho-mae", "A sister cafe of Morihiko with cakes and coffee.", [], "Atelier Morihiko Sapporo"),
+    P("Kinotoya Cafe", "cafe", "Sapporo", "Sapporo pastry brand known for its cheese tarts and Hokkaido milk soft serve. Come for the ice cream and a cheese tart.", ["icecream", "specialty", "milk"], "Kinotoya Cafe Sapporo", "https://maps.app.goo.gl/mJbSgmTzbJXezSqG8"),
     P("INITIAL Sapporo", "cafe", "Tanukikoji", "A shime parfait spot made with seasonal fresh fruit, a sweet end to a night out.", [], "INITIAL Sapporo parfait"),
     P("Parfaiteria PaL", "cafe", "Central Sapporo", "A parfait specialist for a shime parfait after dinner.", []),
     P("Yoru Parfait Nanakamado", "cafe", "Central Sapporo", "A night-time parfait specialty restaurant.", [], "Nanakamado parfait Sapporo"),
