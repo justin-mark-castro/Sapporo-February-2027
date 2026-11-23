@@ -542,10 +542,10 @@
       ], { title: [700, 228] });
 
       // Namboku: Sapporo south to Makomanai
-      var NS = [["N06", "Sapporo"], ["N07", "Odori"], ["N08", "Susukino"], ["N09", "Nakajima-koen"], ["N10", "Horohirabashi"], ["N11", "Nakanoshima"],
+      var NSTN = [["N06", "Sapporo"], ["N07", "Odori"], ["N08", "Susukino"], ["N09", "Nakajima-koen"], ["N10", "Horohirabashi"], ["N11", "Nakanoshima"],
         ["N12", "Hiragishi"], ["N13", "Minami-Hiragishi"], ["N14", "Sumikawa"], ["N15", "Jieitai-mae"], ["N16", "Makomanai"]];
       var KEYN = { N08: 1, N16: 1 };
-      var np = NS.map(function (s, i) {
+      var np = NSTN.map(function (s, i) {
         var y = i === 0 ? 170 : i === 1 ? 215 : i === 2 ? 262 : i === 10 ? 440 : 262 + 22 * (i - 2);
         var hub = i < 2;
         return [s[0], s[1], X, y, hub ? null : "l", KEYN[s[0]], hub];
@@ -584,7 +584,6 @@
       map.appendChild(el("text", { x: 770, y: 134, "text-anchor": "middle", class: "note-lbl" }, "Day 10 · Bibai"));
       map.appendChild(el("text", { x: 442, y: 76, class: "note-lbl" }, "Day 9 · Royce' Chocolate Town"));
       map.appendChild(el("text", { x: 890, y: 452, "text-anchor": "end", class: "note-lbl" }, "Flights · Day 7 Lake Shikotsu (bus from Chitose)"));
-      map.appendChild(el("text", { x: 20, y: 462, class: "note-lbl" }, "Day 2 Maruyama-koen · Day 3 Miyanosawa · Day 8 Moerenuma, Higashi-Kuyakusho-mae"));
 
       // hotel marker and legend
       var hg = el("g", {});
