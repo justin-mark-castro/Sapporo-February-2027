@@ -13,15 +13,15 @@ window.TRIP = {
   splitPct: { Justin: 50, Ino: 50 },
 
   // Rate from the sheet (SGD -> PHP). Used as the offline fallback.
-  sheetRateSgdPhp: 49.6302,
+  sheetRateSgdPhp: 49.4363,
 
   // Expense log (PHP and SGD columns are exactly as in the sheet)
   expenses: [
-    { item: "PAL Flight",          php: 110904.17, sgd: 2234.61, original: "110,904.17 PHP", status: "",  note: "",                    icon: "plane" },
-    { item: "Travel Tax",          php: 3240.00,   sgd: 65.28,   original: "3,240 PHP",      status: "",  note: "",                    icon: "ticket" },
-    { item: "Hotel Accommodation", php: 155000.00, sgd: 3123.10, original: "155,000 PHP",    status: "",  note: "Hokke Club Sapporo · 15,780.8 CNY", icon: "hotel" },
-    { item: "Snowmobile",          php: 25000.00,  sgd: 503.73,  original: "25,000 PHP",     status: "",  note: "Wanderland Sapporo",  icon: "snow" },
-    { item: "Private Tour",        php: 39704.16,  sgd: 800.00,  original: "800 SGD",        status: "",  note: "",                    icon: "tour" }
+    { item: "PAL Flight",          php: 110904.17, sgd: 2243.38, original: "110,904.17 PHP", status: "",  note: "",                    icon: "plane" },
+    { item: "Travel Tax",          php: 3240.00,   sgd: 65.54,   original: "3,240 PHP",      status: "",  note: "",                    icon: "ticket" },
+    { item: "Hotel Accommodation", php: 155000.00, sgd: 3135.35, original: "155,000 PHP",    status: "",  note: "Hokke Club Sapporo · 15,780.8 CNY", icon: "hotel" },
+    { item: "Snowmobile",          php: 25000.00,  sgd: 505.70,  original: "25,000 PHP",     status: "",  note: "Wanderland Sapporo",  icon: "snow" },
+    { item: "Private Tour",        php: 39549.04,  sgd: 800.00,  original: "800 SGD",        status: "",  note: "",                    icon: "tour" }
   ],
   paid: { php: 0, sgd: 0 },
 
@@ -115,8 +115,8 @@ window.TRIP = {
         "dow": "Mon",
         "kind": "arrival",
         "title": "Arrival",
-        "area": "New Chitose Airport · Sapporo Station",
-        "why": "Land at 12:15, check in at the hotel, then a short walk to the Clock Tower before it closes at 17:10.",
+        "area": "New Chitose Airport",
+        "why": "",
         "stops": [
           {
             "time": "12:15",
@@ -826,5 +826,5 @@ window.TRIP = {
 
   // Offline fallback FX (per 1 SGD). Live rates replace these when online.
   // SGD->PHP is the sheet's rate; SGD->JPY is an approximate estimate.
-  fxFallback: { SGD: 1, PHP: 49.6302, JPY: 125 }
+  fxFallback: { SGD: 1, PHP: 49.4363, JPY: 125 }
 };

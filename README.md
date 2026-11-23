@@ -7,7 +7,7 @@ Static site (no build step) for GitHub Pages: itinerary, expenses, and a JPY / P
 2. Commit and push. In GitHub: Settings → Pages → Deploy from branch → `main` / root.
 
 ## Update data
-All trip data lives in `data.js` (copied from the private Google Sheet, snapshot 2026-11-23).
+All trip data lives in `data.js` (copied from the private Google Sheet, snapshot 2026-11-23 11:05 SGT).
 - `expenses`: item, php, sgd, original, status ("Paid" marks it paid), note
 - `paid`: running paid totals
 - `flights`: PR 406 and PR 405 (times from PAL's published schedule, confirm against the booking)
