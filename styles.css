@@ -560,7 +560,7 @@ h4.stop-title{margin:0}
 .eat-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 .eat-tags{display:flex;flex-wrap:wrap;gap:5px}
 .eat-cat,.eat-tag{font-size:.66rem;font-weight:700;padding:3px 8px;border-radius:999px;background:#eee8d8;color:#5a5340}
-.eat-milk{background:#dff3f1;color:#17625c}.eat-icecream{background:#fbe4ee;color:#8a2c4d}.eat-specialty{background:#fbe4d0;color:#8a4a12}
+.eat-milk{background:#dff3f1;color:#17625c}.eat-icecream{background:#fbe4ee;color:#8a2c4d}.eat-specialty{background:#fbe4d0;color:#8a4a12}.eat-otaru{background:#dde6f4;color:#24457c}
 .eat-map{display:inline-flex;gap:5px;align-items:center;font-size:.78rem;font-weight:700;color:var(--ai);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:#fff}
 .eat-map svg{width:14px;height:14px}
 .eat-note{margin-top:16px}

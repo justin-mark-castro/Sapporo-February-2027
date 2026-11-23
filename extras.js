@@ -72,9 +72,11 @@
     ramen:   { label: "Ramen",            color: "#c8372d", path: '<path d="M3 12h18c0 5-4 8-9 8s-9-3-9-8zM8 12V6M12 12V4M16 12V6"/>' },
     genghis: { label: "Genghis Khan",     color: "#8a4a12", path: '<path d="M12 3c2 3 5 4 5 8a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-4 1-7zM5 21h14"/>' },
     seafood: { label: "Seafood",          color: "#24457c", path: '<path d="M3 12c3-5 8-6 13-3l5-2-1 5 1 5-5-2c-5 3-10 2-13-3zM9 11.5v.01"/>' },
+    chain:   { label: "Budget & chains",   color: "#4a5568", path: '<path d="M4 4v7a3 3 0 0 0 3 3v6M7 4v6M10 4v7a3 3 0 0 1-3 3M17 20V4c-2 1-3 4-3 8h3"/>' },
+    matcha:  { label: "Matcha cafe",       color: "#5b8c3a", path: '<path d="M4 10h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h2a2 2 0 0 1 0 4h-2M8 4c1 1-1 2 0 3M12 4c1 1-1 2 0 3"/>' },
     local:   { label: "Local specialties", color: "#a8741a", path: '<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>' }
   };
-  var TAGS = { milk: "Hokkaido milk", icecream: "Ice cream", specialty: "Hokkaido specialty" };
+  var TAGS = { milk: "Hokkaido milk", icecream: "Ice cream", specialty: "Hokkaido specialty", otaru: "Otaru day trip" };
 
   function P(n, c, a, d, tags, q) { return { n: n, c: c, a: a, d: d, t: tags || [], q: q || n + " Sapporo" }; }
   var PLACES = [
@@ -96,7 +98,7 @@
     P("Yoru Parfait Nanakamado", "cafe", "Central Sapporo", "A night-time parfait specialty restaurant.", [], "Nanakamado parfait Sapporo"),
     P("Saera", "cafe", "Odori underground", "A beloved Hokkaido coffee chain, in the tunnels under Odori since 1975.", [], "Saera coffee Odori Sapporo"),
     P("Kitakaro Sapporo Honkan", "cafe", "Central Sapporo", "A Hokkaido sweets brand with a shop and cafe in a retro-modern building.", ["specialty"]),
-    P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty"], "LeTAO Honten Otaru"),
+    P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty", "otaru"], "LeTAO Honten Otaru"),
 
     P("Soup Curry GARAKU", "curry", "Susukino (main store) · Sitatte Sapporo", "One of Sapporo's best-known soup curry restaurants, with a queue at busy times. You choose the soup, spice level and toppings.", ["specialty"], "Soup Curry GARAKU Sapporo"),
     P("Soup Curry Suage+", "curry", "Susukino", "Known for crisp, batter-free fried vegetables and an optional squid-ink \"ikakuro\" soup. Tabelog Curry EAST 100 (2026).", ["specialty"], "Soup Curry Suage+ Susukino"),
@@ -130,6 +132,24 @@
     P("Sakana no Anyo Susukino", "seafood", "Susukino", "A seafood buffet where you can also grill your own okonomiyaki.", ["specialty"], "Sakana no Anyo Susukino"),
     P("Hassamu Kaneshige Sengyoten", "seafood", "Central Sapporo", "A lesser-known seafood favourite for seafood bowls.", ["specialty"], "Hassamu Kaneshige Sengyoten Sapporo"),
 
+    P("Matsuya", "chain", "Many branches in central Sapporo", "Cheap, fast beef bowls (gyudon) and set meals. You order at a ticket machine, so no Japanese is needed.", [], "Matsuya Sapporo"),
+    P("Matsunoya", "chain", "Many branches in central Sapporo", "Tonkatsu (breaded pork cutlet) and katsudon set meals at low prices, from the same group as Matsuya. Order at a ticket machine.", [], "Matsunoya Sapporo"),
+    P("Ichiran Ramen", "chain", "Susukino and Sapporo Station area", "Tonkotsu ramen eaten in a solo booth. You fill in an order sheet to set noodle firmness, richness and spice. Some branches are open late.", [], "Ichiran Ramen Sapporo"),
+    P("Saizeriya", "chain", "Central Sapporo", "Very cheap Italian family restaurant with pasta, pizza and doria. A safe, low-cost meal when you are tired of queues.", [], "Saizeriya Sapporo"),
+    P("Gusto Cafe", "chain", "Sapporo", "A family restaurant with Japanese and Western set meals, a drink bar and desserts. Good for a relaxed, no-queue meal.", [], "Gusto Sapporo"),
+    P("Gyukatsu Motomura", "chain", "Sapporo", "Breaded beef cutlet served rare, which you finish yourself on a small hot stone. Expect a queue at peak hours.", [], "Gyukatsu Motomura Sapporo"),
+    P("Yakiniku Like", "chain", "Susukino and central Sapporo", "Solo-friendly yakiniku with your own small grill and set meals at budget prices.", [], "Yakiniku Like Sapporo"),
+
+    P("Matcha Cafe & Sweets RIQ (Rikyu)", "matcha", "Tanukikoji 5-chome, Minami 2-jo Nishi 5", "A matcha sweets specialist built around Uji matcha, with about 33 drinks and parfaits in a Japanese-style space. Handy for a stop while on Tanukikoji.", [], "Matcha Cafe Rikyu Tanukikoji Sapporo"),
+    P("d:matcha Kyoto Sapporo", "matcha", "Kita 2-jo Nishi 2, near Odori and the Clock Tower", "Run by a Kyoto tea farm. Known for a rich matcha latte made with Hokkaido milk and a double matcha tiramisu. English-speaking staff are mentioned in reviews.", [], "d:matcha Kyoto Sapporo"),
+    P("108 Matcha Saro", "matcha", "Kita 5-jo Nishi 2, by Sapporo Station", "A matcha tea room right next to the station, easy to reach from your hotel.", [], "108 Matcha Saro Sapporo"),
+    P("Yukijirushi Parlor (matcha affogato)", "matcha", "Kita 2-jo Nishi 3", "Already on your list for ice cream. Its matcha affogato pours Uji matcha over Snow Royal ice cream.", ["icecream"], "Yukijirushi Parlor Sapporo Main Store"),
+    P("KANON Pancakes", "matcha", "Shiroishi Ward", "A pancake cafe with a matcha tiramisu pancake that is soaked in liqueur. It is out of the centre, so check the distance first.", [], "KANON pancakes Shiroishi Sapporo"),
+    P("Ame no hi to yuki no hi", "matcha", "Jozankei Onsen, Minami Ward", "A matcha dessert cafe near Jozankei. Closed Thursdays, and it is a trip out of town, so only go if you are already heading to Jozankei.", [], "Ame no hi to yuki no hi Jozankei"),
+    P("Sa Wa Wa", "matcha", "Sakaimachi Street, Otaru", "A matcha sweets shop on the main street, known for matcha ice cream, mochi and warabi cake. Small and busy, so go early before items sell out.", ["otaru"], "Sa Wa Wa matcha Sakaimachi Otaru"),
+    P("Matcha Sweets Dokoro Chawawa", "matcha", "Sakaimachi 4-14, Otaru", "Famous for an intense matcha soft serve that combines koicha and usucha. Stop here on your Otaru day.", ["otaru"], "Chawawa matcha Otaru Sakaimachi"),
+    P("Labrado-Ressence Cafe", "matcha", "Okusawa, Otaru", "A quiet cafe with matcha basque cheesecake and sakura sweets. It is away from the canal, so allow time to get there.", ["otaru"], "Labrado Ressence Cafe Otaru"),
+
     P("Torimatsu", "local", "Sapporo", "Hokkaido-style zangi (soy, ginger and garlic fried chicken), served on the bone.", ["specialty"], "Torimatsu zangi Sapporo"),
     P("Nanbantei", "local", "Sapporo", "Zangi with a tangy sauce called zantare, in generous portions.", ["specialty"], "Nanbantei zangi Sapporo"),
     P("Hokkaido Shiki Marche (Stellar Place)", "local", "Sapporo Station", "A food hall of Hokkaido sweets and snacks, with zangi from Take-out Hotei and cookie sandwiches from Sapporo Agricultural College.", ["specialty", "milk"], "Hokkaido Shiki Marche Sapporo Stellar Place")
@@ -139,9 +159,9 @@
     { id: "all", label: "All" },
     { id: "t:milk", label: "Hokkaido milk" },
     { id: "t:icecream", label: "Ice cream" },
-    { id: "t:specialty", label: "Hokkaido specialties" },
+    { id: "t:specialty", label: "Hokkaido specialties" }, { id: "t:otaru", label: "Otaru day trip" },
     { id: "c:milk", label: CATS.milk.label }, { id: "c:cafe", label: CATS.cafe.label }, { id: "c:curry", label: CATS.curry.label },
-    { id: "c:ramen", label: CATS.ramen.label }, { id: "c:genghis", label: CATS.genghis.label }, { id: "c:seafood", label: CATS.seafood.label }, { id: "c:local", label: CATS.local.label }
+    { id: "c:ramen", label: CATS.ramen.label }, { id: "c:genghis", label: CATS.genghis.label }, { id: "c:seafood", label: CATS.seafood.label }, { id: "c:chain", label: CATS.chain.label }, { id: "c:matcha", label: CATS.matcha.label }, { id: "c:local", label: CATS.local.label }
   ];
   var active = "all";
 
