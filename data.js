@@ -290,6 +290,7 @@ window.TRIP = {
             "activity": "Sapporo TV Tower",
             "desc": "A tower at the east end of Odori Park with an observation deck over the lit-up park.",
             "fact": "Opened in 1957, it stands about 147 m tall.",
+            "photo": "assets/sapporo-tv-tower.jpg",
             "wiki": "Sapporo TV Tower",
             "icon": "landmark",
             "location": "East end of Odori Park (Nishi 1-chome)",
