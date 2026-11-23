@@ -567,6 +567,7 @@ window.TRIP = {
             "activity": "Ice World Susukino",
             "desc": "The Snow Festival's Susukino site, with illuminated ice sculptures along the main street.",
             "fact": "Many of the sculptures are carved by hand from huge blocks of ice.",
+            "photo": "assets/ice-world-susukino.jpg",
             "commons": {"q": "Susukino Ice Festival", "must": ["susukino"]},
             "icon": "snow",
             "map": "Susukino Ice World, Sapporo",
