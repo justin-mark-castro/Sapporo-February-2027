@@ -373,6 +373,7 @@ window.TRIP = {
             "activity": "Chitose · Lake Shikotsu Ice Festival",
             "desc": "Ice structures built from frozen lake water and lit at night on the shore of a caldera lake.",
             "fact": "Lake Shikotsu is Japan's second-deepest lake, at about 360 m.",
+            "photo": "assets/lake-shikotsu-ice-festival.jpg",
             "wiki": "Lake Shikotsu",
             "icon": "snow",
             "location": "Lake Shikotsu Onsen, Chitose",
