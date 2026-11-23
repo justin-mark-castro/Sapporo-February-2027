@@ -278,6 +278,7 @@ window.TRIP = {
             "activity": "Sapporo Clock Tower",
             "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
             "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
+            "photo": "assets/sapporo-clock-tower.jpg",
             "wiki": "Sapporo Clock Tower",
             "icon": "landmark",
             "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
