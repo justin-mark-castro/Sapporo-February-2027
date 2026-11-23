@@ -495,6 +495,7 @@ window.TRIP = {
             "activity": "Nijo Market: king crab and seafood bowl",
             "desc": "A lively seafood market where you can eat fresh crab, uni and ikura rice bowls.",
             "fact": "Hokkaido king crab, snow crab and hairy crab are all sold here.",
+            "photo": "assets/nijo-market.jpg",
             "wiki": "Nijō Market|Nijo Market",
             "icon": "food",
             "location": "Nijo Market, Chuo-ku",
