@@ -574,13 +574,13 @@ h4.stop-title{margin:0}
    UX AUDIT PASS (Nov 2026): readability, tap targets, mobile
    ========================================================= */
 :root{--muted:#5b6070}              /* AA contrast on cream backgrounds */
-html{font-size:15px}
-@media (max-width:560px){html{font-size:15px}}   /* was 13.5px: everything shrank on phones */
+html{font-size:14px}
+@media (max-width:560px){html{font-size:13.5px}}
 
 /* minimum sizes for the smallest labels */
 .tiny{font-size:.8rem}
-.stat label,.bud-cell small,.donut-center small,.countdown small{font-size:.76rem}
-.day-date .dn,.stop-time,.eat-cat,.eat-tag,.table th,.climate-row .val small,.prep-when,.events .on{font-size:.74rem}
+.stat label,.bud-cell small,.donut-center small,.countdown small{font-size:.8rem}
+.day-date .dn,.stop-time,.eat-cat,.eat-tag,.table th,.climate-row .val small,.prep-when,.events .on{font-size:.8rem}
 .day-date .dw,.eat-area,.fl-end small,.flight-top small,.fx-code small,.type-legend li,.chip{font-size:.78rem}
 .stop-photo figcaption{font-size:.7rem}
 .stop-fact,.prep-note,.eat-desc,.stop-desc,.map-link,.eat-map{font-size:.88rem}
@@ -615,15 +615,7 @@ html{font-size:15px}
 .nextup-card .go{margin-left:auto;font-weight:700;color:var(--ai-2);white-space:nowrap}
 .nextup+main .section:first-child{padding-top:56px}
 
-/* collapsible days */
-.timeline-tools{display:flex;gap:8px;margin:0 0 14px}
-.timeline-tools button,.day-toggle{font:inherit;font-weight:600;font-size:.88rem;color:var(--ai);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.day-toggle{margin-top:12px;width:100%;justify-content:space-between;border-radius:12px;background:var(--washi)}
-.day-toggle::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
-.day-toggle[aria-expanded="true"]::after{transform:rotate(-135deg)}
-.day-toggle:focus-visible,.timeline-tools button:focus-visible{outline:2px solid var(--ai-2);outline-offset:2px}
-.day-body.collapsed .stops,.day-body.collapsed .collapsible{display:none}
-@media print{.day-body.collapsed .stops,.day-body.collapsed .collapsible{display:block}.day-toggle,.timeline-tools,.eat-more,.nextup{display:none}}
+@media print{.eat-more,.nextup{display:none}}
 
 /* Eat: show more */
 .eat-more{display:flex;margin:18px auto 0;font:inherit;font-weight:700;color:var(--ai);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 24px;min-height:48px;align-items:center;cursor:pointer;box-shadow:var(--shadow)}
@@ -662,5 +654,5 @@ html{font-size:15px}
   .day-body{padding:14px 14px}
   .stop-photo{width:84px}
 }
-.glance small{font-size:.74rem}
-.countdown small{letter-spacing:.04em;font-size:.72rem}
+.glance small{font-size:.78rem}
+.countdown small{letter-spacing:.04em;font-size:.76rem}
