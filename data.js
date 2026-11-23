@@ -414,6 +414,7 @@ window.TRIP = {
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
             "desc": "A chocolate factory and tour site run by Royce', known for its Hokkaido sweets.",
             "fact": "Royce' was founded in Sapporo in 1983 and is famous for its Nama Chocolate.",
+            "photo": "assets/royce-factory.jpg",
             "commons": {"q": "Royce chocolate Sapporo", "must": ["royce"]},
             "icon": "sweets",
             "map": "Royce' Cacao & Chocolate Town, Tobetsu",
