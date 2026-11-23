@@ -92,9 +92,35 @@
     "Saera": "10:00 AM – 6:00 PM, closed Wed",
     "Kitakaro Sapporo Honkan": "10:00 AM – 6:00 PM (confirm)",
     "Yukijirushi Parlor (matcha affogato)": "10:00 AM – 7:00 PM, open daily",
+    "Soup Curry GARAKU": "11:30 AM – 3:30 PM, 5:00 – 11:30 PM (confirm)",
+    "Soup Curry Suage+": "Mon–Fri 11:30 AM – 9:30 PM, Sat 11:00 AM – 10:00 PM",
+    "Rojiura Curry SAMURAI": "11:30 AM – 3:30 PM, 5:30 – 11:00 PM (confirm)",
+    "Magic Spice": "Mon, Tue, Fri 11 AM – 3 PM and 5:30 – 10 PM; Sat, Sun 11 AM – 10 PM; closed Wed, Thu",
+    "Picante": "11:00 AM – 11:00 PM, closed Wed (confirm)",
+    "Soup Curry Yellow": "11:30 AM – 9:00 PM (confirm)",
+    "Ganso Sapporo Ramen Yokocho": "Varies by shop, many 11:00 AM until late night",
+    "Sumire (Susukino)": "5:00 PM – 12:00 AM (confirm)",
+    "Ramen Shingen (Minami 6-jo)": "11:30 AM – 1:00 AM, closes when soup sells out",
+    "Menya Saimi": "11:00 AM – 3:15 PM, Fri–Sat also 5:00 – 7:30 PM, closed Mon",
+    "Ganso Sapporo Ramen Mogura": "Ramen Alley shop, open late (confirm)",
+    "Baisensha": "9:00 AM – 2:30 AM, irregular holidays",
+    "Jingisukan Daruma (Main Branch)": "Evening until about 12:00 AM (confirm)",
+    "Sapporo Jingisukan (Main Branch)": "5:00 – 10:00 PM (last order 9:30 PM)",
+    "Matsuo Jingisukan Odori Minami 1-jo": "11 AM – 3 PM and 5 – 11 PM",
+    "Sapporo Beer Garden": "11:30 AM – 9:00 PM (last order 8:40 PM)",
+    "Kaisendon Ya Oguma Shouten": "Inside Nijo Market (market about 7 AM – 6 PM), confirm",
+    "Donburi Chaya": "7:30 AM – 4:30 PM (last order 4:00 PM)",
+    "Shiki Hanamaru Susukino": "Sun and holidays 11:00 AM – 10:00 PM, confirm other days",
+    "Matsuya": "Open 24 hours",
+    "Ichiran Ramen": "Susukino branch open until about 4:00 AM, some listings 24 hrs",
+    "Saizeriya": "Susukino branch: Sun–Thu 11 AM – 11:30 PM, Fri–Sat 11 AM – 3 AM",
+    "Matcha Cafe & Sweets RIQ (Rikyu)": "10:30 AM – 12:00 AM (last order 11:30 PM)",
+    "d:matcha Kyoto Sapporo": "11:00 AM – 9:00 PM (confirm)",
+    "108 Matcha Saro": "10:00 AM – 9:00 PM",
+    "LeTAO Honten": "9:00 AM – 6:00 PM (cafe last order 5:30 PM)",
     "Hokkaido Shiki Marche (Stellar Place)": "Mall hours, about 10:00 AM – 8:00 PM (confirm)"
   };
-  var HOURS_FALLBACK = "Hours vary, check Google Maps";
+  var HOURS_FALLBACK = "Hours not confirmed, check Google Maps";
 
   function P(n, c, a, d, tags, q) { return { n: n, c: c, a: a, d: d, t: tags || [], q: q || n + " Sapporo" }; }
   var PLACES = [
