@@ -249,6 +249,38 @@
     var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
     return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "View on map</a>";
   }
+  function stopExtras(s) {
+    var h = "";
+    if (s.wiki) h += '<figure class="stop-photo" hidden><img data-wiki="' + esc(s.wiki) + '" alt="' + esc(s.activity) + '" loading="lazy"><figcaption></figcaption></figure>';
+    if (s.desc) h += '<p class="stop-desc">' + esc(s.desc) + "</p>";
+    if (s.fact) h += '<p class="stop-fact"><b>Fact:</b> ' + esc(s.fact) + "</p>";
+    return h;
+  }
+  function prepMeta(s) {
+    return (s.prep || []).map(function (t) { return "<span>" + icClock + esc(t) + "</span>"; }).join("");
+  }
+  function loadStopPhotos() {
+    var cache = {};
+    function fetchPhoto(q) {
+      if (cache[q]) return cache[q];
+      var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages|info&inprop=url&piprop=thumbnail&pithumbsize=640&titles=" + encodeURIComponent(q);
+      cache[q] = fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+        var pages = (j.query && j.query.pages) || {}, best = null;
+        Object.keys(pages).forEach(function (k) { var p = pages[k]; if (!best && p.thumbnail && p.thumbnail.source) best = { src: p.thumbnail.source, page: p.fullurl, title: p.title }; });
+        return best;
+      }).catch(function () { return null; });
+      return cache[q];
+    }
+    document.querySelectorAll("img[data-wiki]").forEach(function (img) {
+      fetchPhoto(img.getAttribute("data-wiki")).then(function (r) {
+        if (!r) return;
+        img.onload = function () { img.parentNode.hidden = false; };
+        img.src = r.src;
+        var cap = img.parentNode.querySelector("figcaption");
+        if (cap) cap.innerHTML = 'Photo: <a href="' + esc(r.page) + '" target="_blank" rel="noopener">Wikipedia · ' + esc(r.title) + "</a>";
+      });
+    });
+  }
   function renderTimeline() {
     var today = todayLocal();
     var tl = $("#timeline");
@@ -271,9 +303,10 @@
         var meta = "";
         if (s.location) meta += "<span>" + icPin + esc(s.location) + "</span>";
         if (s.how) meta += "<span class='how'>" + icTrain + "<span>" + howHtml(s.how) + "</span></span>";
+        meta = prepMeta(s) + meta;
         if (s.notes) meta += "<span>" + icNote + esc(s.notes) + "</span>";
         return '<li class="stop"><span class="stop-time">' + esc(s.time || "") + "</span>" +
-          '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
+          '<div class="stop-main"><div class="stop-title">' + stopIcon(s) + "<b>" + esc(s.activity) + "</b></div>" + stopExtras(s) + (meta ? '<div class="meta">' + meta + "</div>" : "") + stopMapLink(s) + "</div></li>";
       }).join("");
       var body;
       if (kind === "arrival") {
@@ -282,8 +315,9 @@
         if (s0.time) meta0 += "<span>" + icClock + esc(s0.time) + "</span>";
         if (s0.location) meta0 += "<span>" + icPin + esc(s0.location) + "</span>";
         if (s0.how) meta0 += "<span class='how'>" + icTrain + "<span>" + howHtml(s0.how) + "</span></span>";
+        meta0 = prepMeta(s0) + meta0;
         if (s0.notes) meta0 += "<span>" + icNote + esc(s0.notes) + "</span>";
-        body = '<h4 class="stop-title">' + stopIcon(s0) + "<span>" + esc(s0.activity || d.title) + "</span></h4>" + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + stopMapLink(s0) + sunLine(d.date);
+        body = '<h4 class="stop-title">' + stopIcon(s0) + "<span>" + esc(s0.activity || d.title) + "</span></h4>" + stopExtras(s0) + (meta0 ? '<div class="meta">' + meta0 + "</div>" : "") + stopMapLink(s0) + sunLine(d.date);
       } else {
         body = head + (stops ? '<ul class="stops">' + stops + "</ul>" : "");
       }
@@ -762,6 +796,7 @@
   renderFlights();
   renderHotel();
   renderTimeline();
+  loadStopPhotos();
   renderGuide();
   buildMap();
   buildRail();

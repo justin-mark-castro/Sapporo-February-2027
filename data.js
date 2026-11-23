@@ -28,8 +28,8 @@ window.TRIP = {
   // Total estimated budget for the trip
   budget: { php: 500000 },
 
-  // Airline logo: drop the official file at assets/pal-logo.png (or .svg) and it appears automatically.
-  airlineLogo: "assets/pal-logo.png",
+  // Airline logo: drop the official file at assets/pal-logo.jpg (or .svg) and it appears automatically.
+  airlineLogo: "assets/pal-logo.jpg",
 
   // Hotel
   hotel: {
@@ -86,7 +86,7 @@ window.TRIP = {
       "toName": "Sapporo New Chitose",
       "arr": "12:15",
       "aircraft": "Airbus A321neo",
-      "note": "Lands the same day. No activities are planned for Feb 1."
+      "note": "Lands the same day. No activities are planned for Feb 1. Leave Cubao Araneta Center by Grab at 2:30 AM and be at NAIA Terminal 1 by 3:30 AM."
     },
     {
       "code": "PR 405",
@@ -100,7 +100,7 @@ window.TRIP = {
       "toName": "Manila",
       "arr": "18:10",
       "aircraft": "Airbus A321neo",
-      "note": "Arrival time varies by a few minutes between sources. Feb 11 is a flexible day with last-minute Donki shopping."
+      "note": "Arrival time varies by a few minutes between sources. Feb 11 is a flexible day with last-minute Donki shopping. Leave the hotel at 8:45 AM by JR Airport Train and be at the airport by 10:15 AM."
     }
   ],
   flightsNote: "Times follow Philippine Airlines' published Manila-Sapporo schedule for the 2025-26 season. Confirm against your booking.",
@@ -120,6 +120,10 @@ window.TRIP = {
           {
             "time": "12:15",
             "activity": "Arrival · PR 406",
+            "desc": "Hokkaido's main gateway airport, with rail service straight to Sapporo.",
+            "fact": "The terminal has a hot spring (onsen) inside, handy before a long flight.",
+            "wiki": "New Chitose Airport",
+            "prep": ["Leave Cubao Araneta Center by Grab at 2:30 AM", "Be at NAIA Terminal 1 by 3:30 AM (3 hours before the 06:30 departure)"],
             "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
@@ -140,6 +144,9 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hokkaido Jingu",
+            "desc": "Hokkaido's most important Shinto shrine, set in forest at the foot of Mt. Maruyama.",
+            "fact": "Founded in 1869; it took the name Hokkaido Jingu in 1964, when Emperor Meiji was enshrined there.",
+            "wiki": "Hokkaido Shrine",
             "icon": "shrine",
             "location": "Maruyama Park, Chuo-ku (Maruyama-koen Station)",
             "notes": "Hokkaido's main shrine, set inside the park grounds.",
@@ -148,6 +155,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Maruyama Park",
+            "desc": "A quiet park beside the shrine, lovely under fresh snow.",
+            "fact": "Maruyama Zoo sits right next door and is known for its polar bears.",
             "icon": "nature",
             "map": "Maruyama Park, Sapporo",
             "location": "Next to Hokkaido Jingu",
@@ -157,6 +166,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Fushimi Inari Shrine",
+            "desc": "A small hillside shrine with a path of red torii gates, modelled on Kyoto's famous Fushimi Inari.",
+            "fact": "Walk through 27 torii gates, which look striking against snow.",
             "icon": "shrine",
             "location": "Mt. Moiwa slope, Chuo-ku",
             "notes": "27 red torii gates.",
@@ -165,6 +176,9 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Mt. Moiwa Ropeway",
+            "desc": "A ropeway and mini cable car up Mt. Moiwa for a panoramic view over Sapporo.",
+            "fact": "Sapporo's night view is ranked among Japan's New Three Great Night Views.",
+            "wiki": "Mount Moiwa",
             "icon": "mountain",
             "location": "Fushimi, Chuo-ku",
             "notes": "Go up around sunset for the night view. Check ropeway operating days and the last ride up.",
@@ -184,6 +198,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Wonderland Sapporo Snowmobile",
+            "desc": "A guided snowmobile ride across a snowfield on the west edge of the city.",
+            "fact": "Sapporo gets close to 5 metres of snow a year, so February is prime riding season.",
             "icon": "snow",
             "map": "Wonderland Sapporo, Fukui, Nishi-ku, Sapporo",
             "location": "478 Fukui, Nishi-ku",
@@ -193,6 +209,9 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Shiroi Koibito Park",
+            "desc": "A chocolate factory theme park with a Tudor-style building, a factory viewing area and sweets.",
+            "fact": "The name means 'White Lover'; the cookie first went on sale in 1976.",
+            "wiki": "Shiroi Koibito",
             "icon": "sweets",
             "location": "Miyanosawa, Nishi-ku",
             "notes": "Chocolate factory park. Miyanosawa is the west end of the Tozai Line.",
@@ -212,6 +231,9 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Hill of the Buddha",
+            "desc": "A giant Buddha statue rising out of a lavender-covered mound, designed by architect Tadao Ando.",
+            "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
+            "wiki": "Hill of the Buddha",
             "icon": "temple",
             "location": "Makomanai Takino Cemetery, Minami-ku",
             "notes": "Great Buddha Hall is open 10:00 to 15:00 from Nov to Mar, so leave early.",
@@ -220,6 +242,9 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Odori Park · Sapporo Snow Festival (Odori site)",
+            "desc": "A 1.5 km green belt through the city centre that becomes the main Snow Festival site, lined with giant snow and ice sculptures.",
+            "fact": "The Snow Festival began in 1950, when local high school students built six snow statues in the park.",
+            "wiki": "Sapporo Snow Festival",
             "icon": "snow",
             "location": "Odori Park, Nishi 1 to 12-chome",
             "notes": "The large snow sculptures line the park. Opening day.",
@@ -228,6 +253,9 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Hokkaido Former Government Office (Red Brick Building)",
+            "desc": "A red brick government building in American Neo-Baroque style, free to walk through.",
+            "fact": "Completed in 1888, it served as the Hokkaido government office for decades.",
+            "wiki": "Former Hokkaido Government Office",
             "icon": "landmark",
             "location": "Kita 3-jo Nishi 6-chome, Chuo-ku (west of Odori Park)",
             "notes": "The red-brick \"Akarenga\" building, a Sapporo landmark. Check opening hours before you go.",
@@ -236,6 +264,9 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Clock Tower",
+            "desc": "A small white wooden clock tower that has become a symbol of Sapporo.",
+            "fact": "Built in 1878 as the drill hall of the former Sapporo Agricultural College; the clock was installed in July 1881 by E. Howard & Co. of Boston.",
+            "wiki": "Sapporo Clock Tower",
             "icon": "landmark",
             "location": "Kita 1-jo Nishi 2-chome, Chuo-ku (one block west of the TV Tower)",
             "notes": "Sapporo's wooden clock tower and a city landmark. Check opening hours before you go.",
@@ -244,6 +275,9 @@ window.TRIP = {
           {
             "time": "Dusk",
             "activity": "Sapporo TV Tower",
+            "desc": "A tower at the east end of Odori Park with an observation deck over the lit-up park.",
+            "fact": "Opened in 1957, it stands about 147 m tall.",
+            "wiki": "Sapporo TV Tower",
             "icon": "landmark",
             "location": "East end of Odori Park (Nishi 1-chome)",
             "notes": "Observation deck with a view over the park as the lights come on.",
@@ -263,6 +297,9 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
+            "desc": "A full-day private tour through Asahikawa, Biei and Furano to see Hokkaido's snowy countryside.",
+            "fact": "Asahiyama Zoo runs a winter penguin walk, where penguins stroll across the snow.",
+            "wiki": "Asahiyama Zoo",
             "icon": "tour",
             "map": "Asahiyama Zoo, Asahikawa",
             "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
@@ -283,6 +320,9 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Otaru day trip",
+            "desc": "A historic port town with a stone-warehouse canal, glass shops and fresh sushi.",
+            "fact": "The Otaru Canal was completed in 1923 and lined with warehouses, now cafes and shops.",
+            "wiki": "Otaru Canal|Otaru",
             "icon": "train",
             "map": "Otaru Canal",
             "location": "JR from Sapporo Station, about 30 to 40 min",
@@ -292,6 +332,8 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Otaru Snow Light Path",
+            "desc": "Thousands of candles and lanterns light the canal and old rail line each night.",
+            "fact": "The Snow Light Path festival started in 1999 and is run largely by volunteers.",
             "icon": "snow",
             "map": "Otaru Canal",
             "location": "Otaru Canal and the former Temiya railway line",
@@ -312,6 +354,9 @@ window.TRIP = {
           {
             "time": "Afternoon to evening",
             "activity": "Chitose · Lake Shikotsu Ice Festival",
+            "desc": "Ice structures built from frozen lake water and lit at night on the shore of a caldera lake.",
+            "fact": "Lake Shikotsu is Japan's second-deepest lake, at about 360 m.",
+            "wiki": "Lake Shikotsu",
             "icon": "snow",
             "location": "Lake Shikotsu Onsen, Chitose",
             "notes": "Arrive late afternoon to see the ice in daylight and lit up. About 40 min by car from Sapporo. Dates can shift with the weather.",
@@ -349,6 +394,8 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Royce' Cacao & Chocolate Town (Royce Factory)",
+            "desc": "A chocolate factory and tour site run by Royce', known for its Hokkaido sweets.",
+            "fact": "Royce' was founded in Sapporo in 1983 and is famous for its Nama Chocolate.",
             "icon": "sweets",
             "map": "Royce' Cacao & Chocolate Town, Tobetsu",
             "location": "Tobetsu, about 40 min from central Sapporo (7 min walk from Royce Town Station)",
@@ -358,6 +405,9 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Moerenuma Park",
+            "desc": "A giant sculpted park built on a former waste site, with hills, fountains and a play area.",
+            "fact": "Designed by sculptor Isamu Noguchi; it opened in 2005, after his death in 1988.",
+            "wiki": "Moerenuma Park",
             "icon": "nature",
             "location": "Higashi-ku",
             "notes": "Check winter opening hours before going.",
@@ -366,6 +416,8 @@ window.TRIP = {
           {
             "time": "Midday",
             "activity": "Glass Pyramid HIDAMARI",
+            "desc": "A glass pyramid at the park's centre with a cafe, shops and a restaurant.",
+            "fact": "'Hidamari' means a sunny spot, which suits a glass pyramid on a winter day.",
             "icon": "landmark",
             "location": "Moerenuma Park, Higashi-ku",
             "notes": "The park's glass pyramid, with a cafe and restaurant inside. Check winter opening hours before going.",
@@ -374,6 +426,9 @@ window.TRIP = {
           {
             "time": "Late afternoon",
             "activity": "Sapporo Beer Garden Museum",
+            "desc": "A red brick former brewery with museum displays, a beer hall and a Genghis Khan lamb grill.",
+            "fact": "It is Japan's only beer museum, in a building dating to 1890.",
+            "wiki": "Sapporo Beer Museum",
             "icon": "beer",
             "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
             "notes": "Museum is open 11:00 to 18:00 (last entry 17:30) and closed Mondays. Today is a Tuesday.",
@@ -393,6 +448,8 @@ window.TRIP = {
           {
             "time": "All day",
             "activity": "Bibai Snowland",
+            "desc": "A snow play area with slides, tubing and a winter wonderland feel, northeast of Sapporo.",
+            "fact": "Bibai was once a coal-mining city and is now known for its snowland and yakitori.",
             "icon": "snow",
             "location": "Alpen Snowland Bibai, Bibai (JR to Bibai Station, then a shuttle)",
             "notes": "Last season ran Dec 6 to Mar 22, 9:00 to 16:15 (last entry 15:00). Confirm the 2026-27 dates and hours.",
@@ -412,6 +469,9 @@ window.TRIP = {
           {
             "time": "Morning",
             "activity": "Nijo Market: king crab and seafood bowl",
+            "desc": "A lively seafood market where you can eat fresh crab, uni and ikura rice bowls.",
+            "fact": "Hokkaido king crab, snow crab and hairy crab are all sold here.",
+            "wiki": "Nijō Market|Nijo Market",
             "icon": "food",
             "location": "Nijo Market, Chuo-ku",
             "notes": "Seafood breakfast. A kaisendon (raw seafood on rice) is a Sapporo classic.",
@@ -420,6 +480,8 @@ window.TRIP = {
           {
             "time": "Late morning",
             "activity": "Hokkaido milk soft-serve and ice cream",
+            "desc": "Soft serve and ice cream made with Hokkaido milk.",
+            "fact": "Hokkaido makes about half of Japan's raw milk, which is why the dairy is so rich.",
             "icon": "sweets",
             "map": false,
             "location": "Central Sapporo (Odori to Sapporo Station)",
@@ -429,6 +491,9 @@ window.TRIP = {
           {
             "time": "Lunch",
             "activity": "Soup curry",
+            "desc": "A spicy, spice-heavy curry served as a soup, loaded with vegetables and chicken.",
+            "fact": "Soup curry was born in Sapporo in the 1970s.",
+            "wiki": "Soup curry",
             "icon": "food",
             "map": "Susukino Station, Sapporo",
             "location": "Near Susukino Station",
@@ -438,6 +503,8 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Flexible · last-minute Donki shopping",
+            "desc": "A giant 24-hour discount store in the Tanukikoji arcade, good for souvenirs and snacks.",
+            "fact": "Tanukikoji is a covered arcade of roughly 900 m, one of Sapporo's oldest shopping streets.",
             "icon": "shopping",
             "map": "MEGA Don Quijote Sapporo Tanukikoji",
             "location": "MEGA Don Quijote Sapporo Tanukikoji (open 24 hours)",
@@ -447,6 +514,9 @@ window.TRIP = {
           {
             "time": "Afternoon",
             "activity": "Susukino Nikka & Shopping Street",
+            "desc": "Sapporo's nightlife district, with the giant Nikka neon sign at its main crossing.",
+            "fact": "Nikka Whisky's founder, Masataka Taketsuru, built its first distillery in Yoichi, Hokkaido.",
+            "wiki": "Susukino",
             "icon": "shopping",
             "location": "Susukino",
             "notes": "The Nikka sign at Susukino Crossing and the nearby shopping street.",
@@ -455,6 +525,8 @@ window.TRIP = {
           {
             "time": "Evening",
             "activity": "Ramen Lane (miso ramen)",
+            "desc": "A narrow alley of small ramen shops serving rich miso ramen.",
+            "fact": "Miso ramen was created in Sapporo in the 1950s.",
             "icon": "food",
             "map": "Ganso Sapporo Ramen Yokocho",
             "location": "Susukino",
@@ -464,6 +536,8 @@ window.TRIP = {
           {
             "time": "Night",
             "activity": "Ice World Susukino",
+            "desc": "The Snow Festival's Susukino site, with illuminated ice sculptures along the main street.",
+            "fact": "Many of the sculptures are carved by hand from huge blocks of ice.",
             "icon": "snow",
             "map": "Susukino Ice World, Sapporo",
             "location": "Ekimae-dori, Minami 4-jo to 6-jo",
@@ -484,11 +558,15 @@ window.TRIP = {
           {
             "time": "Departs 13:15",
             "activity": "Departure · PR 405",
+            "desc": "The way home: the airport train goes straight from Sapporo Station to the terminal.",
+            "fact": "Special Rapid trains make the trip in about 33 minutes.",
+            "wiki": "New Chitose Airport",
+            "prep": ["Leave Hotel Hokke Club - Sapporo Station at 8:45 AM via JR Airport Train (about 40 min)", "Be at New Chitose Airport (CTS) by 10:15 AM (3 hours before the 13:15 departure)"],
             "icon": "flight",
             "map": "New Chitose Airport",
             "location": "New Chitose Airport (CTS)",
             "notes": "Philippine Airlines PR 405 to Manila (arrives about 18:10). Leave Sapporo in the morning for the airport; check-out is 10:00.",
-            "how": "JR Rapid Airport from Sapporo Station to New Chitose Airport, about 37 min, ¥1,150 (Special Rapid about 33 min). Aim for a train around 10:00 so you reach the airport with time to spare."
+            "how": "JR Rapid Airport from Sapporo Station to New Chitose Airport, about 37 min, ¥1,150 (Special Rapid about 33 min). Aim for a train around 9:15 so you reach the airport before 10:15."
           }
         ]
       }

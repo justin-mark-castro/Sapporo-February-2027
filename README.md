@@ -17,4 +17,4 @@ All trip data lives in `data.js` (copied from the private Google Sheet, snapshot
 - `data.js` holds `hotel`, `places` (map pins, approximate coordinates), `budget` and `airlineLogo`.
 - The Map tab uses Leaflet with OpenStreetMap tiles (loaded from unpkg). If it cannot load, the place list still works.
 - The rail diagrams are hand-drawn SVG in `app.js` (`buildRail`).
-- Add `assets/pal-logo.png` to show the Philippine Airlines logo.
+- Add `assets/pal-logo.jpg` to show the Philippine Airlines logo.
