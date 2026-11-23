@@ -450,6 +450,7 @@ window.TRIP = {
             "activity": "Sapporo Beer Garden Museum",
             "desc": "A red brick former brewery with museum displays, a beer hall and a Genghis Khan lamb grill.",
             "fact": "It is Japan's only beer museum, in a building dating to 1890.",
+            "photo": "assets/sapporo-beer-museum.jpg",
             "wiki": "Sapporo Beer Museum",
             "icon": "beer",
             "location": "9-2-10 Kita 7-jo Higashi, Higashi-ku",
