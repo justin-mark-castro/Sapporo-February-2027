@@ -219,6 +219,7 @@ window.TRIP = {
             "activity": "Shiroi Koibito Park",
             "desc": "A chocolate factory theme park with a Tudor-style building, a factory viewing area and sweets.",
             "fact": "The name means 'White Lover'; the cookie first went on sale in 1976.",
+            "photo": "assets/shiroi-koibito-park.jpg",
             "wiki": "Shiroi Koibito",
             "icon": "sweets",
             "location": "Miyanosawa, Nishi-ku",
