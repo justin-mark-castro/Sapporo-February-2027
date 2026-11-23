@@ -555,6 +555,7 @@ window.TRIP = {
             "activity": "Ramen Lane (miso ramen)",
             "desc": "A narrow alley of small ramen shops serving rich miso ramen.",
             "fact": "Miso ramen was created in Sapporo in the 1950s.",
+            "photo": "assets/ramen-lane.jpg",
             "commons": {"q": "Ramen Yokocho Sapporo", "must": ["ramen", "sapporo"]},
             "icon": "food",
             "map": "Ganso Sapporo Ramen Yokocho",
