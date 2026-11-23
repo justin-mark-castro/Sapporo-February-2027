@@ -118,6 +118,8 @@
     "d:matcha Kyoto Sapporo": "11:00 AM – 9:00 PM (confirm)",
     "108 Matcha Saro": "10:00 AM – 9:00 PM",
     "LeTAO Honten": "9:00 AM – 6:00 PM (cafe last order 5:30 PM)",
+    "Fromage Danish DANI LeTAO": "9:00 AM – 6:00 PM, varies by season",
+    "Nouvelle Vague LeTAO Chocolatier": "9:00 AM – 6:00 PM, open daily",
     "Kitakaro Otaru Main Shop": "10:00 AM – 6:00 PM, closed New Year's Day (confirm)",
     "Hokkaido Shiki Marche (Stellar Place)": "Mall hours, about 10:00 AM – 8:00 PM (confirm)"
   };
@@ -143,7 +145,9 @@
     P("Yoru Parfait Nanakamado", "cafe", "Central Sapporo", "A night-time parfait specialty restaurant.", [], "Nanakamado parfait Sapporo"),
     P("Saera", "cafe", "Odori underground", "A beloved Hokkaido coffee chain, in the tunnels under Odori since 1975.", [], "Saera coffee Odori Sapporo"),
     P("Kitakaro Sapporo Honkan", "cafe", "Central Sapporo", "A Hokkaido sweets brand with a shop and cafe in a retro-modern building.", ["specialty"]),
-    P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty", "otaru"], "LeTAO Honten Otaru"),
+    P("LeTAO Honten", "cafe", "Sakaimachi 7-16, Otaru (Feb 6)", "The LeTAO main shop, famous for its Double Fromage cheesecake, with a cafe attached. Try the cheesecake here.", ["specialty", "otaru"], "LeTAO Honten 7-16 Sakaimachi Otaru"),
+    P("Fromage Danish DANI LeTAO", "cafe", "Sakaimachi, Otaru, across from LeTAO Honten (Feb 6)", "LeTAO's Danish shop, specialising in freshly baked cheese Danish pastries.", ["specialty", "otaru"], "Fromage Danish DANI LeTAO Sakaimachi Otaru"),
+    P("Nouvelle Vague LeTAO Chocolatier", "cafe", "Sakaimachi, Otaru, 3 min walk from LeTAO Honten (Feb 6)", "LeTAO's chocolate patisserie. Some chocolate items are sold only at set times of day, so check on arrival.", ["specialty", "otaru"], "Nouvelle Vague LeTAO Chocolatier Otaru Main Shop Sakaimachi"),
     P("Popura Farm Otaru Outlet", "cafe", "Otaru Denuki Koji, Ironai (Feb 6)", "Must eat: Yubari melon ice cream. The signature \"Santa's Beard\" puts melon soft serve on a half melon. Pricey, but a Hokkaido classic for your Otaru day trip.", ["icecream", "specialty", "otaru"], "Popura Farm Otaru Denuki Koji"),
     P("Otaru Rainbow Soft Cream", "cafe", "Otaru (Feb 6)", "Must eat: the 8-layer rainbow soft serve, a colourful Otaru ice cream stop. It is big, so share it or go in a pair.", ["icecream", "otaru"], "Otaru Rainbow Soft Cream", "https://maps.app.goo.gl/LXmRqxB3Unfhi8ck8"),
     P("Shofukuya Ice Cream", "cafe", "Otaru (Feb 6)", "An ice cream stop to add to your Otaru day trip. Open the map link to check the exact location and hours.", ["icecream", "otaru"], "Shofukuya Ice Cream Otaru", "https://maps.app.goo.gl/QRMSGiLoXg5YoLqj9"),
