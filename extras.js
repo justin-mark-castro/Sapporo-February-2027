@@ -164,6 +164,7 @@
     P("Okushiba Shoten", "curry", "Sapporo", "A popular Hokkaido soup curry restaurant.", ["specialty"], "Okushiba Shoten Okushiba-chan Soup Curry Sapporo"),
     P("Soup Curry Yellow", "curry", "Minami 3-jo Nishi 1", "A Sapporo-based chain praised for a soup made with a unique method.", ["specialty"], "Soup Curry Yellow Sapporo"),
 
+    P("Sapporo Ramen Kifuh Susukino", "ramen", "Minami 5-jo Nishi 3-1, Susukino", "札幌らーめん 輝風 すすきの店. Rich miso ramen with a thick pork and chicken soup and chewy yellow wavy egg noodles. A small counter shop where you order from a ticket machine, so expect a short queue at peak times.", ["specialty"], "Sapporo Ramen Kifuh Susukino", "https://maps.app.goo.gl/BnfbQK46npad3CZV6"),
     P("Ganso Sapporo Ramen Yokocho", "ramen", "Susukino · Minami 5-jo Nishi 3", "A 42 m alley with 17 miso ramen shops, already on your Feb 11 plan.", ["specialty"], "Ganso Sapporo Ramen Yokocho"),
     P("Sumire (Susukino)", "ramen", "Next to Susukino Station", "Famous since 1964 for hot miso ramen sealed under a layer of lard, with a garlic and pepper aroma.", ["specialty"], "Sumire Ramen Susukino Sapporo"),
     P("Ramen Shingen (Minami 6-jo)", "ramen", "Near Higashi-Honganji-mae", "Miso ramen with tender braised pork. Tabelog Ramen HOKKAIDO 100 (2025).", ["specialty"], "Ramen Shingen Minami 6 jo Sapporo"),
