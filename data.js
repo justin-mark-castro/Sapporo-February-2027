@@ -266,6 +266,7 @@ window.TRIP = {
             "activity": "Hokkaido Former Government Office (Red Brick Building)",
             "desc": "A red brick government building in American Neo-Baroque style, free to walk through.",
             "fact": "Completed in 1888, it served as the Hokkaido government office for decades.",
+            "photo": "assets/red-brick-government-office.jpg",
             "wiki": "Former Hokkaido Government Office",
             "icon": "landmark",
             "location": "Kita 3-jo Nishi 6-chome, Chuo-ku (west of Odori Park)",
