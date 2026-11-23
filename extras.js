@@ -145,6 +145,7 @@
     P("LeTAO Honten", "cafe", "Otaru (Feb 6)", "A well-known cheesecake shop to try on your Otaru day trip.", ["specialty", "otaru"], "LeTAO Honten Otaru"),
     P("Popura Farm Otaru Outlet", "cafe", "Otaru Denuki Koji, Ironai (Feb 6)", "Must eat: Yubari melon ice cream. The signature \"Santa's Beard\" puts melon soft serve on a half melon. Pricey, but a Hokkaido classic for your Otaru day trip.", ["icecream", "specialty", "otaru"], "Popura Farm Otaru Denuki Koji"),
     P("Otaru Rainbow Soft Cream", "cafe", "Otaru (Feb 6)", "Must eat: the 8-layer rainbow soft serve, a colourful Otaru ice cream stop. It is big, so share it or go in a pair.", ["icecream", "otaru"], "Otaru Rainbow Soft Cream", "https://maps.app.goo.gl/LXmRqxB3Unfhi8ck8"),
+    P("Shofukuya Ice Cream", "cafe", "Otaru (Feb 6)", "An ice cream stop to add to your Otaru day trip. Open the map link to check the exact location and hours.", ["icecream", "otaru"], "Shofukuya Ice Cream Otaru", "https://maps.app.goo.gl/QRMSGiLoXg5YoLqj9"),
 
     P("Soup Curry GARAKU", "curry", "Susukino (main store) · Sitatte Sapporo", "One of Sapporo's best-known soup curry restaurants, with a queue at busy times. You choose the soup, spice level and toppings.", ["specialty"], "Soup Curry GARAKU Sapporo"),
     P("Soup Curry Suage+", "curry", "Susukino", "Known for crisp, batter-free fried vegetables and an optional squid-ink \"ikakuro\" soup. Tabelog Curry EAST 100 (2026).", ["specialty"], "Soup Curry Suage+ Susukino"),
