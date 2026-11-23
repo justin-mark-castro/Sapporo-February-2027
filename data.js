@@ -159,6 +159,7 @@ window.TRIP = {
             "activity": "Maruyama Park",
             "desc": "A quiet park beside the shrine, lovely under fresh snow.",
             "fact": "Maruyama Zoo sits right next door and is known for its polar bears.",
+            "photo": "assets/maruyama-park.jpg",
             "commons": {"q": "Maruyama Park Sapporo", "must": ["maruyama"]},
             "icon": "nature",
             "map": "Maruyama Park, Sapporo",
