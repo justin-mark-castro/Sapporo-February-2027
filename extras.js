@@ -118,6 +118,7 @@
     "d:matcha Kyoto Sapporo": "11:00 AM – 9:00 PM (confirm)",
     "108 Matcha Saro": "10:00 AM – 9:00 PM",
     "LeTAO Honten": "9:00 AM – 6:00 PM (cafe last order 5:30 PM)",
+    "Kitakaro Otaru Main Shop": "10:00 AM – 6:00 PM, closed New Year's Day (confirm)",
     "Hokkaido Shiki Marche (Stellar Place)": "Mall hours, about 10:00 AM – 8:00 PM (confirm)"
   };
   var HOURS_FALLBACK = "Hours not confirmed, check Google Maps";
@@ -146,6 +147,7 @@
     P("Popura Farm Otaru Outlet", "cafe", "Otaru Denuki Koji, Ironai (Feb 6)", "Must eat: Yubari melon ice cream. The signature \"Santa's Beard\" puts melon soft serve on a half melon. Pricey, but a Hokkaido classic for your Otaru day trip.", ["icecream", "specialty", "otaru"], "Popura Farm Otaru Denuki Koji"),
     P("Otaru Rainbow Soft Cream", "cafe", "Otaru (Feb 6)", "Must eat: the 8-layer rainbow soft serve, a colourful Otaru ice cream stop. It is big, so share it or go in a pair.", ["icecream", "otaru"], "Otaru Rainbow Soft Cream", "https://maps.app.goo.gl/LXmRqxB3Unfhi8ck8"),
     P("Shofukuya Ice Cream", "cafe", "Otaru (Feb 6)", "An ice cream stop to add to your Otaru day trip. Open the map link to check the exact location and hours.", ["icecream", "otaru"], "Shofukuya Ice Cream Otaru", "https://maps.app.goo.gl/QRMSGiLoXg5YoLqj9"),
+    P("Kitakaro Otaru Main Shop", "cafe", "Sakaimachi 7-22, Otaru (Feb 6)", "The Otaru main shop of the Hokkaido sweets brand, known for baumkuchen, cream puffs and rich soft serve made with fresh cream and milk. You can watch the bakers at work.", ["specialty", "icecream", "otaru"], "Kitakaro Otaru Main Shop", "https://maps.app.goo.gl/FB9YFxc2xVLCa2J68"),
 
     P("Soup Curry GARAKU", "curry", "Susukino (main store) · Sitatte Sapporo", "One of Sapporo's best-known soup curry restaurants, with a queue at busy times. You choose the soup, spice level and toppings.", ["specialty"], "Soup Curry GARAKU Sapporo"),
     P("Soup Curry Suage+", "curry", "Susukino", "Known for crisp, batter-free fried vegetables and an optional squid-ink \"ikakuro\" soup. Tabelog Curry EAST 100 (2026).", ["specialty"], "Soup Curry Suage+ Susukino"),
