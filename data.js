@@ -543,6 +543,7 @@ window.TRIP = {
             "activity": "Susukino Nikka & Shopping Street",
             "desc": "Sapporo's nightlife district, with the giant Nikka neon sign at its main crossing.",
             "fact": "Nikka Whisky's founder, Masataka Taketsuru, built its first distillery in Yoichi, Hokkaido.",
+            "photo": "assets/susukino-nikka.jpg",
             "wiki": "Susukino",
             "icon": "shopping",
             "location": "Susukino",
