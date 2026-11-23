@@ -313,6 +313,7 @@ window.TRIP = {
             "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
             "desc": "A full-day private tour through Asahikawa, Biei and Furano to see Hokkaido's snowy countryside.",
             "fact": "Asahiyama Zoo runs a winter penguin walk, where penguins stroll across the snow.",
+            "photo": "assets/asahiyama-zoo.jpg",
             "wiki": "Asahiyama Zoo",
             "icon": "tour",
             "map": "Asahiyama Zoo, Asahikawa",
