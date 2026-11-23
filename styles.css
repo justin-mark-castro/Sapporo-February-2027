@@ -525,10 +525,12 @@ h4.stop-title{margin:0}
 
 .stop-desc{margin:6px 0 0;font-size:.9rem;color:var(--ink-2)}
 .stop-fact{margin:4px 0 0;font-size:.84rem;color:var(--ai-2);background:rgba(184,146,58,.1);border-left:3px solid var(--gold);padding:5px 9px;border-radius:0 6px 6px 0}
-.stop-photo{margin:8px 0 0;max-width:420px}
+.stop-main{display:flow-root}
+.stop-photo{float:right;width:120px;margin:2px 0 8px 14px}
+.stop-main .stop-fact,.stop-main .meta{overflow:hidden}
 .stop-photo[hidden]{display:none}
-.stop-photo img{display:block;width:100%;max-height:240px;object-fit:cover;border-radius:10px;background:var(--line)}
-.stop-photo figcaption{font-size:.68rem;color:var(--ink-2);margin-top:3px}
+.stop-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:var(--line)}
+.stop-photo figcaption{font-size:.6rem;line-height:1.25;color:var(--ink-2);margin-top:3px}
 .stop-photo figcaption a{color:inherit}
 
 /* Prepare */
@@ -563,3 +565,5 @@ h4.stop-title{margin:0}
 .eat-map{display:inline-flex;gap:5px;align-items:center;font-size:.78rem;font-weight:700;color:var(--ai);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:#fff}
 .eat-map svg{width:14px;height:14px}
 .eat-note{margin-top:16px}
+
+@media (max-width:520px){.stop-photo{width:92px;margin-left:10px}}
