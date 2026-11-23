@@ -250,7 +250,7 @@
     var q = s.map || ((s.activity || "") + " " + (s.location || "")).replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
     if (!/sapporo|hokkaido/i.test(q)) q += " Hokkaido";
     var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
-    return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "View on map</a>";
+    return '<a class="map-link" href="' + url + '" target="_blank" rel="noopener">' + icPin + "Google Maps</a>";
   }
   function stopExtras(s) {
     var h = "";

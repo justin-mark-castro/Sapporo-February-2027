@@ -58,7 +58,7 @@ window.TRIP = {
     { id: "akarenga", name: "Hokkaido Former Government Office (Red Brick)", jp: "北海道庁旧本庁舎（赤れんが庁舎）", lat: 43.0642, lng: 141.3469, day: 4, cat: "sight", t: "Day 4 · afternoon", d: "The red-brick Akarenga building, west of Odori Park." },
     { id: "clocktower", name: "Sapporo Clock Tower", jp: "札幌市時計台", lat: 43.0625, lng: 141.3537, day: 4, cat: "sight", t: "Day 4 · late afternoon", d: "Wooden clock tower, one block west of the TV Tower." },
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
-    { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "Private tour day trip: zoo, Ningle Terrace, waterfall, Lonely Tree." },
+    { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "First stop of the Day 5 private tour. Next: Shirahige Waterfall, Lonely Christmas Tree, Ningle Terrace." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
     { id: "shikotsu",name: "Lake Shikotsu Ice Festival", jp: "支笏湖氷濤まつり", lat: 42.7640, lng: 141.3880, day: 7, cat: "fest", t: "Day 7", d: "Day trip via Chitose. Check the festival dates before going." },
     { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
@@ -309,17 +309,51 @@ window.TRIP = {
         "why": "A full day with a driver, leaving the city early.",
         "stops": [
           {
-            "time": "All day",
-            "activity": "Private Tour: Asahiyama Zoo, Ningle Terrace, waterfall, Lonely Tree",
-            "desc": "A full-day private tour through Asahikawa, Biei and Furano to see Hokkaido's snowy countryside.",
+            "time": "Stop 1",
+            "activity": "Asahiyama Zoo",
+            "desc": "Japan's northernmost zoo, in Asahikawa. The first stop of the private tour.",
             "fact": "Asahiyama Zoo runs a winter penguin walk, where penguins stroll across the snow.",
             "photo": "assets/asahiyama-zoo.jpg",
             "wiki": "Asahiyama Zoo",
             "icon": "tour",
             "map": "Asahiyama Zoo, Asahikawa",
-            "location": "North-central Hokkaido (Asahikawa, Biei and Furano area)",
-            "notes": "Listed in the expense log (800 SGD). Confirm the tour date, pickup time and exact route with the operator.",
+            "location": "Asahikawa",
+            "notes": "Part of the private tour (800 SGD in the expense log). Confirm the tour date, pickup time and exact route with the operator.",
             "how": "Pickup by the tour operator. Confirm the meeting point and time."
+          },
+          {
+            "time": "Stop 2",
+            "activity": "Shirahige Waterfall",
+            "desc": "A waterfall in Biei that drops about 30 m into the blue Biei River.",
+            "fact": "The water seeps out of the rock and does not freeze, so it stays open even in winter.",
+            "commons": {"q": "Shirahige Falls Biei", "must": ["shirahige|shirohige"]},
+            "icon": "nature",
+            "map": "Shirahige Falls, Biei",
+            "location": "Shirogane Onsen area, Biei",
+            "notes": "Winter is cold and the paths can be icy. Wear boots with grip.",
+            "how": "By private tour vehicle."
+          },
+          {
+            "time": "Stop 3",
+            "activity": "Lonely Christmas Tree",
+            "desc": "A single tree standing alone on a snowy hill in Biei, said to look like a Christmas tree.",
+            "icon": "nature",
+            "map": "Christmas Tree, Biei",
+            "location": "Biei",
+            "notes": "It is on farmland, so keep to the road and respect the fields.",
+            "how": "By private tour vehicle."
+          },
+          {
+            "time": "Stop 4",
+            "activity": "Ningle Terrace",
+            "desc": "A small village of log cabins with craft shops and cafes in the forest, next to the New Furano Prince Hotel.",
+            "fact": "In winter the walkways and cabins are lit with fairy lights at night.",
+            "commons": {"q": "Ningle Terrace Furano", "must": ["ningle"]},
+            "icon": "shopping",
+            "map": "Ningle Terrace, Furano",
+            "location": "Furano",
+            "notes": "Check the opening hours with the operator.",
+            "how": "By private tour vehicle."
           }
         ]
       },
