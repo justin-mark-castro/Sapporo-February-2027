@@ -1,6 +1,5 @@
 /* Daily digest: today's plan + weather for five Hokkaido towns.
-   Picks the itinerary day from the current date in Japan (Asia/Tokyo).
-   A "Test the digest" button lets you preview any trip day before the trip. */
+   Picks the itinerary day from the current date in Japan (Asia/Tokyo). */
 (function () {
   "use strict";
   var T = window.TRIP;
@@ -122,40 +121,28 @@
   }
 
   /* ---------- render ---------- */
-  var testIso = null;       // null = live date
   var seq = 0;
 
   function render() {
-    var live = tokyoToday(), iso = testIso || live;
+    var live = tokyoToday(), iso = live;
     var first = T.itinerary[0].date, last = T.itinerary[T.itinerary.length - 1].date;
     var day = T.itinerary.filter(function (d) { return d.date === iso; })[0];
-    var badge = testIso
-      ? '<span class="dg-badge test">Test preview</span>'
-      : (day ? '<span class="dg-badge live">Live · today in Japan</span>' : '<span class="dg-badge">Waiting for the trip</span>');
+    var badge = day ? '<span class="dg-badge live">Live · today in Japan</span>' : '<span class="dg-badge">Waiting for the trip</span>';
 
     var head = '<header class="section-head"><span class="kicker">今日 · Today</span><h2>Daily digest</h2>' +
       '<p class="lede">' + (day ? esc(prettyDate(iso)) : "Shows the plan and weather for each trip day, automatically, on the day itself.") + " " + badge + "</p></header>";
-
-    var tester = '<div class="dg-test"><button type="button" class="btn dg-btn" id="dgToggle" aria-expanded="' + (testOpen ? "true" : "false") + '">🧪 Test the digest</button>' +
-      '<div class="dg-panel" id="dgPanel"' + (testOpen ? "" : " hidden") + '>' +
-      '<label for="dgDay">Pretend today is</label>' +
-      '<select id="dgDay">' + T.itinerary.map(function (d) {
-        return '<option value="' + d.date + '"' + (testIso === d.date ? " selected" : "") + ">Day " + d.day + " · " + MONTHS[+d.date.slice(5, 7) - 1] + " " + (+d.date.slice(8)) + " · " + esc(d.title) + "</option>";
-      }).join("") + "</select>" +
-      '<button type="button" class="btn dg-live" id="dgLive"' + (testIso ? "" : " disabled") + '>Back to live date</button></div></div>';
 
     var body;
     if (day) {
       body = '<div id="dgPlan">' + planHtml(day) + '</div><div id="dgWx"><p class="muted small dg-loading">Loading weather…</p></div>';
     } else if (iso < first) {
       var n = dayDiff(iso, first);
-      body = '<div class="dg-empty"><b>' + n + " day" + (n === 1 ? "" : "s") + " until Day 1</b><p>The digest switches on by itself on Feb 1, 2027 (Japan time) and shows that day's plan and weather. Use the test button to see how it will look.</p></div>";
+      body = '<div class="dg-empty"><b>' + n + " day" + (n === 1 ? "" : "s") + " until Day 1</b><p>The digest switches on by itself on Feb 1, 2027 (Japan time) and shows that day's plan and weather.</p></div>";
     } else {
-      body = '<div class="dg-empty"><b>Trip complete 🎉</b><p>The digest only shows during Feb 1–12, 2027. Use the test button to replay any day.</p></div>';
+      body = '<div class="dg-empty"><b>Trip complete 🎉</b><p>The digest only shows during Feb 1–12, 2027.</p></div>';
     }
 
-    root.querySelector(".wrap").innerHTML = head + tester + body;
-    bind();
+    root.querySelector(".wrap").innerHTML = head + body;
 
     if (day) {
       var my = ++seq, box = $("#dgWx");
@@ -166,19 +153,8 @@
     }
   }
 
-  var testOpen = false;
-  function bind() {
-    $("#dgToggle").onclick = function () {
-      testOpen = !testOpen;
-      testIso = testOpen ? T.itinerary[Math.min(3, T.itinerary.length - 1)].date : null; // start on Day 4 (Snow Festival opens)
-      render();
-    };
-    $("#dgDay").onchange = function () { testIso = this.value; render(); };
-    $("#dgLive").onclick = function () { testIso = null; testOpen = false; render(); };
-  }
-
   render();
   // Roll over to the next day if the page stays open past midnight (Japan time).
   var shown = tokyoToday();
-  setInterval(function () { if (!testIso && tokyoToday() !== shown) { shown = tokyoToday(); render(); } }, 60000);
+  setInterval(function () { if (tokyoToday() !== shown) { shown = tokyoToday(); render(); } }, 60000);
 })();
