@@ -1,7 +1,7 @@
 /* Sapporo 2027 — offline cache. Stale-while-revalidate for the site and its static libraries;
    live FX / Wikipedia calls are left alone (the app has its own fallbacks). */
-var CACHE = "sapporo-2027-v26";
-var CORE = ["./", "index.html", "styles.css", "data.js", "app.js", "extras.js", "polish.js", "music.js"];
+var CACHE = "sapporo-2027-v27";
+var CORE = ["./", "index.html", "styles.css", "data.js", "app.js", "extras.js", "polish.js", "digest.js", "music.js"];
 var CROSS = ["unpkg.com", "fonts.googleapis.com", "fonts.gstatic.com", "tile.openstreetmap.org", "upload.wikimedia.org"];
 
 self.addEventListener("install", function (e) {
