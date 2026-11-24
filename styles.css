@@ -766,9 +766,14 @@ html{font-size:14px}
 .hero-scene--m{display:none}
 .hero-mountains{opacity:.5}
 .hero-sun{opacity:.88}
-.hero-emblem{position:absolute;left:11%;top:11%;width:78%;height:78%;color:#fff;opacity:.15}
 @media (max-width:700px){
   .hero-scene--w{display:none}
   .hero-scene--m{display:block}
 }
 .hero .btn-ghost{background:rgba(13,27,54,.72);backdrop-filter:blur(4px)}
+@media (max-width:560px){
+  /* lift the title block so the Odori Park scene (tower + SAPPORO sign) shows beneath the buttons */
+  .hero{min-height:690px}
+  .hero-inner{padding-bottom:200px}
+  .hero-sun{top:92px}
+}
