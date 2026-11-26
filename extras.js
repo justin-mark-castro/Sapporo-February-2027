@@ -77,7 +77,12 @@
     matcha:  { label: "Matcha cafe",       color: "#5b8c3a", path: '<path d="M4 10h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h2a2 2 0 0 1 0 4h-2M8 4c1 1-1 2 0 3M12 4c1 1-1 2 0 3"/>' },
     local:   { label: "Local specialties", color: "#a8741a", path: '<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>' }
   };
-  var TAGS = { milk: "Hokkaido milk", icecream: "Ice cream", specialty: "Hokkaido specialty", otaru: "Otaru day trip" };
+  var TAGS = {
+    milk: "Hokkaido milk", icecream: "Ice cream", specialty: "Hokkaido specialty", otaru: "Otaru day trip",
+    ramen: "Ramen", curry: "Soup curry", genghis: "Genghis Khan", seafood: "Seafood", parfait: "Parfait", matcha: "Matcha",
+    cheese: "Cheese sweets", coffee: "Coffee", chicken: "Fried chicken", night: "Late night", budget: "Budget"
+  };
+  var AUTO_TAGS = ["ramen", "curry", "genghis", "seafood", "parfait", "matcha"];
 
   var CLOCK = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>';
   var HOURS = {
@@ -221,11 +226,39 @@
     P("Hokkaido Shiki Marche (Stellar Place)", "local", "Sapporo Station", "A food hall of Hokkaido sweets and snacks, with zangi from Take-out Hotei and cookie sandwiches from Sapporo Agricultural College.", ["specialty", "milk"], "Hokkaido Shiki Marche Sapporo Stellar Place")
   ];
 
+  /* Extra tags so one place can show up under several filters (e.g. Ichiran under Ramen and Late night).
+     A place's own food category is tagged automatically below. */
+  var EXTRA_TAGS = {
+    "Ichiran Ramen": ["ramen", "night"],
+    "Ramen Shingen (Minami 6-jo)": ["night"], "Ganso Sapporo Ramen Yokocho": ["night"], "Ganso Sapporo Ramen Mogura": ["night"],
+    "Yukijirushi (Snow Brand) Parlor, Main Store": ["parfait", "specialty"],
+    "Milk & Parfait Yotsuba White Cosy": ["parfait", "milk"],
+    "Noymond Organic Cafe": ["parfait"],
+    "Matcha Cafe & Sweets RIQ (Rikyu)": ["parfait"],
+    "INITIAL Sapporo": ["night", "specialty"], "Parfaiteria PaL": ["night", "specialty"], "Yoru Parfait Nanakamado": ["night", "specialty"],
+    "Parfait, Coffee, Sake, Sato": ["night", "specialty", "coffee"], "Parfaiteria miL": ["night", "specialty"],
+    "Susukino Kissa Purple Dahlia": ["night", "specialty", "coffee"], "Eight Ricefield Cafe Susukino": ["night", "specialty", "icecream"],
+    "Nemo-chan Land 3": ["specialty"],
+    "Morihiko (Main Store)": ["cheese", "coffee"], "Atelier Morihiko": ["coffee"], "Saera": ["coffee"], "Baristart Coffee": ["coffee"],
+    "Kinotoya Cafe": ["cheese"], "LeTAO Honten": ["cheese"], "Fromage Danish DANI LeTAO": ["cheese"], "Labrado-Ressence Cafe": ["cheese"],
+    "Wakadori Jidai Naruto Honten": ["chicken"], "Torimatsu": ["chicken"], "Nanbantei": ["chicken"], "Hokkaido Shiki Marche (Stellar Place)": ["chicken"],
+    "Sa Wa Wa": ["icecream"], "Matcha Sweets Dokoro Chawawa": ["icecream"],
+    "d:matcha Kyoto Sapporo": ["milk"], "Kitakaro Otaru Main Shop": ["milk"], "Ishiya Cafe": ["specialty"],
+    "Matsuya": ["budget"], "Matsunoya": ["budget"], "Saizeriya": ["budget"], "Gusto Cafe": ["budget"], "Yakiniku Like": ["budget"], "Shiki Hanamaru Susukino": ["budget"]
+  };
+  PLACES.forEach(function (p) {
+    var t = p.t.concat(EXTRA_TAGS[p.n] || []);
+    if (AUTO_TAGS.indexOf(p.c) > -1) t.push(p.c);
+    p.t = t.filter(function (x, i) { return t.indexOf(x) === i; });
+  });
+
   var FILTERS = [
     { id: "all", label: "All" },
     { id: "t:milk", label: "Hokkaido milk" },
     { id: "t:icecream", label: "Ice cream" },
     { id: "t:specialty", label: "Hokkaido specialties" }, { id: "t:otaru", label: "Otaru day trip" },
+    { id: "t:night", label: TAGS.night }, { id: "t:budget", label: TAGS.budget }, { id: "t:cheese", label: TAGS.cheese },
+    { id: "t:coffee", label: TAGS.coffee }, { id: "t:chicken", label: TAGS.chicken },
     { id: "c:milk", label: CATS.milk.label }, { id: "c:cafe", label: CATS.cafe.label }, { id: "c:parfait", label: CATS.parfait.label }, { id: "c:curry", label: CATS.curry.label },
     { id: "c:ramen", label: CATS.ramen.label }, { id: "c:genghis", label: CATS.genghis.label }, { id: "c:seafood", label: CATS.seafood.label }, { id: "c:chain", label: CATS.chain.label }, { id: "c:matcha", label: CATS.matcha.label }, { id: "c:local", label: CATS.local.label }
   ];
@@ -241,14 +274,14 @@
     var list = PLACES.filter(function (p) {
       if (active === "all") return true;
       var kind = active.charAt(0), key = active.slice(2);
-      return kind === "c" ? p.c === key : p.t.indexOf(key) > -1;
+      return kind === "c" ? (p.c === key || (AUTO_TAGS.indexOf(key) > -1 && p.t.indexOf(key) > -1)) : p.t.indexOf(key) > -1;
     });
     var total = list.length;
     if (!showAll && list.length > LIMIT) list = list.slice(0, LIMIT);
     cnt.textContent = (list.length < total ? "Showing " + list.length + " of " + total : total + " of " + PLACES.length) + " places";
     grid.innerHTML = list.map(function (p) {
       var c = CATS[p.c];
-      var tags = p.t.map(function (t) { return '<span class="eat-tag eat-' + t + '">' + esc(TAGS[t]) + "</span>"; }).join("");
+      var tags = p.t.filter(function (t) { return t !== p.c; }).map(function (t) { return '<span class="eat-tag eat-' + t + '">' + esc(TAGS[t]) + "</span>"; }).join("");
       return '<article class="eat-card" style="--c:' + c.color + '">' +
         '<div class="eat-top"><span class="eat-ico" title="' + esc(c.label) + '">' + ico(c.path) + '</span><div><h3>' + esc(p.n) + '</h3><p class="eat-area">' + esc(p.a) + "</p></div></div>" +
         '<p class="eat-desc">' + esc(p.d) + "</p>" +
