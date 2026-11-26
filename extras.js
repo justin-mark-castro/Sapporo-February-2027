@@ -73,6 +73,7 @@
     genghis: { label: "Genghis Khan",     color: "#8a4a12", path: '<path d="M12 3c2 3 5 4 5 8a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-4 1-7zM5 21h14"/>' },
     seafood: { label: "Seafood",          color: "#24457c", path: '<path d="M3 12c3-5 8-6 13-3l5-2-1 5 1 5-5-2c-5 3-10 2-13-3zM9 11.5v.01"/>' },
     chain:   { label: "Budget & chains",   color: "#4a5568", path: '<path d="M4 4v7a3 3 0 0 0 3 3v6M7 4v6M10 4v7a3 3 0 0 1-3 3M17 20V4c-2 1-3 4-3 8h3"/>' },
+    parfait: { label: "Parfait",           color: "#c2410c", path: '<path d="M6 3h12l-1.5 7a4.5 4.5 0 0 1-9 0zM12 14.5V19M8 21h8M10 6.5v.01M14 6.5v.01"/>' },
     matcha:  { label: "Matcha cafe",       color: "#5b8c3a", path: '<path d="M4 10h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h2a2 2 0 0 1 0 4h-2M8 4c1 1-1 2 0 3M12 4c1 1-1 2 0 3"/>' },
     local:   { label: "Local specialties", color: "#a8741a", path: '<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>' }
   };
@@ -145,14 +146,14 @@
     P("Morihiko (Main Store)", "cafe", "Near Hokkaido Jingu · Maruyama-koen", "Coffee cafe in a house near the shrine, known for its no-bake cheesecake with a fresh milk taste. Tabelog Cafe EAST 100 (2025). Handy for Feb 2.", ["milk"], "Morihiko Maruyama Sapporo"),
     P("Atelier Morihiko", "cafe", "Chuo Kuyakusho-mae", "A sister cafe of Morihiko with cakes and coffee.", [], "Atelier Morihiko Sapporo"),
     P("Kinotoya Cafe", "cafe", "Near Odori Park, Sapporo", "Sapporo pastry brand known for its cheese tarts and Hokkaido milk soft serve. Come for the ice cream and a cheese tart.", ["icecream", "specialty", "milk"], "Kinotoya Cafe Odori Park Sapporo", "https://maps.app.goo.gl/mJbSgmTzbJXezSqG8"),
-    P("INITIAL Sapporo", "cafe", "Tanukikoji", "A shime parfait spot made with seasonal fresh fruit, a sweet end to a night out.", [], "INITIAL Sapporo parfait"),
-    P("Parfaiteria PaL", "cafe", "Minami 4-jo Nishi 2-10-1, 6F, Susukino", "The night parfait specialist that started the shime parfait trend. Moderately sweet parfaits made for adults, a good end to a night out. Some parfaits contain alcohol, so check before ordering.", [], "Parfaiteria PaL Susukino Sapporo", "https://maps.app.goo.gl/P477p29qSRFsDJ1h6"),
-    P("Yoru Parfait Nanakamado", "cafe", "Central Sapporo", "A night-time parfait specialty restaurant.", [], "Nanakamado parfait Sapporo"),
-    P("Parfait, Coffee, Sake, Sato", "cafe", "3 min from Hosui-Susukino Station · 5 min from Odori", "パフェ、珈琲、酒、佐藤. One of the best-known shime parfait shops, with parfaits built from a good selection of ice cream scoops and flavours. A top pick for a night parfait.", [], "Parfait Coffee Sake Sato Sapporo", ""),
-    P("Parfaiteria miL", "cafe", "Susukino, Sapporo", "A sister shop to Parfaiteria PaL, also listed among Sapporo's night parfait spots. Worth a try if PaL has a queue.", [], "Parfaiteria miL Sapporo"),
-    P("Susukino Kissa Purple Dahlia", "cafe", "2F Susukino Building, Minami 4-jo Nishi 3", "A retro Showa-era kissaten with a calm atmosphere. At night its shime parfait takes centre stage.", [], "Susukino Kissa Purple Dahlia Sapporo"),
-    P("Eight Ricefield Cafe Susukino", "cafe", "Alto Building 1F, Minami 5-jo Nishi 4", "A bar near Susukino Station known for parfaits made with rich Hokkaido soft serve, plus a whiskey selection.", [], "Eight Ricefield Cafe Susukino Sapporo"),
-    P("Nemo-chan Land 3", "cafe", "1 min from Susukino Station", "A Susukino sweets shop popular for parfaits made with plenty of Hokkaido ingredients.", ["milk"], "Nemo-chan Land 3 Susukino Sapporo"),
+    P("INITIAL Sapporo", "parfait", "Tanukikoji", "A shime parfait spot made with seasonal fresh fruit, a sweet end to a night out.", [], "INITIAL Sapporo parfait"),
+    P("Parfaiteria PaL", "parfait", "Minami 4-jo Nishi 2-10-1, 6F, Susukino", "The night parfait specialist that started the shime parfait trend. Moderately sweet parfaits made for adults, a good end to a night out. Some parfaits contain alcohol, so check before ordering.", [], "Parfaiteria PaL Susukino Sapporo", "https://maps.app.goo.gl/P477p29qSRFsDJ1h6"),
+    P("Yoru Parfait Nanakamado", "parfait", "Central Sapporo", "A night-time parfait specialty restaurant.", [], "Nanakamado parfait Sapporo"),
+    P("Parfait, Coffee, Sake, Sato", "parfait", "3 min from Hosui-Susukino Station · 5 min from Odori", "パフェ、珈琲、酒、佐藤. One of the best-known shime parfait shops, with parfaits built from a good selection of ice cream scoops and flavours. A top pick for a night parfait.", [], "Parfait Coffee Sake Sato Sapporo", ""),
+    P("Parfaiteria miL", "parfait", "Susukino, Sapporo", "A sister shop to Parfaiteria PaL, also listed among Sapporo's night parfait spots. Worth a try if PaL has a queue.", [], "Parfaiteria miL Sapporo"),
+    P("Susukino Kissa Purple Dahlia", "parfait", "2F Susukino Building, Minami 4-jo Nishi 3", "A retro Showa-era kissaten with a calm atmosphere. At night its shime parfait takes centre stage.", [], "Susukino Kissa Purple Dahlia Sapporo"),
+    P("Eight Ricefield Cafe Susukino", "parfait", "Alto Building 1F, Minami 5-jo Nishi 4", "A bar near Susukino Station known for parfaits made with rich Hokkaido soft serve, plus a whiskey selection.", [], "Eight Ricefield Cafe Susukino Sapporo"),
+    P("Nemo-chan Land 3", "parfait", "1 min from Susukino Station", "A Susukino sweets shop popular for parfaits made with plenty of Hokkaido ingredients.", ["milk"], "Nemo-chan Land 3 Susukino Sapporo"),
     P("Saera", "cafe", "Odori underground", "A beloved Hokkaido coffee chain, in the tunnels under Odori since 1975.", [], "Saera coffee Odori Sapporo"),
     P("Kitakaro Sapporo Honkan", "cafe", "Central Sapporo", "A Hokkaido sweets brand with a shop and cafe in a retro-modern building.", ["specialty"]),
     P("LeTAO Honten", "cafe", "Sakaimachi 7-16, Otaru (Feb 6)", "The LeTAO main shop, famous for its Double Fromage cheesecake, with a cafe attached. Try the cheesecake here.", ["specialty", "otaru"], "LeTAO Honten 7-16 Sakaimachi Otaru", "https://maps.app.goo.gl/qz69ST6vqiivUh7DA"),
@@ -225,7 +226,7 @@
     { id: "t:milk", label: "Hokkaido milk" },
     { id: "t:icecream", label: "Ice cream" },
     { id: "t:specialty", label: "Hokkaido specialties" }, { id: "t:otaru", label: "Otaru day trip" },
-    { id: "c:milk", label: CATS.milk.label }, { id: "c:cafe", label: CATS.cafe.label }, { id: "c:curry", label: CATS.curry.label },
+    { id: "c:milk", label: CATS.milk.label }, { id: "c:cafe", label: CATS.cafe.label }, { id: "c:parfait", label: CATS.parfait.label }, { id: "c:curry", label: CATS.curry.label },
     { id: "c:ramen", label: CATS.ramen.label }, { id: "c:genghis", label: CATS.genghis.label }, { id: "c:seafood", label: CATS.seafood.label }, { id: "c:chain", label: CATS.chain.label }, { id: "c:matcha", label: CATS.matcha.label }, { id: "c:local", label: CATS.local.label }
   ];
   var active = "all", LIMIT = 8, showAll = false;
