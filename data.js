@@ -67,6 +67,7 @@ window.TRIP = {
     { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
     { id: "moere",   name: "Moerenuma Park", jp: "モエレ沼公園", lat: 43.1243, lng: 141.4290, day: 9, cat: "sight", t: "Day 9", d: "Isamu Noguchi's park in the northeast." },
     { id: "hidamari", name: "Glass Pyramid HIDAMARI", jp: "ガラスのピラミッド HIDAMARI", lat: 43.1255, lng: 141.4310, day: 9, cat: "sight", t: "Day 9 · midday", d: "The glass pyramid inside Moerenuma Park." },
+    { id: "suwa",    name: "Suwa Shrine", jp: "諏訪神社", lat: 43.0765, lng: 141.3600, day: 9, cat: "sight", t: "Day 9 · afternoon", d: "Small neighbourhood shrine in Higashi-ku with cute amulets and fairy-bird charms." },
     { id: "beer",    name: "Sapporo Beer Garden & Museum", jp: "サッポロビール博物館", lat: 43.0720, lng: 141.3670, day: 9, cat: "food", t: "Day 9", d: "Closed Mondays." },
     { id: "bibai",   name: "Bibai Snowland", jp: "美唄スノーランド", lat: 43.3300, lng: 141.8590, day: 10, cat: "sight", t: "Day 10", d: "JR Hakodate Main Line to Bibai." },
     { id: "nijo",    name: "Nijo Market", jp: "二条市場", lat: 43.0575, lng: 141.3600, day: 11, cat: "food", t: "Day 11", d: "Seafood, crab and milk soft-serve." },
@@ -503,7 +504,7 @@ window.TRIP = {
         "kind": "day",
         "title": "North and East Sapporo",
         "area": "Tobetsu · Higashi-ku",
-        "why": "Chocolate to the north, then two stops in Higashi-ku.",
+        "why": "Chocolate to the north, then three stops in Higashi-ku.",
         "stops": [
           {
             "time": "Morning",
@@ -546,6 +547,16 @@ window.TRIP = {
             "location": "Moerenuma Park, Higashi-ku",
             "notes": "The park's glass pyramid, with a cafe and restaurant inside. Check winter opening hours before going.",
             "how": "Inside Moerenuma Park, so no extra travel."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Suwa Shrine",
+            "desc": "A small neighbourhood shrine in Higashi-ku, popular for its cute amulets, including the fairy bird (shima-enaga) charms.",
+            "icon": "shrine",
+            "map": "Suwa Shrine, Kita 12-jo Higashi 1-chome, Higashi-ku, Sapporo",
+            "location": "1-1-10 Kita 12-jo Higashi, Higashi-ku",
+            "notes": "Go for the amulets. The amulet office usually closes in the late afternoon, so visit before the Beer Museum and check opening hours before going.",
+            "how": "Namboku Line to Kita-12-jo, then a short walk east. From here it is about a 15 min walk east to the Beer Museum."
           },
           {
             "time": "Late afternoon",
