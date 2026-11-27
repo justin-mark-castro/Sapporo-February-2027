@@ -274,7 +274,7 @@ window.TRIP = {
             "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
             "photo": "assets/hill-of-the-buddha.jpg",
             "wiki": "Hill of the Buddha",
-            "icon": "shrine",
+            "icon": "temple",
             "location": "Makomanai Takino Cemetery, Minami-ku",
             "notes": "Great Buddha Hall is open 10:00 AM to 3:00 PM from Nov to Mar, so leave early.",
             "how": "Subway Namboku Line (Sapporo to Makomanai, N16), then Chuo Bus 108 (about 23 min)."
@@ -423,7 +423,8 @@ window.TRIP = {
             "icon": "mountain",
             "map": "Tenguyama Ropeway Otaru",
             "location": "Mt. Tenguyama, Otaru",
-            "notes": "Check the ropeway's winter hours and last ride with the operator; time it to come down before dusk so you are back for the Snow Light Path.",
+            "notes": "Winter hours (Nov 28, 2026 to Mar 28, 2027): up 9:00 AM to 7:48 PM, down 9:00 AM to 8:00 PM, cars every 12 min. Round trip about 2,000 yen per adult. Check weather suspensions on the site; time it to come down before dusk for the Snow Light Path.",
+            "book": {"url": "https://tenguyama.ckk.chuo-bus.co.jp/en/hours-and-fees/", "label": "Tickets & hours"},
             "how": "Bus or taxi from Otaru Station to the Tenguyama Ropeway base station."
           },
           {
