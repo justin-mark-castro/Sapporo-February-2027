@@ -63,6 +63,7 @@ window.TRIP = {
     { id: "sumiyoshi", name: "Sumiyoshi Shrine (Otaru)", jp: "住吉神社", lat: 43.1930, lng: 141.0040, day: 6, cat: "sight", t: "Day 6 · afternoon", d: "Hillside shrine in Otaru, long stone stairs." },
     { id: "tengu",   name: "Tenguyama Ropeway", jp: "天狗山ロープウェイ", lat: 43.1730, lng: 141.0040, day: 6, cat: "sight", t: "Day 6 · afternoon", d: "Ropeway up Mt. Tengu for the view over Otaru." },
     { id: "shikotsu",name: "Lake Shikotsu Ice Festival", jp: "支笏湖氷濤まつり", lat: 42.7640, lng: 141.3880, day: 7, cat: "fest", t: "Day 7", d: "Day trip via Chitose. Check the festival dates before going." },
+    { id: "tsudome", name: "Tsudome Site · Snow Festival", jp: "さっぽろ雪まつり つどーむ会場", lat: 43.1167, lng: 141.4012, day: 8, cat: "fest", t: "Day 8", d: "Snow-play site of the Snow Festival (Feb 4–11): slides, snow rafting. Toho Line to Sakaemachi, then a shuttle bus or walk." },
     { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
     { id: "moere",   name: "Moerenuma Park", jp: "モエレ沼公園", lat: 43.1243, lng: 141.4290, day: 9, cat: "sight", t: "Day 9", d: "Isamu Noguchi's park in the northeast." },
     { id: "hidamari", name: "Glass Pyramid HIDAMARI", jp: "ガラスのピラミッド HIDAMARI", lat: 43.1255, lng: 141.4310, day: 9, cat: "sight", t: "Day 9 · midday", d: "The glass pyramid inside Moerenuma Park." },
@@ -470,16 +471,28 @@ window.TRIP = {
         "date": "2027-02-08",
         "dow": "Mon",
         "kind": "flex",
-        "title": "Flexible day",
-        "area": "Anywhere",
-        "why": "Left open as a buffer for snow delays, a rest day, or anything you missed.",
+        "title": "Tsudome snow-play site · flexible day",
+        "area": "Higashi-ku · Anywhere",
+        "why": "The Snow Festival's Tsudome site is a separate venue from Odori, built for snow activities. The rest of the day stays open as a buffer.",
         "stops": [
           {
-            "time": "All day",
+            "time": "Daytime",
+            "activity": "Sapporo Snow Festival · Tsudome Site",
+            "hours": "About 9:00 AM–5:00 PM · some attractions close earlier",
+            "desc": "The festival's snow-play venue outside the city centre, with snow slides, snow rafting and extra snow sculptures. Indoors there are food stalls and a stage.",
+            "fact": "Admission is free, and it sits well away from the Odori and Susukino sites, so it needs its own trip.",
+            "wiki": "Sapporo Snow Festival",
+            "icon": "snow",
+            "location": "Sapporo Community Dome (Tsudome), Sakaemachi, Higashi-ku",
+            "notes": "Dress warm and wear waterproof layers for the slides and rafting. Hours and attractions can differ by year, so check the official festival site closer to the date.",
+            "how": "Subway Toho Line to Sakaemachi (about 10 min from Sapporo), then a shuttle bus or a walk of about 15 min."
+          },
+          {
+            "time": "After Tsudome",
             "activity": "Open · no bookings",
             "icon": "flex",
             "location": "",
-            "notes": "Use it to reschedule a weather-hit trip (Otaru, Lake Shikotsu, Bibai) or add the Snow Festival's Tsudome site. Avoid the Sapporo Beer Museum today: it is closed on Mondays."
+            "notes": "Keep this as the buffer for snow delays or to reschedule a weather-hit trip (Otaru, Lake Shikotsu, Bibai). Avoid the Sapporo Beer Museum today: it is closed on Mondays."
           }
         ]
       },
