@@ -60,6 +60,8 @@ window.TRIP = {
     { id: "tower",   name: "Sapporo TV Tower", jp: "さっぽろテレビ塔", lat: 43.0611, lng: 141.3564, day: 4, cat: "sight", t: "Day 4 · dusk", d: "Observation deck at the east end of Odori Park." },
     { id: "asahi",   name: "Asahiyama Zoo (private tour)", jp: "旭山動物園", lat: 43.7683, lng: 142.4795, day: 5, cat: "tour", t: "Day 5", d: "First stop of the Day 5 private tour. Next: Shirahige Waterfall, Lonely Christmas Tree, Ningle Terrace." },
     { id: "otaru",   name: "Otaru Canal", jp: "小樽運河", lat: 43.1990, lng: 141.0010, day: 6, cat: "sight", t: "Day 6", d: "JR Hakodate Main Line from Sapporo. Snow Light Path in the evening." },
+    { id: "sumiyoshi", name: "Sumiyoshi Shrine (Otaru)", jp: "住吉神社", lat: 43.1930, lng: 141.0040, day: 6, cat: "sight", t: "Day 6 · afternoon", d: "Hillside shrine in Otaru, long stone stairs." },
+    { id: "tengu",   name: "Tenguyama Ropeway", jp: "天狗山ロープウェイ", lat: 43.1730, lng: 141.0040, day: 6, cat: "sight", t: "Day 6 · afternoon", d: "Ropeway up Mt. Tengu for the view over Otaru." },
     { id: "shikotsu",name: "Lake Shikotsu Ice Festival", jp: "支笏湖氷濤まつり", lat: 42.7640, lng: 141.3880, day: 7, cat: "fest", t: "Day 7", d: "Day trip via Chitose. Check the festival dates before going." },
     { id: "royce",   name: "Royce' Cacao & Chocolate Town", jp: "ロイズタウン", lat: 43.2120, lng: 141.5260, day: 9, cat: "food", t: "Day 9", d: "JR Gakuen Toshi Line to Royce Town." },
     { id: "moere",   name: "Moerenuma Park", jp: "モエレ沼公園", lat: 43.1243, lng: 141.4290, day: 9, cat: "sight", t: "Day 9", d: "Isamu Noguchi's park in the northeast." },
@@ -272,7 +274,7 @@ window.TRIP = {
             "fact": "The statue is about 13.5 m tall, with only its head and shoulders visible from the entrance tunnel.",
             "photo": "assets/hill-of-the-buddha.jpg",
             "wiki": "Hill of the Buddha",
-            "icon": "temple",
+            "icon": "shrine",
             "location": "Makomanai Takino Cemetery, Minami-ku",
             "notes": "Great Buddha Hall is open 10:00 AM to 3:00 PM from Nov to Mar, so leave early.",
             "how": "Subway Namboku Line (Sapporo to Makomanai, N16), then Chuo Bus 108 (about 23 min)."
@@ -403,6 +405,26 @@ window.TRIP = {
             "location": "JR from Sapporo Station, about 30 to 40 min",
             "notes": "Spend the day in the canal area and town.",
             "how": "JR Hakodate Main Line, Rapid Airport from Sapporo Station to Otaru, about 32 min. Otaru Station is a short walk from the canal."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Sumiyoshi Shrine",
+            "desc": "A hillside shrine in Otaru, the town's guardian shrine, reached by a long stone stair.",
+            "icon": "shrine",
+            "map": "Otaru Sumiyoshi Shrine",
+            "location": "Sumiyoshi-cho, Otaru",
+            "notes": "Free to enter. Stone steps can be icy in February, so wear boots with good grip.",
+            "how": "Short bus or taxi ride from Otaru Station, or a walk from the canal area."
+          },
+          {
+            "time": "Afternoon",
+            "activity": "Tenguyama Ropeway",
+            "desc": "Ropeway up Mt. Tengu for a panoramic view over Otaru, the harbour and the Ishikari Bay.",
+            "icon": "mountain",
+            "map": "Tenguyama Ropeway Otaru",
+            "location": "Mt. Tenguyama, Otaru",
+            "notes": "Check the ropeway's winter hours and last ride with the operator; time it to come down before dusk so you are back for the Snow Light Path.",
+            "how": "Bus or taxi from Otaru Station to the Tenguyama Ropeway base station."
           },
           {
             "time": "Evening",
