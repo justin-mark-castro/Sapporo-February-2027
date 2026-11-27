@@ -423,7 +423,7 @@ window.TRIP = {
             "icon": "mountain",
             "map": "Tenguyama Ropeway Otaru",
             "location": "Mt. Tenguyama, Otaru",
-            "notes": "Winter hours (Nov 28, 2026 to Mar 28, 2027): up 9:00 AM to 7:48 PM, down 9:00 AM to 8:00 PM, cars every 12 min. Round trip about 2,000 yen per adult. Check weather suspensions on the site; time it to come down before dusk for the Snow Light Path.",
+            "notes": "Winter hours (Nov 28, 2026 to Mar 28, 2027): up 9:00 AM to 7:48 PM, down 9:00 AM to 8:00 PM, cars every 12 min, departing at :00, :12, :24, :36 and :48 past each hour in both directions. Round trip about 2,000 yen per adult. Check weather suspensions on the site; time it to come down before dusk for the Snow Light Path.",
             "book": {"url": "https://tenguyama.ckk.chuo-bus.co.jp/en/hours-and-fees/", "label": "Tickets & hours"},
             "how": "Bus or taxi from Otaru Station to the Tenguyama Ropeway base station."
           },
